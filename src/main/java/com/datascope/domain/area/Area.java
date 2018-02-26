@@ -1,9 +1,11 @@
 package com.datascope.domain.area;
 
+import com.datascope.components.ui.grid.items.AreaGridItem;
 import com.datascope.domain.core.Model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class Area extends Model{
 
@@ -72,5 +74,10 @@ public class Area extends Model{
 
     public static class List extends ArrayList<Area> {
 
+        public AreaGridItem.List toGridItems(){
+            return this.stream()
+                    .map(area -> new AreaGridItem(area.getAreaName(), area.getCreatedAt(), area.getId(), area.getAreaFiles()))
+                    .collect(Collectors.toCollection(AreaGridItem.List::new));
+        }
     }
 }

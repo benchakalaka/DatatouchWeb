@@ -1,8 +1,6 @@
 package com.datascope.components.ui;
 
 import com.datascope.designs.generated.ReportDesign;
-
-import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
 import com.vaadin.spring.annotation.SpringView;
 

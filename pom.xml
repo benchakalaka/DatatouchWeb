@@ -173,12 +173,12 @@
 
                         </configuration>
                         <goals>
-                            <goal>clean</goal>
+                           <!-- <goal>clean</goal>
                             <goal>resources</goal>
                             <goal>compile-theme</goal>
                             <goal>update-theme</goal>
                             <goal>update-widgetset</goal>
-                            <goal>compile</goal>
+                            <goal>compile</goal>-->
                         </goals>
                     </execution>
                 </executions>
