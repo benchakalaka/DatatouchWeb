@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:true,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;valo&quot;}">
+  <meta name="vaadin-version" content="8.0.5">
+ </head>
+ <body>
+  <vaadin-vertical-layout size-full>
+   <vaadin-combo-box icon="fonticon://Vaadin-Icons/e757" caption="Select Site" empty-selection-allowed="false" text-input-allowed="false" width-full data-item-type="com.datascope.domain.site.Site" _id="cbSites"></vaadin-combo-box>
+   <vaadin-horizontal-split-panel :middle :center :expand>
+    <vaadin-grid size-full data-item-type="com.datascope.domain.user.User" _id="usersGrid">
+     <table>
+      <colgroup>
+       <col column-id="id" sortable>
+       <col column-id="fullName" sortable>
+       <col column-id="token" sortable>
+       <col column-id="admin" sortable>
+       <col column-id="isAdmin" sortable>
+       <col column-id="companyId" sortable>
+      </colgroup>
+      <thead>
+       <tr default>
+        <th plain-text column-ids="id">Id</th>
+        <th plain-text column-ids="fullName">FullName</th>
+        <th plain-text column-ids="token">Token</th>
+        <th plain-text column-ids="admin">Admin</th>
+        <th plain-text column-ids="isAdmin">IsAdmin</th>
+        <th plain-text column-ids="companyId">CompanyId</th>
+       </tr>
+      </thead>
+      <tbody></tbody>
+     </table>
+    </vaadin-grid>
+    <vaadin-form-layout size-full _id="fLogin">
+     <vaadin-password-field icon="fonticon://Vaadin-Icons/e7f2" caption="Password" _id="etPassword"></vaadin-password-field>
+     <vaadin-button style-name="primary" plain-text _id="btnLogin">
+       Login 
+     </vaadin-button>
+    </vaadin-form-layout>
+   </vaadin-horizontal-split-panel>
+  </vaadin-vertical-layout>
+ </body>
+</html>
