@@ -34,13 +34,31 @@
             <version>3.0</version>
         </dependency>
 
-        <!--
         <dependency>
-            <groupId>org.vaadin.alump</groupId>
-            <artifactId>searchdropdown</artifactId>
-            <version>0.3.0</version>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-push</artifactId>
         </dependency>
--->
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-client-compiler</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-client</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-themes</artifactId>
+            <version>${vaadin.version}</version>
+        </dependency>
+       <!-- <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
+            <scope>provided</scope>
+        </dependency>-->
 
         <dependency>
             <groupId>com.mashape.unirest</groupId>
@@ -83,6 +101,9 @@
         </dependency>
 
 
+
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -102,12 +123,26 @@
         </dependencies>
     </dependencyManagement>
 
-<!--
+
+
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.4.1</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>src/main/webapp/VAADIN/widgetsets</directory>
+                        </fileset>
+                    </filesets>
+                </configuration>
             </plugin>
 
             <plugin>
@@ -124,9 +159,9 @@
                     </hostedWebapp>
                     <noServer>true</noServer>
 
-                    <draftCompile>true</draftCompile>
+                    <draftCompile>false</draftCompile>
                     <persistentunitcachedir>${project.build.directory}/gwtdirt</persistentunitcachedir>
-                    <compileReport>false</compileReport>
+                    <compileReport>true</compileReport>
                     <style>OBF</style>
                     <strict>true</strict>
 
@@ -172,13 +207,13 @@
 
         </plugins>
     </build>
-
+    <!---->
     <repositories>
         <repository>
             <id>vaadin-addons</id>
             <url>http://maven.vaadin.com/vaadin-addons</url>
         </repository>
     </repositories>
--->
+
 
 </project>
