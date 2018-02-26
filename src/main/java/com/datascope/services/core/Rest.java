@@ -33,7 +33,7 @@ public class Rest {
     private String token;
 
     // TODO: How to inject siteID??
-    private static int siteId;
+    private static int siteId = 2;
 
     private static boolean isInitialized = false;
 
@@ -44,7 +44,7 @@ public class Rest {
     }
 
     public static void setSiteId(int siteId){
-        Rest.siteId = siteId;
+        //Rest.siteId = siteId;
     }
 
     public int getSiteId(){

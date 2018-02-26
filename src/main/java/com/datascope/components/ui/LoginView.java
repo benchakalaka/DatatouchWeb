@@ -50,7 +50,7 @@ public class LoginView extends LoginDesign implements View, LoginUserCallback, G
     @Override
     public void loginSuccess(User user) {
         notification.success(user.getToken());
-        getUI().getNavigator().navigateTo(MenuView.NAME);
+        getUI().getNavigator().navigateTo(AreasView.NAME);
     }
 
     private void loadUsers() {

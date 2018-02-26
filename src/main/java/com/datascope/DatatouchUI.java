@@ -1,7 +1,7 @@
 package com.datascope;
 
 import com.datascope.components.ui.LoginView;
-import com.datascope.components.ui.MenuView;
+import com.datascope.components.ui.AreasView;
 import com.datascope.test.components.*;
 import com.vaadin.annotations.Push;
 import com.vaadin.annotations.StyleSheet;
@@ -30,8 +30,8 @@ import java.util.*;
 @Viewport("width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
 public class DatatouchUI extends UI{
 
-    private LoginView loginView;
-    private MenuView menuView;
+//    private LoginView loginView;
+     private AreasView areasView;
     private boolean testMode = false;
 
     private ValoMenuLayout root = new ValoMenuLayout();
@@ -59,10 +59,10 @@ public class DatatouchUI extends UI{
     @Autowired
     SpringViewProvider viewProvider;
 
-    public DatatouchUI(LoginView loginView, MenuView menuView)
+    public DatatouchUI(LoginView loginView, AreasView menuView)
     {
-        this.loginView = loginView;
-        this.menuView = menuView;
+    //    this.loginView = loginView;
+        this.areasView = menuView;
     }
 
     @Override
@@ -97,32 +97,32 @@ public class DatatouchUI extends UI{
 
         navigator = new Navigator(this, viewDisplay);
 
-        navigator.addView("common", CommonParts.class);
-        navigator.addView("labels", Labels.class);
-        navigator.addView("buttons-and-links", ButtonsAndLinks.class);
-        navigator.addView("textfields", TextFields.class);
-        navigator.addView("datefields", DateFields.class);
-        navigator.addView("comboboxes", ComboBoxes.class);
-        navigator.addView("checkboxes", CheckBoxes.class);
-        navigator.addView("sliders", Sliders.class);
-        navigator.addView("menubars", MenuBars.class);
-        navigator.addView("panels", Panels.class);
-        navigator.addView("trees", Trees.class);
-      //  navigator.addView("tables", Tables.class);
-        navigator.addView("splitpanels", SplitPanels.class);
-        navigator.addView("tabs", Tabsheets.class);
-        navigator.addView("accordions", Accordions.class);
-        navigator.addView("colorpickers", ColorPickers.class);
-        navigator.addView("selects", NativeSelects.class);
-       // navigator.addView("calendar", CalendarTest.class);
-        navigator.addView("forms", Forms.class);
-        navigator.addView("popupviews", PopupViews.class);
-        navigator.addView("dragging", Dragging.class);
+                navigator.addView(AreasView.NAME, areasView);
 
-        String f = Page.getCurrent().getUriFragment();
+//        navigator.addView("common", CommonParts.class);
+//        navigator.addView("labels", Labels.class);
+//        navigator.addView("buttons-and-links", ButtonsAndLinks.class);
+//        navigator.addView("textfields", TextFields.class);
+//        navigator.addView("datefields", DateFields.class);
+//        navigator.addView("comboboxes", ComboBoxes.class);
+//        navigator.addView("checkboxes", CheckBoxes.class);
+//        navigator.addView("sliders", Sliders.class);
+//        navigator.addView("menubars", MenuBars.class);
+//        navigator.addView("panels", Panels.class);
+//        navigator.addView("trees", Trees.class);
+//        navigator.addView("splitpanels", SplitPanels.class);
+//        navigator.addView("tabs", Tabsheets.class);
+//        navigator.addView("accordions", Accordions.class);
+//        navigator.addView("colorpickers", ColorPickers.class);
+//        navigator.addView("selects", NativeSelects.class);
+//        navigator.addView("forms", Forms.class);
+//        navigator.addView("popupviews", PopupViews.class);
+//        navigator.addView("dragging", Dragging.class);
 
-        if (f == null || f.equals("")) {
-            navigator.navigateTo("common");
+        String uriFragment = Page.getCurrent().getUriFragment();
+
+        if (uriFragment == null || uriFragment.equals("")) {
+            navigator.navigateTo(AreasView.NAME);
         }
 
         navigator.setErrorView(CommonParts.class);
