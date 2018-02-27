@@ -1,6 +1,5 @@
 package com.datascope.ioc;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
@@ -8,28 +7,35 @@ import org.springframework.context.annotation.Scope;
 @Configuration
 public class RestServicesConfig {
 
-//    @Bean
-//    @Scope("prototype")
-//    public int siteId() {
-//        // TODO: some dynamic way of resolving siteid
-//        return GlobalShit.SITE_ID;
-//    }
+    // TODO: do everything dynamically
 
     @Bean
     @Scope("prototype")
-    public String rootUrl(@Value("${rootUrl:http://www.datascopesystem.com/datatouch_dev/}")String rootUrl) {
-        return rootUrl;
+    public int siteId() {
+        return 2;
     }
 
     @Bean
     @Scope("prototype")
-    public String database(@Value("${database:quilt_development}")String database) {
-        return database;
+    public String rootUrl() {
+        return "http://www.datascopesystem.com/datatouch_dev/";
     }
 
     @Bean
     @Scope("prototype")
-    public String token(@Value("${token:c48e9f37-ac90-427a-9101-119c096593de}")String token) {
-        return token;
+    public String areaFilesUrl(){
+        return rootUrl() +"QuiltFiles/"+ database()+"/AreaFiles/";
+    }
+
+    @Bean
+    @Scope("prototype")
+    public String database() {
+        return "quilt_development";
+    }
+
+    @Bean
+    @Scope("prototype")
+    public String token( ) {
+        return "c48e9f37-ac90-427a-9101-119c096593de";
     }
 }

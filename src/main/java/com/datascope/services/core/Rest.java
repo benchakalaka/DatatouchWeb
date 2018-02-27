@@ -1,7 +1,6 @@
 package com.datascope.services.core;
 
 
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.mashape.unirest.http.HttpResponse;
 
@@ -31,23 +30,18 @@ public class Rest {
     private String rootUrl;
     private String database;
     private String token;
-
-    // TODO: How to inject siteID??
-    private static int siteId = 2;
+    private int siteId;
 
     private static boolean isInitialized = false;
 
-    public Rest(String rootUrl, String database, String token) {
+    public Rest(String rootUrl, String database, String token, int siteId) {
         this.rootUrl = rootUrl;
         this.database = database;
         this.token = token;
+        this.siteId = siteId;
     }
 
-    public static void setSiteId(int siteId){
-        //Rest.siteId = siteId;
-    }
-
-    public int getSiteId(){
+    public int getSiteId() {
         return siteId;
     }
 

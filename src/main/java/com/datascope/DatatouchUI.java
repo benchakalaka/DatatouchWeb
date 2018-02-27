@@ -1,12 +1,10 @@
 package com.datascope;
 
-import com.datascope.components.ui.LoginView;
-import com.datascope.components.ui.AreasView;
-import com.datascope.test.components.*;
-import com.vaadin.annotations.Push;
-import com.vaadin.annotations.StyleSheet;
-import com.vaadin.annotations.Title;
-import com.vaadin.annotations.Viewport;
+import com.datascope.application.ui.login.LoginView;
+import com.datascope.application.ui.area.AreasView;
+import com.datascope.application.ui.report.ReportsView;
+import com.datascope.application.ui.components.*;
+import com.vaadin.annotations.*;
 import com.vaadin.data.HasValue;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.PushStateNavigation;
@@ -30,8 +28,9 @@ import java.util.*;
 @Viewport("width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
 public class DatatouchUI extends UI{
 
-//    private LoginView loginView;
-     private AreasView areasView;
+       private ReportsView reportView;
+    private final LoginView loginView;
+    private AreasView areasView;
     private boolean testMode = false;
 
     private ValoMenuLayout root = new ValoMenuLayout();
@@ -59,10 +58,12 @@ public class DatatouchUI extends UI{
     @Autowired
     SpringViewProvider viewProvider;
 
-    public DatatouchUI(LoginView loginView, AreasView menuView)
+    // TODO: inject already predefined navigator
+    public DatatouchUI(LoginView loginView, AreasView menuView, ReportsView reportView)
     {
-    //    this.loginView = loginView;
+        this.loginView = loginView;
         this.areasView = menuView;
+        this.reportView = reportView;
     }
 
     @Override
@@ -88,7 +89,7 @@ public class DatatouchUI extends UI{
             Responsive.makeResponsive(this);
         }
 
-        getPage().setTitle("Valo Theme Test");
+
         setContent(root);
         root.setWidth("100%");
 
@@ -97,7 +98,8 @@ public class DatatouchUI extends UI{
 
         navigator = new Navigator(this, viewDisplay);
 
-                navigator.addView(AreasView.NAME, areasView);
+        navigator.addView(AreasView.NAME, areasView);
+        navigator.addView(ReportsView.NAME, reportView);
 
 //        navigator.addView("common", CommonParts.class);
 //        navigator.addView("labels", Labels.class);
@@ -179,20 +181,17 @@ public class DatatouchUI extends UI{
 
     private CssLayout buildMenu() {
         // Add items
-        menuItems.put("common", "Common UI Elements");
-        menuItems.put("labels", "Labels");
-        menuItems.put("buttons-and-links", "Buttons & Links");
-        menuItems.put("textfields", "Text Fields");
-        menuItems.put("datefields", "Date Fields");
-        menuItems.put("comboboxes", "Combo Boxes");
-        menuItems.put("selects", "Selects");
-        menuItems.put("checkboxes", "Check Boxes & Option Groups");
-        menuItems.put("sliders", "Sliders & Progress Bars");
-        menuItems.put("colorpickers", "Color Pickers");
-        menuItems.put("menubars", "Menu Bars");
-        menuItems.put("trees", "Trees");
-        menuItems.put("tables", "Tables & Grids");
-        menuItems.put("dragging", "Drag and Drop");
+        menuItems.put("common", "Main Menu");
+        menuItems.put(AreasView.NAME, "Areas");
+        menuItems.put(ReportsView.NAME, "Daily Reports");
+        menuItems.put("textfields", "Advanced Project Reports");
+        menuItems.put("datefields", "Module Project Reports");
+        menuItems.put("comboboxes", "Hotspots");
+        menuItems.put("selects", "Companies");
+        menuItems.put("checkboxes", "Site Briefing");
+        menuItems.put("sliders", "Deliveries");
+        menuItems.put("colorpickers", "Settings Lab");
+
         menuItems.put("panels", "Panels");
         menuItems.put("splitpanels", "Split Panels");
         menuItems.put("tabs", "Tabs");
@@ -201,7 +200,7 @@ public class DatatouchUI extends UI{
         if (getPage().getBrowserWindowWidth() >= 768) {
             menuItems.put("calendar", "Calendar");
         }
-        menuItems.put("forms", "Forms");
+        menuItems.put("forms", "About");
 
         HorizontalLayout top = new HorizontalLayout();
         top.setWidth("100%");
@@ -226,7 +225,7 @@ public class DatatouchUI extends UI{
         showMenu.setIcon(FontAwesome.LIST);
         menu.addComponent(showMenu);
 
-        Label title = new Label("<h3>Vaadin <strong>Valo Theme</strong></h3>",
+        Label title = new Label("<h3>Datatouch <strong>Web</strong></h3>",
                 ContentMode.HTML);
         title.setSizeUndefined();
         top.addComponent(title);
@@ -234,10 +233,9 @@ public class DatatouchUI extends UI{
 
         MenuBar settings = new MenuBar();
         settings.addStyleName("user-menu");
-        StringGenerator sg = new StringGenerator();
-        MenuBar.MenuItem settingsItem = settings.addItem(sg.nextString(true)
-                        + " " + sg.nextString(true) + sg.nextString(false),
-                new ClassResource("profile-pic-300px.jpg"),
+
+        MenuBar.MenuItem settingsItem = settings.addItem("Igor Karpachev",
+                new ClassResource("a.jpg"),
                 null);
         settingsItem.addItem("Edit Profile", null);
         settingsItem.addItem("Preferences", null);
@@ -251,7 +249,7 @@ public class DatatouchUI extends UI{
         Label label = null;
         int count = -1;
         for (final Map.Entry<String, String> item : menuItems.entrySet()) {
-            if (item.getKey().equals("labels")) {
+            if (item.getKey().equals(AreasView.NAME)) {
                 label = new Label("Components", ContentMode.HTML);
                 label.setPrimaryStyleName(ValoTheme.MENU_SUBTITLE);
                 label.addStyleName(ValoTheme.LABEL_H4);
@@ -283,11 +281,11 @@ public class DatatouchUI extends UI{
             Button b = new Button(item.getValue(), (Button.ClickListener) event -> navigator.navigateTo(item.getKey()));
             if (count == 2) {
                 b.setCaption(b.getCaption()
-                        + " <span class=\"valo-menu-badge\">123</span>");
+                        + " <span class=\"valo-menu-badge\">400</span>");
             }
             b.setHtmlContentAllowed(true);
             b.setPrimaryStyleName(ValoTheme.MENU_ITEM);
-           // b.setIcon(testIcon.get());
+            // b.setIcon(testIcon.get());
             menuItemsLayout.addComponent(b);
             count++;
         }

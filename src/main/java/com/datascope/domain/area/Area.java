@@ -1,6 +1,6 @@
 package com.datascope.domain.area;
 
-import com.datascope.components.ui.grid.items.AreaGridItem;
+import com.datascope.application.ui.area.AreaGridItem;
 import com.datascope.domain.core.Model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
