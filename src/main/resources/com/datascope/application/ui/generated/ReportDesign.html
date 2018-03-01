@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:true,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;valo&quot;}">
   <meta name="vaadin-version" content="8.0.5">
+  <meta name="package-mapping" content="org_vaadin_treegrid:org.vaadin.treegrid">
   <meta name="package-mapping" content="com_datascope_test_components:com.datascope.application.ui.components">
  </head>
  <body>
@@ -12,29 +13,8 @@
     <vaadin-date-field text-field-enabled="false" icon="fonticon://Vaadin-Icons/e63b" caption="Select Date" lenient date-format="dd/MM/yyyy" value="2018-02-27" _id="datePicker"></vaadin-date-field>
    </vaadin-horizontal-layout>
    <vaadin-horizontal-layout size-full :expand>
-    <vaadin-horizontal-split-panel split-position="24.3%" :expand>
-     <vaadin-grid icon="fonticon://Vaadin-Icons/e6b7" caption="Report Groups" size-full data-item-type="com.datascope.application.ui.report.ReportGroupGridItem" _id="reportGroupsGrid">
-      <table>
-       <colgroup>
-        <col column-id="reports" sortable>
-        <col column-id="generatedAt" sortable>
-        <col column-id="reportGroupTypeId" sortable>
-        <col column-id="moduleId" sortable>
-        <col column-id="reportGroupId" sortable>
-       </colgroup>
-       <thead>
-        <tr default>
-         <th plain-text column-ids="reports">Reports</th>
-         <th plain-text column-ids="generatedAt">GeneratedAt</th>
-         <th plain-text column-ids="reportGroupTypeId">ReportGroupTypeId</th>
-         <th plain-text column-ids="moduleId">ModuleId</th>
-         <th plain-text column-ids="reportGroupId">ReportGroupId</th>
-        </tr>
-       </thead>
-       <tbody></tbody>
-      </table>
-     </vaadin-grid>
-     <vaadin-browser-frame size-full _id="browserFrame"></vaadin-browser-frame>
+    <vaadin-horizontal-split-panel split-position="24.3%" _id="horizontalSplit" :expand>
+     <vaadin-browser-frame size-full _id="browserFrame" :second></vaadin-browser-frame>
     </vaadin-horizontal-split-panel>
    </vaadin-horizontal-layout>
   </vaadin-vertical-layout>

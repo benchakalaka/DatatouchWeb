@@ -1,72 +1,57 @@
 package com.datascope.application.ui.report;
 
-import com.datascope.domain.report.Report;
-
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class ReportGroupGridItem {
-    public static final String GENERATED_AT_COLUMN = "Generated";
-    private Report.List reports;
-    private String generatedAt;
-    private int reportGroupTypeId;
-    private int moduleId;
-    private int reportGroupId;
+    public static final String REPORTS_COLUMN_NAME = "Reports";
 
-    public ReportGroupGridItem(Report.List reports, String generatedAt, int reportGroupId) {
+
+
+    private String url;
+
+    private ReportGroupGridItem.List reports;
+    private String caption;
+
+
+    public ReportGroupGridItem(String name, String url) {
+        this.caption = name;
+        this.url = url;
+    }
+
+    public ReportGroupGridItem(ReportGroupGridItem.List reports, String caption) {
         this.reports = reports;
-        this.generatedAt = generatedAt;
-        this.reportGroupId = reportGroupId;
+        this.caption = caption;
     }
 
-    public Report.List getReports() {
-        return reports;
+    public String getUrl() {
+        return url;
     }
 
-    public void setReports(Report.List reports) {
-        this.reports = reports;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public String getGeneratedAt() {
-        return generatedAt;
+    public String getCaption() {
+        return caption;
     }
 
-    public void setGeneratedAt(String generatedAt) {
-        this.generatedAt = generatedAt;
-    }
-
-    public int getReportGroupTypeId() {
-        return reportGroupTypeId;
-    }
-
-    public void setReportGroupTypeId(int reportGroupTypeId) {
-        this.reportGroupTypeId = reportGroupTypeId;
-    }
-
-    public int getModuleId() {
-        return moduleId;
-    }
-
-    public void setModuleId(int moduleId) {
-        this.moduleId = moduleId;
-    }
-
-    public int getReportGroupId() {
-        return reportGroupId;
-    }
-
-    public void setReportGroupId(int reportGroupId) {
-        this.reportGroupId = reportGroupId;
+    public void setCaption(String caption) {
+        this.caption = caption;
     }
 
     public ReportGroupGridItem.List getReportsAdGridItems() {
         return reports
                 .stream()
-                .map(item -> new ReportGroupGridItem(null,item.url,item.reportGroupId))
+                .map(item -> new ReportGroupGridItem(item.getCaption(), item.getUrl()))
                 .collect(Collectors.toCollection(ReportGroupGridItem.List::new));
     }
 
-    public static class List extends ArrayList<ReportGroupGridItem>{
+    public boolean hasUrls() {
+        return null != url && !"".equals(url);
+    }
+
+    public static class List extends ArrayList<ReportGroupGridItem> {
 
         public static ReportGroupGridItem.List empty() {
             return new ReportGroupGridItem.List();

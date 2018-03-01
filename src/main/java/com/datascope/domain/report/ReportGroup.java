@@ -9,66 +9,27 @@ import java.util.stream.Collectors;
 
 public class ReportGroup  extends Model {
     @JsonProperty("Reports")
-    public Report.List reports;
+    private Report.List reports;
 
     @JsonProperty("GeneratedAt")
     public String generatedAt;
 
-    @JsonProperty("ReportGroupTypeId")
-    public int reportGroupTypeId;
-
-    @JsonProperty("ModuleId")
-    public int moduleId;
-
-    @JsonProperty("Id")
-    private int reportGroupId;
 
     public ReportGroup() {
     }
 
-
-    public Report.List getReports() {
-        return reports;
-    }
-
-    public void setReports(Report.List reports) {
-        this.reports = reports;
-    }
-
-    public String getGeneratrdAt() {
-        return generatedAt;
-    }
-
-    public void setGeneratrdAt(String generatrdAt) {
-        this.generatedAt = generatrdAt;
-    }
-
-    public int getReportGroupTypeId() {
-        return reportGroupTypeId;
-    }
-
-    public void setReportGroupTypeId(int reportGroupTypeId) {
-        this.reportGroupTypeId = reportGroupTypeId;
-    }
-
-    public int getModuleId() {
-        return moduleId;
-    }
-
-    public void setModuleId(int moduleId) {
-        this.moduleId = moduleId;
-    }
-
-    public int getReportGroupId() {
-        return reportGroupId;
-    }
-
-    public void setReportGroupId(int reportGroupId) {
-        this.reportGroupId = reportGroupId;
-    }
-
-    public boolean hasReportFiles(){
+    private boolean hasReports(){
         return reports != null && !reports.isEmpty();
+    }
+
+    private ReportGroupGridItem.List reportsToGridItems() {
+        if (!hasReports())
+            return ReportGroupGridItem.List.empty();
+
+        return reports
+                .stream()
+                .map(report -> new ReportGroupGridItem(report.getFileName(), report.getUrl()))
+                .collect(Collectors.toCollection(ReportGroupGridItem.List::new));
     }
 
     public static class List extends ArrayList<ReportGroup> {
@@ -77,9 +38,8 @@ public class ReportGroup  extends Model {
 
         public ReportGroupGridItem.List toGridItems() {
             return stream()
-                    .map(reportGroup -> new ReportGroupGridItem(reportGroup.reports, reportGroup.generatedAt, reportGroup.getReportGroupId()))
+                    .map(reportGroup ->  new ReportGroupGridItem(reportGroup.reportsToGridItems(), reportGroup.generatedAt))
                     .collect(Collectors.toCollection(ReportGroupGridItem.List::new));
-
         }
     }
 }

@@ -43,16 +43,25 @@ public class DatatouchUI extends UI{
     private static LinkedHashMap<String, String> themeVariants = new LinkedHashMap<>();
 
     static {
-        themeVariants.put(ValoTheme.THEME_NAME, "Valo");
-        themeVariants.put("midsummer-night", "midsummer-night");
-        themeVariants.put("tests-valo-blueprint", "tests-valo-blueprint");
-        themeVariants.put("tests-valo-dark", "tests-valo-dark");
-        themeVariants.put("tests-valo-facebook", "tests-valo-facebook");
-        themeVariants.put("tests-valo-flatdark", "tests-valo-flatdark");
-        themeVariants.put("tests-valo-flat", "tests-valo-flat");
-        themeVariants.put("tests-valo-light", "tests-valo-light");
-        themeVariants.put("tests-valo-metro", "tests-valo-metro");
-        themeVariants.put("tests-valo-reindeer", "tests-valo-reindeer");
+        themeVariants.put("Blueprint", "tests-valo-blueprint");
+        themeVariants.put("Dark", "tests-valo-dark");
+        themeVariants.put("Facebook", "tests-valo-facebook");
+        themeVariants.put("Flatdark", "tests-valo-flatdark");
+        themeVariants.put("Flat", "tests-valo-flat");
+        themeVariants.put("Light", "tests-valo-light");
+        themeVariants.put("Metro", "tests-valo-metro");
+        themeVariants.put("Reindeer", "tests-valo-reindeer");
+    }
+
+    private Component createThemeSelect() {
+        NativeSelect<String> ns = new NativeSelect<>();
+        ns.setId("themeSelect");
+
+        ns.setItems(themeVariants.keySet());
+
+        ns.setValue(ValoTheme.THEME_NAME);
+         ns.addValueChangeListener(event -> setTheme( themeVariants.get(ns.getValue())));
+        return ns;
     }
 
     @Autowired
@@ -160,10 +169,6 @@ public class DatatouchUI extends UI{
                 menu.removeStyleName("valo-menu-visible");
             }
         });
-
-
-
-        //navigator.navigateTo(MenuView.NAME);
     }
 
     private boolean browserCantRenderFontsConsistently() {
@@ -295,17 +300,5 @@ public class DatatouchUI extends UI{
         return menu;
     }
 
-    private Component createThemeSelect() {
-        NativeSelect<String> ns = new NativeSelect<>();
-        ns.setId("themeSelect");
-        List<String> content = new ArrayList<>();
-        for (String identifier : themeVariants.keySet()) {
-            content.add(themeVariants.get(identifier));
-        }
-        ns.setItems(content);
 
-        ns.setValue(ValoTheme.THEME_NAME);
-        ns.addValueChangeListener((HasValue.ValueChangeListener) event -> setTheme(ns.getValue()));
-        return ns;
-    }
 }
