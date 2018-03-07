@@ -14,7 +14,6 @@ public class ReportViewUiHelper {
     private TreeData<ReportGroupGridItem> data = new TreeData<>();
     private TreeDataProvider<ReportGroupGridItem> reportGroupGridItemTreeDataProvider = new TreeDataProvider<>(data);
 
-
     public void initTree(TreeGrid<ReportGroupGridItem> treeGrid, ReportSelectedCallback callback) {
         treeGrid.setSizeFull();
         treeGrid.addColumn(ReportGroupGridItem::getCaption)

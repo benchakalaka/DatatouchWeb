@@ -53,12 +53,12 @@
             <artifactId>vaadin-themes</artifactId>
             <version>${vaadin.version}</version>
         </dependency>
-       <!-- <dependency>
+       <!-- --><dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.0.1</version>
             <scope>provided</scope>
-        </dependency>-->
+        </dependency>
 
         <dependency>
             <groupId>com.mashape.unirest</groupId>
@@ -175,12 +175,12 @@
 
                         </configuration>
                        <goals>
-                           <!-- <goal>clean</goal>
+                           <!-- --> <goal>clean</goal>
                               <goal>resources</goal>
                                <goal>compile-theme</goal>
                               <goal>update-theme</goal>
                               <goal>update-widgetset</goal>
-                              <goal>compile</goal>  -->
+                              <goal>compile</goal>
                         </goals>
                     </execution>
                 </executions>

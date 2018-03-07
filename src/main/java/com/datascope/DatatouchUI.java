@@ -1,5 +1,6 @@
 package com.datascope;
 
+import com.datascope.application.ui.hotspot.HotspotView;
 import com.datascope.application.ui.login.LoginView;
 import com.datascope.application.ui.area.AreasView;
 import com.datascope.application.ui.report.ReportsView;
@@ -20,15 +21,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.*;
 
 
-@Push
+
 @SpringUI
-@PushStateNavigation
 @Title("Datatouch")
-@StyleSheet("valo-theme-ui.css")
+//@StyleSheet("valo-theme-ui.css")
+//@Theme("test-valo-blueprint")
 @Viewport("width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
 public class DatatouchUI extends UI{
 
        private ReportsView reportView;
+    private HotspotView hotspotView;
     private final LoginView loginView;
     private AreasView areasView;
     private boolean testMode = false;
@@ -68,11 +70,15 @@ public class DatatouchUI extends UI{
     SpringViewProvider viewProvider;
 
     // TODO: inject already predefined navigator
-    public DatatouchUI(LoginView loginView, AreasView menuView, ReportsView reportView)
+    public DatatouchUI(LoginView loginView,
+                       AreasView menuView,
+                       ReportsView reportView,
+                       HotspotView hotspotView)
     {
         this.loginView = loginView;
         this.areasView = menuView;
         this.reportView = reportView;
+        this.hotspotView = hotspotView;
     }
 
     @Override
@@ -109,6 +115,7 @@ public class DatatouchUI extends UI{
 
         navigator.addView(AreasView.NAME, areasView);
         navigator.addView(ReportsView.NAME, reportView);
+        navigator.addView(HotspotView.NAME,hotspotView);
 
 //        navigator.addView("common", CommonParts.class);
 //        navigator.addView("labels", Labels.class);
@@ -186,10 +193,10 @@ public class DatatouchUI extends UI{
 
     private CssLayout buildMenu() {
         // Add items
-        menuItems.put("common", "Main Menu");
+        //menuItems.put("common", "Main Menu");
         menuItems.put(AreasView.NAME, "Areas");
         menuItems.put(ReportsView.NAME, "Daily Reports");
-        menuItems.put("textfields", "Advanced Project Reports");
+        menuItems.put(HotspotView.NAME, "Hotspots");
         menuItems.put("datefields", "Module Project Reports");
         menuItems.put("comboboxes", "Hotspots");
         menuItems.put("selects", "Companies");

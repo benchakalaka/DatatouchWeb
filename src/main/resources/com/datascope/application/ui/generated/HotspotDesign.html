@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:true,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;tests-valo-metro&quot;}">
+  <meta name="vaadin-version" content="8.0.5">
+ </head>
+ <body>
+  <vaadin-vertical-layout size-full>
+   <vaadin-horizontal-layout width-full height="40px" :expand>
+    <vaadin-combo-box caption="Areas" width-full data-item-type="com.datascope.domain.area.Area" _id="cbAreas" :expand></vaadin-combo-box>
+    <vaadin-date-field caption="Date" _id="datePicker"></vaadin-date-field>
+   </vaadin-horizontal-layout>
+   <vaadin-grid icon="fonticon://Vaadin-Icons/e687" caption="Hotspots" size-full data-item-type="com.datascope.application.ui.hotspot.HotspotGridItem" _id="hotspotGrid" :expand="7">
+    <table>
+     <colgroup>
+      <col column-id="amount" sortable>
+      <col column-id="companyName" sortable>
+      <col column-id="completed" sortable>
+      <col column-id="description" sortable>
+      <col column-id="hotspotTypeId" sortable>
+      <col column-id="id" sortable>
+      <col column-id="validFromDate" sortable>
+      <col column-id="validToDate" sortable>
+      <col column-id="fileUrls" sortable>
+      <col column-id="signedOff" sortable>
+     </colgroup>
+     <thead>
+      <tr default>
+       <th plain-text column-ids="amount">Amount</th>
+       <th plain-text column-ids="companyName">CompanyName</th>
+       <th plain-text column-ids="completed">Completed</th>
+       <th plain-text column-ids="description">Description</th>
+       <th plain-text column-ids="hotspotTypeId">HotspotTypeId</th>
+       <th plain-text column-ids="id">Id</th>
+       <th plain-text column-ids="validFromDate">ValidFromDate</th>
+       <th plain-text column-ids="validToDate">ValidToDate</th>
+       <th plain-text column-ids="fileUrls">FileUrls</th>
+       <th plain-text column-ids="signedOff">SignedOff</th>
+      </tr>
+     </thead>
+     <tbody></tbody>
+    </table>
+   </vaadin-grid>
+  </vaadin-vertical-layout>
+ </body>
+</html>

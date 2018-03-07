@@ -1,7 +1,6 @@
 package com.datascope.application.ui.area;
 
 
-import com.datascope.application.ui.utils.html.HtmlFormatter;
 import com.datascope.domain.area.AreaFile;
 
 import java.util.ArrayList;
@@ -31,9 +30,9 @@ public class AreaGridItem {
         return null != areaFiles && !areaFiles.isEmpty();
     }
 
-    public String buildUrl(String fUrl) {
+    public String buildFileUrl(String fullUrl) {
         if (hasFiles())
-            return HtmlFormatter.Link(fUrl + areaFiles.get(0).getFileName());
+            return fullUrl + areaFiles.get(0).getFileName();
         else
             return "";
     }
