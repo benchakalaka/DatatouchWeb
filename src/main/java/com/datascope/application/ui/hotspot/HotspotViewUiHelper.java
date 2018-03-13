@@ -2,15 +2,26 @@ package com.datascope.application.ui.hotspot;
 
 import com.datascope.application.ui.hotspot.callbacks.IAreaSelectedCallback;
 import com.datascope.application.ui.hotspot.callbacks.IDateSelectedCallback;
-import com.datascope.domain.area.Area;
+import com.datascope.application.ui.hotspot.elements.AreaComboBoxItem;
+import com.datascope.application.ui.hotspot.elements.HotspotGridItem;
+import com.datascope.bounded.contexts.area.domian.Area;
 import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.DateField;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.renderers.ProgressBarRenderer;
+import org.apache.commons.collections.CollectionUtils;
 
 import java.time.LocalDate;
+import java.util.stream.Collectors;
 
 public class HotspotViewUiHelper {
+
+    public AreaComboBoxItem.List toComboBoxItems(Area.List areas) {
+        return CollectionUtils.isEmpty(areas) ? new AreaComboBoxItem.List() : areas
+                .stream()
+                .map(AreaComboBoxItem::FromArea)
+                .collect(Collectors.toCollection(AreaComboBoxItem.List::new));
+    }
 
     public void initGrid(Grid<HotspotGridItem> grid) {
         grid.removeAllColumns();
@@ -45,7 +56,14 @@ public class HotspotViewUiHelper {
         datePicker.addValueChangeListener(e -> callback.onDateSelected(e.getValue()));
     }
 
-    public void initAreaComboBox(ComboBox<Area> cbAreas,IAreaSelectedCallback areaSelected ) {
+    public void initAreaComboBox(ComboBox<AreaComboBoxItem> cbAreas, IAreaSelectedCallback areaSelected) {
         cbAreas.addValueChangeListener(e -> areaSelected.areaSelected(e.getValue()));
+    }
+
+    public void setAreas(ComboBox<AreaComboBoxItem> cbAreas, Area.List items) {
+        AreaComboBoxItem.List comboboxItems = toComboBoxItems(items);
+        cbAreas.setItems(comboboxItems);
+        if (CollectionUtils.isNotEmpty(comboboxItems))
+            cbAreas.setSelectedItem(comboboxItems.get(0));
     }
 }

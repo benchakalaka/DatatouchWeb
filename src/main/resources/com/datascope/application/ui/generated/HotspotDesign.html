@@ -2,16 +2,16 @@
 <html>
  <head>
   <meta charset="UTF-8">
-  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:true,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;tests-valo-metro&quot;}">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:true,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;tests-valo-dark&quot;}">
   <meta name="vaadin-version" content="8.0.5">
  </head>
  <body>
   <vaadin-vertical-layout size-full>
    <vaadin-horizontal-layout width-full height="40px" :expand>
-    <vaadin-combo-box caption="Areas" width-full data-item-type="com.datascope.domain.area.Area" _id="cbAreas" :expand></vaadin-combo-box>
+    <vaadin-combo-box scroll-to-selected-item icon="fonticon://Vaadin-Icons/e61f" caption="Areas" empty-selection-allowed="false" text-input-allowed="false" width-full data-item-type="com.datascope.application.ui.hotspot.elements.AreaComboBoxItem" _id="cbAreas" :expand></vaadin-combo-box>
     <vaadin-date-field caption="Date" _id="datePicker"></vaadin-date-field>
    </vaadin-horizontal-layout>
-   <vaadin-grid icon="fonticon://Vaadin-Icons/e687" caption="Hotspots" size-full data-item-type="com.datascope.application.ui.hotspot.HotspotGridItem" _id="hotspotGrid" :expand="7">
+   <vaadin-grid icon="fonticon://Vaadin-Icons/e687" caption="Hotspots" size-full data-item-type="com.datascope.application.ui.hotspot.elements.HotspotGridItem" _id="hotspotGrid" :expand="7">
     <table>
      <colgroup>
       <col column-id="amount" sortable>

@@ -1,12 +1,13 @@
 package com.datascope.application.ui.area;
 
-import com.datascope.DatatouchUI;
+import com.datascope.application.ui.DatatouchUI;
 import com.datascope.application.ui.area.callbacks.IAreaSelectedCallback;
+import com.datascope.application.ui.area.elements.AreaGridItem;
 import com.datascope.application.ui.utils.notifications.DatatouchNotification;
 import com.datascope.application.ui.generated.AreasDesign;
-import com.datascope.domain.area.Area;
-import com.datascope.services.area.interfaces.IAreaService;
-import com.datascope.services.area.interfaces.callbacks.GetAreasCallback;
+import com.datascope.bounded.contexts.area.domian.Area;
+import com.datascope.bounded.contexts.area.service.interfaces.IAreaService;
+import com.datascope.bounded.contexts.area.service.interfaces.GetAreasCallback;
 import com.vaadin.navigator.View;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.spring.annotation.SpringView;
@@ -23,6 +24,7 @@ public class AreasView extends AreasDesign implements View, GetAreasCallback, IA
     private IAreaService areaService;
     private DatatouchNotification notification;
     private String areaFilesUrl;
+    private AreaViewUiHelper helper = new AreaViewUiHelper();
 
     public AreasView(IAreaService areaService, DatatouchNotification notification, String areaFilesUrl) {
         this.areaService = areaService;
@@ -32,7 +34,7 @@ public class AreasView extends AreasDesign implements View, GetAreasCallback, IA
 
     @PostConstruct
     public void init() {
-        AreaViewUiHelper.initAreasGrid(getAreasGrid(), areaFilesUrl, this);
+        helper.initAreasGrid(getAreasGrid(), this);
         getAreas();
     }
 
@@ -42,24 +44,17 @@ public class AreasView extends AreasDesign implements View, GetAreasCallback, IA
 
     @Override
     public void areasFound(Area.List areas) {
-        getAreasGrid().setItems(areas.toGridItems());
-
+        getAreasGrid().setItems(helper.toGridItems(areas));
     }
 
     @Override
     public void areaSelected(AreaGridItem areaGridItem) {
-        String fileUrl = areaGridItem.buildFileUrl(areaFilesUrl);
-        getBrowser().setSource(new ExternalResource(fileUrl));
+        getBrowser().setSource(new ExternalResource(areaGridItem.buildFileUrl(areaFilesUrl)));
     }
-
-    //region notification
 
     @Override
     public void areasNotFound() {
         notification.warn("areas.not.found");
     }
 
-
-
-    //endregion notification
 }

@@ -1,7 +1,7 @@
 package com.datascope.application.ui.hotspot.callbacks;
 
-import com.datascope.domain.area.Area;
+import com.datascope.application.ui.hotspot.elements.AreaComboBoxItem;
 
 public interface IAreaSelectedCallback {
-    void areaSelected(Area area);
+    void areaSelected(AreaComboBoxItem area);
 }
