@@ -33,6 +33,6 @@ public class CompanyService extends SuperRestService implements ICompanyService 
     @Override
     public void changeCompanyColor(int companyId, int alpha, int r, int g, int b) {
         ChangeCompanyColorRequest request = new ChangeCompanyColorRequest(companyId, alpha, r, g, b);
-        rest.post(Void.class, EDIT_COMPANY_COLOR, request);
+        rest.post(Integer.class, EDIT_COMPANY_COLOR, request);
     }
 }

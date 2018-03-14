@@ -14,7 +14,7 @@ import com.vaadin.ui.UI;
 
 @SpringUI
 @Title("Datatouch")
-@Theme("test-valo-flat")
+@Theme("tests-valo-flat")
 public class DatatouchUI extends UI{
 
 
@@ -27,8 +27,6 @@ public class DatatouchUI extends UI{
 
     @Override
     protected void init(VaadinRequest request) {
-    // TODO: Set Via annotations
-        setTheme("tests-valo-flat");
         Navigator navigator = new Navigator(this, this);
         navigator.addProvider(provider);
         setNavigator(navigator);
