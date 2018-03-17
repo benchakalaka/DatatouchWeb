@@ -27,7 +27,7 @@ public class DateUtils {
             return dateToParse.format(formatter);
         } catch (Exception e) {
             e.printStackTrace();
-            return LocalDate.now().format(formatter).toString();
+            return LocalDate.now().format(formatter);
         }
     }
 }

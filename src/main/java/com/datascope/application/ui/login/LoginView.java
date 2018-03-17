@@ -1,16 +1,16 @@
 package com.datascope.application.ui.login;
 
-import com.datascope.DatatouchUI;
+import com.datascope.application.ui.DatatouchUI;
 import com.datascope.application.ui.area.AreasView;
 import com.datascope.application.ui.utils.notifications.DatatouchNotification;
 import com.datascope.application.ui.generated.LoginDesign;
-import com.datascope.domain.site.Site;
-import com.datascope.domain.user.User;
-import com.datascope.services.site.interfaces.ISiteService;
-import com.datascope.services.site.interfaces.callbacks.GetSitesCallback;
-import com.datascope.services.user.interfaces.IUserService;
-import com.datascope.services.user.interfaces.callbacks.GetUsersCallback;
-import com.datascope.services.user.interfaces.callbacks.LoginUserCallback;
+import com.datascope.bounded.contexts.site.domain.Site;
+import com.datascope.bounded.contexts.site.service.interfaces.ISiteService;
+import com.datascope.bounded.contexts.site.service.interfaces.callbacks.GetSitesCallback;
+import com.datascope.bounded.contexts.user.domain.User;
+import com.datascope.bounded.contexts.user.service.interfaces.IUserService;
+import com.datascope.bounded.contexts.user.service.interfaces.callbacks.GetUsersCallback;
+import com.datascope.bounded.contexts.user.service.interfaces.callbacks.LoginUserCallback;
 import com.vaadin.navigator.View;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.UIScope;

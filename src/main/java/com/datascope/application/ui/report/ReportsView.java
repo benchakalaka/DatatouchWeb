@@ -1,13 +1,13 @@
 package com.datascope.application.ui.report;
 
-import com.datascope.DatatouchUI;
+import com.datascope.application.ui.DatatouchUI;
 import com.datascope.application.ui.generated.ReportDesign;
 import com.datascope.application.ui.report.callbacks.ReportSelectedCallback;
 import com.datascope.application.ui.report.callbacks.SelectReportGeneratedDateCallback;
 import com.datascope.application.ui.utils.notifications.DatatouchNotification;
-import com.datascope.domain.report.ReportGroup;
-import com.datascope.services.report.interfaces.IReportService;
-import com.datascope.services.report.interfaces.callbacks.GetReportGroupsCallback;
+import com.datascope.bounded.contexts.report.domain.ReportGroup;
+import com.datascope.bounded.contexts.report.service.interfaces.IReportService;
+import com.datascope.bounded.contexts.report.service.interfaces.callbacks.GetReportGroupsCallback;
 import com.vaadin.navigator.View;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.spring.annotation.SpringView;
@@ -60,7 +60,7 @@ public class ReportsView extends ReportDesign implements View, GetReportGroupsCa
 
     @Override
     public void noReportGroupsFound() {
-       // notification.warn("no.report.groups.found");
+        notification.warn("no.report.groups.found");
         uiHelper.clearReportsTree();
     }
 
