@@ -74,10 +74,6 @@ public class Area extends Model{
 
     public static class List extends ArrayList<Area> {
 
-        public AreaGridItem.List toGridItems(){
-            return this.stream()
-                    .map(area -> new AreaGridItem(area.getAreaName(), area.getCreatedAt(), area.getId(), area.getAreaFiles()))
-                    .collect(Collectors.toCollection(AreaGridItem.List::new));
-        }
+
     }
 }
