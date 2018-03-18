@@ -1,6 +1,5 @@
 package com.datascope.application.ui.report;
 
-import com.datascope.application.ui.DatatouchUI;
 import com.datascope.application.ui.generated.ReportDesign;
 import com.datascope.application.ui.report.callbacks.ReportSelectedCallback;
 import com.datascope.application.ui.report.callbacks.SelectReportGeneratedDateCallback;
@@ -18,7 +17,7 @@ import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 
 @UIScope
-@SpringView(name = ReportsView.NAME, ui = {DatatouchUI.class})
+@SpringView(name = ReportsView.NAME)
 public class ReportsView extends ReportDesign implements View, GetReportGroupsCallback, SelectReportGeneratedDateCallback, ReportSelectedCallback {
 
     public static final String NAME = "ReportsView";

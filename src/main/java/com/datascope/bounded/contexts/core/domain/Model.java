@@ -1,4 +1,4 @@
-package com.datascope.core.domain;
+package com.datascope.bounded.contexts.core.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

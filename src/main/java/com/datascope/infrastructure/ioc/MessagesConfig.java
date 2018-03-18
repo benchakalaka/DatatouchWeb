@@ -11,7 +11,7 @@ public class MessagesConfig {
     @Bean
     public MessageSource messageSource() {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setBasename("classpath:messages");
+        messageSource.setBasename("classpath:notifications");
         messageSource.setCacheSeconds(36000);
         return messageSource;
     }

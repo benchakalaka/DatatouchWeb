@@ -1,6 +1,5 @@
 package com.datascope.application.ui.hotspot;
 
-import com.datascope.application.ui.DatatouchUI;
 import com.datascope.application.ui.generated.HotspotDesign;
 import com.datascope.application.ui.hotspot.callbacks.IAreaSelectedCallback;
 import com.datascope.application.ui.hotspot.callbacks.IDateSelectedCallback;
@@ -9,8 +8,8 @@ import com.datascope.application.ui.hotspot.elements.HotspotGridItem;
 import com.datascope.application.ui.utils.notifications.DatatouchNotification;
 import com.datascope.bounded.contexts.area.domian.Area;
 import com.datascope.bounded.contexts.area.service.interfaces.IAreaService;
+import com.datascope.bounded.contexts.area.service.interfaces.callbacks.GetAreasCallback;
 import com.datascope.bounded.contexts.hotspot.domain.Hotspot;
-import com.datascope.bounded.contexts.area.service.interfaces.GetAreasCallback;
 import com.datascope.bounded.contexts.hotspot.service.interfaces.IGetAreaHotspotsCallback;
 import com.datascope.bounded.contexts.hotspot.service.interfaces.IHotspotService;
 import com.vaadin.navigator.View;
@@ -23,7 +22,7 @@ import java.time.LocalDate;
 import static java.util.Optional.ofNullable;
 
 @UIScope
-@SpringView(name = HotspotView.NAME, ui = {DatatouchUI.class})
+@SpringView(name = HotspotView.NAME)
 public class HotspotView extends HotspotDesign implements
         View,
         IGetAreaHotspotsCallback,

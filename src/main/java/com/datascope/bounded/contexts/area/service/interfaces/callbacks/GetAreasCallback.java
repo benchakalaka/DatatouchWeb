@@ -1,4 +1,4 @@
-package com.datascope.bounded.contexts.area.service.interfaces;
+package com.datascope.bounded.contexts.area.service.interfaces.callbacks;
 
 import com.datascope.bounded.contexts.area.domian.Area;
 

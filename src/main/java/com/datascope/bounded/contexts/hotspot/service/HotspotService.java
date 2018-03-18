@@ -4,8 +4,8 @@ import com.datascope.bounded.contexts.hotspot.domain.Hotspot;
 import com.datascope.bounded.contexts.hotspot.service.interfaces.IGetAreaHotspotsCallback;
 import com.datascope.bounded.contexts.hotspot.service.interfaces.IHotspotService;
 import com.datascope.bounded.contexts.hotspot.service.requests.GetAreaHotspotsRequest;
-import com.datascope.core.services.IRestClient;
-import com.datascope.core.services.concrete.SuperRestService;
+import com.datascope.bounded.contexts.core.services.IRestClient;
+import com.datascope.bounded.contexts.core.services.concrete.SuperRestService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

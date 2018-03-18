@@ -1,15 +1,13 @@
 package com.datascope.application.ui.company;
 
-import com.datascope.application.ui.DatatouchUI;
 import com.datascope.application.ui.company.callbacks.CompanyColorChangedCallback;
 import com.datascope.application.ui.company.callbacks.OnCompanySelectedCallback;
 import com.datascope.application.ui.company.elements.CompanyGridItem;
 import com.datascope.application.ui.generated.CompanyDesign;
 import com.datascope.application.ui.utils.notifications.DatatouchNotification;
 import com.datascope.bounded.contexts.company.domain.Company;
-import com.datascope.bounded.contexts.company.service.interfaces.ICompanyService;
 import com.datascope.bounded.contexts.company.service.interfaces.GetCompaniesCallback;
-import com.vaadin.annotations.Theme;
+import com.datascope.bounded.contexts.company.service.interfaces.ICompanyService;
 import com.vaadin.navigator.View;
 import com.vaadin.shared.ui.colorpicker.Color;
 import com.vaadin.spring.annotation.SpringView;
@@ -17,10 +15,10 @@ import com.vaadin.spring.annotation.UIScope;
 
 import javax.annotation.PostConstruct;
 
-import static java.util.Optional.*;
+import static java.util.Optional.ofNullable;
 
 @UIScope
-@SpringView(name = CompanyView.NAME, ui = {DatatouchUI.class})
+@SpringView(name = CompanyView.NAME)
 
 public class CompanyView extends CompanyDesign implements
         View,

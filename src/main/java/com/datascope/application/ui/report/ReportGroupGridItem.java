@@ -6,8 +6,6 @@ import java.util.stream.Collectors;
 public class ReportGroupGridItem {
     public static final String REPORTS_COLUMN_NAME = "Reports";
 
-
-
     private String url;
 
     private ReportGroupGridItem.List reports;

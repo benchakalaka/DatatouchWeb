@@ -1,6 +1,6 @@
 package com.datascope.bounded.contexts.user.service.requests;
 
-import com.datascope.core.services.SuperRequestView;
+import com.datascope.bounded.contexts.core.services.SuperRequestView;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class LoginUserRequest extends SuperRequestView {

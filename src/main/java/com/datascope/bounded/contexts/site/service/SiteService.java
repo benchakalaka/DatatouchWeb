@@ -2,8 +2,8 @@ package com.datascope.bounded.contexts.site.service;
 
 import com.datascope.bounded.contexts.site.domain.Site;
 import com.datascope.bounded.contexts.site.service.interfaces.ISiteService;
-import com.datascope.core.services.IRestClient;
-import com.datascope.core.services.concrete.SuperRestService;
+import com.datascope.bounded.contexts.core.services.IRestClient;
+import com.datascope.bounded.contexts.core.services.concrete.SuperRestService;
 import com.datascope.bounded.contexts.site.service.interfaces.callbacks.GetSitesCallback;
 import org.springframework.stereotype.Service;
 

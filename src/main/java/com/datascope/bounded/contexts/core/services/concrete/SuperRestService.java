@@ -1,6 +1,6 @@
-package com.datascope.core.services.concrete;
+package com.datascope.bounded.contexts.core.services.concrete;
 
-import com.datascope.core.services.IRestClient;
+import com.datascope.bounded.contexts.core.services.IRestClient;
 import org.springframework.stereotype.Service;
 
 @Service

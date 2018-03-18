@@ -4,8 +4,8 @@ import com.datascope.application.ui.company.requests.ChangeCompanyColorRequest;
 import com.datascope.bounded.contexts.company.domain.Company;
 import com.datascope.bounded.contexts.company.service.interfaces.GetCompaniesCallback;
 import com.datascope.bounded.contexts.company.service.interfaces.ICompanyService;
-import com.datascope.core.services.IRestClient;
-import com.datascope.core.services.concrete.SuperRestService;
+import com.datascope.bounded.contexts.core.services.IRestClient;
+import com.datascope.bounded.contexts.core.services.concrete.SuperRestService;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.stereotype.Service;
 

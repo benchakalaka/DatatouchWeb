@@ -1,4 +1,4 @@
-package com.datascope.core.services;
+package com.datascope.bounded.contexts.core.services;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

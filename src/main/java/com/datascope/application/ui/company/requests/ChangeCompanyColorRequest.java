@@ -1,6 +1,6 @@
 package com.datascope.application.ui.company.requests;
 
-import com.datascope.core.services.SuperRequestView;
+import com.datascope.bounded.contexts.core.services.SuperRequestView;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ChangeCompanyColorRequest extends SuperRequestView {

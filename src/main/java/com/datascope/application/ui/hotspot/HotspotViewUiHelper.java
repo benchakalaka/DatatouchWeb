@@ -23,6 +23,8 @@ public class HotspotViewUiHelper {
                 .collect(Collectors.toCollection(AreaComboBoxItem.List::new));
     }
 
+
+
     public void initGrid(Grid<HotspotGridItem> grid) {
         grid.removeAllColumns();
 

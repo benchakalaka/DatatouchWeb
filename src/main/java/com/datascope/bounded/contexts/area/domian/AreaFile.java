@@ -1,7 +1,7 @@
 package com.datascope.bounded.contexts.area.domian;
 
 
-import com.datascope.core.domain.Model;
+import com.datascope.bounded.contexts.core.domain.Model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;

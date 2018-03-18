@@ -1,6 +1,7 @@
 package com.datascope.application.ui;
 
 import com.datascope.application.ui.company.CompanyView;
+import com.datascope.application.ui.email.EmailGroupView;
 import com.datascope.application.ui.hotspot.HotspotView;
 import com.datascope.application.ui.report.ReportsView;
 import com.vaadin.annotations.Theme;
@@ -14,11 +15,12 @@ import com.vaadin.ui.UI;
 
 @SpringUI
 @Title("Datatouch")
-@Theme("tests-valo-flat")
+@Theme("datascope")
 public class DatatouchUI extends UI{
 
 
     private SpringViewProvider provider;
+
 
     public DatatouchUI(SpringViewProvider provider)
     {
@@ -30,7 +32,7 @@ public class DatatouchUI extends UI{
         Navigator navigator = new Navigator(this, this);
         navigator.addProvider(provider);
         setNavigator(navigator);
-        getNavigator().navigateTo(CompanyView.NAME);
+        getNavigator().navigateTo(EmailGroupView.NAME);
     }
     //tests-valo-blueprint;
     //"tests-valo-dark");

@@ -1,6 +1,6 @@
 package com.datascope.bounded.contexts.report.domain;
 
-import com.datascope.core.domain.Model;
+import com.datascope.bounded.contexts.core.domain.Model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

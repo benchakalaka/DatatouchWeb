@@ -1,7 +1,7 @@
 package com.datascope.bounded.contexts.hotspot.service.requests;
 
 import com.datascope.application.ui.utils.common.DateUtils;
-import com.datascope.core.services.SuperRequestView;
+import com.datascope.bounded.contexts.core.services.SuperRequestView;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDate;

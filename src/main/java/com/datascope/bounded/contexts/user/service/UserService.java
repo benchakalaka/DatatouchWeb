@@ -1,7 +1,7 @@
 package com.datascope.bounded.contexts.user.service;
 
-import com.datascope.core.services.IRestClient;
-import com.datascope.core.services.concrete.SuperRestService;
+import com.datascope.bounded.contexts.core.services.IRestClient;
+import com.datascope.bounded.contexts.core.services.concrete.SuperRestService;
 import com.datascope.bounded.contexts.user.service.interfaces.IUserService;
 import com.datascope.bounded.contexts.user.service.interfaces.callbacks.GetUsersCallback;
 import com.datascope.bounded.contexts.user.service.interfaces.callbacks.LoginUserCallback;

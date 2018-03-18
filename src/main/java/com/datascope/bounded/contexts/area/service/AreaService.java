@@ -1,11 +1,11 @@
 package com.datascope.bounded.contexts.area.service;
 
 import com.datascope.bounded.contexts.area.domian.Area;
-import com.datascope.bounded.contexts.area.service.interfaces.GetAreasCallback;
+import com.datascope.bounded.contexts.area.service.interfaces.callbacks.GetAreasCallback;
 import com.datascope.bounded.contexts.area.service.interfaces.GetAreasRequest;
 import com.datascope.bounded.contexts.area.service.interfaces.IAreaService;
-import com.datascope.core.services.IRestClient;
-import com.datascope.core.services.concrete.SuperRestService;
+import com.datascope.bounded.contexts.core.services.IRestClient;
+import com.datascope.bounded.contexts.core.services.concrete.SuperRestService;
 import com.vaadin.spring.annotation.SpringComponent;
 
 @SpringComponent
