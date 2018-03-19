@@ -10,15 +10,10 @@ import java.util.ArrayList;
 
 public class AreaGridItem {
 
-
     private String areaName;
     private String createdAt;
     private int id;
-
     private AreaFile.List areaFiles;
-
-    public static final String AREA_NAME_COLUMN = "Area Name";
-
 
     public AreaGridItem(String areaName, String createdAt, int id, AreaFile.List areaFiles) {
         this.areaName = areaName;

@@ -3,6 +3,8 @@ package com.datascope.application.ui.report;
 import com.datascope.application.ui.generated.ReportDesign;
 import com.datascope.application.ui.report.callbacks.ReportSelectedCallback;
 import com.datascope.application.ui.report.callbacks.SelectReportGeneratedDateCallback;
+import com.datascope.application.ui.report.elements.ReportGroupGridItem;
+import com.datascope.application.ui.report.helpers.ReportViewUiHelper;
 import com.datascope.application.ui.utils.notifications.DatatouchNotification;
 import com.datascope.bounded.contexts.report.domain.ReportGroup;
 import com.datascope.bounded.contexts.report.service.interfaces.IReportService;
@@ -20,17 +22,22 @@ import java.time.LocalDate;
 @SpringView(name = ReportsView.NAME)
 public class ReportsView extends ReportDesign implements View, GetReportGroupsCallback, SelectReportGeneratedDateCallback, ReportSelectedCallback {
 
+    // TODO: Expand all nodes, and select first report
     public static final String NAME = "ReportsView";
 
     private TreeGrid<ReportGroupGridItem> reportsTree = new TreeGrid<>();
     private IReportService service;
     private DatatouchNotification notification;
 
-    private ReportViewUiHelper uiHelper = new ReportViewUiHelper();
+    private ReportViewUiHelper uiHelper;
 
-    public ReportsView(IReportService service, DatatouchNotification notification) {
+    public ReportsView(
+            IReportService service,
+            DatatouchNotification notification,
+            ReportViewUiHelper helper) {
         this.service = service;
         this.notification = notification;
+        uiHelper = helper;
     }
 
     @PostConstruct
@@ -55,8 +62,6 @@ public class ReportsView extends ReportDesign implements View, GetReportGroupsCa
         this.service.getReportGroups(71538, selectedDate, this);
     }
 
-    //region notifications
-
     @Override
     public void noReportGroupsFound() {
         notification.warn("no.report.groups.found");
@@ -72,5 +77,4 @@ public class ReportsView extends ReportDesign implements View, GetReportGroupsCa
         return getDatePicker().getValue();
     }
 
-    //endregion notifications
 }

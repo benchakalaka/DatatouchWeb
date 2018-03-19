@@ -5,9 +5,7 @@ import com.datascope.bounded.contexts.email.domain.Email;
 import java.util.ArrayList;
 
 public class EmailGridItem {
-    public static final String EMAIL = "Email";
-    public static final String DELETE = "Delete";
-    public static final String EDIT = "Edit";
+
 
     private int id;
     private String email;

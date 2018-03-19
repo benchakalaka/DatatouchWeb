@@ -1,10 +1,9 @@
-package com.datascope.application.ui.report;
+package com.datascope.application.ui.report.elements;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class ReportGroupGridItem {
-    public static final String REPORTS_COLUMN_NAME = "Reports";
 
     private String url;
 

@@ -1,6 +1,6 @@
 package com.datascope.bounded.contexts.company.service;
 
-import com.datascope.application.ui.company.requests.ChangeCompanyColorRequest;
+import com.datascope.bounded.contexts.company.service.requests.ChangeCompanyColorRequest;
 import com.datascope.bounded.contexts.company.domain.Company;
 import com.datascope.bounded.contexts.company.service.interfaces.GetCompaniesCallback;
 import com.datascope.bounded.contexts.company.service.interfaces.ICompanyService;

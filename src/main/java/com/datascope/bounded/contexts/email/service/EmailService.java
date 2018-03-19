@@ -1,6 +1,7 @@
 package com.datascope.bounded.contexts.email.service;
 
-import com.datascope.application.ui.email.requests.DeleteEmailRequest;
+import com.datascope.bounded.contexts.email.service.requests.DeleteEmailGroupRequest;
+import com.datascope.bounded.contexts.email.service.requests.DeleteEmailRequest;
 import com.datascope.bounded.contexts.email.domain.EmailGroup;
 import com.datascope.bounded.contexts.email.service.interfaces.IEmailService;
 import com.datascope.bounded.contexts.email.service.interfaces.callbacks.GetEmailGroupsCallback;
@@ -13,6 +14,7 @@ public class EmailService implements IEmailService {
 
     private static final String GET_GROUPS = "Email/getEmailGroups";
     private static final String DELETE_EMAIL_FROM_GROUP = "Email/DeleteFromGroup";
+    private static final String DELETE_EMAIL_GROUP = "Email/DeleteGroup";
     private IRestClient rest;
 
     public EmailService(IRestClient client) {
@@ -31,7 +33,16 @@ public class EmailService implements IEmailService {
 
     @Override
     public void deleteEmail(int groupId, int emailId) {
-        DeleteEmailRequest request = new DeleteEmailRequest(groupId, emailId);
-        rest.post(Integer.class, DELETE_EMAIL_FROM_GROUP,request);
+        rest.post(Integer.class, DELETE_EMAIL_FROM_GROUP, new DeleteEmailRequest(groupId, emailId));
+    }
+
+    @Override
+    public void deleteEmailGroup(int groupId) {
+        rest.post(Integer.class, DELETE_EMAIL_GROUP, new DeleteEmailGroupRequest(groupId));
+    }
+
+    @Override
+    public void editGroupName(String value, int groupId) {
+
     }
 }

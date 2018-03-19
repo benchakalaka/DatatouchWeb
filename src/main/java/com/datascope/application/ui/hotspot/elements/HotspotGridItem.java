@@ -4,13 +4,6 @@ import java.util.ArrayList;
 
 public class HotspotGridItem {
 
-    public static final String DESCRIPTION_COLUMN = "Description";
-    public static final String PROGRESS_COLUMN = "Progress";
-    public static final String COMPANY_NAME_COLUMN = "Company";
-    public static final String FROM_COLUMN_NAME = "From";
-    public static final String TO_COLUMN_NAME = "To";
-    public static final String ID_COLUMN = "Id";
-
     private int amount;
     private String companyName;
     private int completed;

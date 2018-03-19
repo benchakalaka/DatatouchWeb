@@ -2,6 +2,7 @@ package com.datascope.application.ui.area;
 
 import com.datascope.application.ui.area.callbacks.IAreaSelectedCallback;
 import com.datascope.application.ui.area.elements.AreaGridItem;
+import com.datascope.application.ui.area.helper.AreaViewUiHelper;
 import com.datascope.application.ui.generated.AreasDesign;
 import com.datascope.application.ui.utils.notifications.DatatouchNotification;
 import com.datascope.bounded.contexts.area.domian.Area;
@@ -18,17 +19,23 @@ import javax.annotation.PostConstruct;
 @SpringView(name = AreasView.NAME)
 public class AreasView extends AreasDesign implements View, GetAreasCallback, IAreaSelectedCallback {
 
+    //TODO: Select first area
     public static final String NAME = "AreaView";
 
     private IAreaService areaService;
     private DatatouchNotification notification;
     private String areaFilesUrl;
-    private AreaViewUiHelper helper = new AreaViewUiHelper();
+    private AreaViewUiHelper helper;
 
-    public AreasView(IAreaService areaService, DatatouchNotification notification, String areaFilesUrl) {
+    public AreasView(
+            IAreaService areaService,
+            DatatouchNotification notification,
+            String areaFilesUrl,
+            AreaViewUiHelper helper) {
         this.areaService = areaService;
         this.notification = notification;
         this.areaFilesUrl = areaFilesUrl;
+        this.helper = helper;
     }
 
     @PostConstruct

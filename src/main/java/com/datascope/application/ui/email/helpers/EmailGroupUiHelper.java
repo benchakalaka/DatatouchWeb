@@ -1,10 +1,13 @@
-package com.datascope.application.ui.email;
+package com.datascope.application.ui.email.helpers;
 
+import com.datascope.application.ui.email.EmailGroupView;
 import com.datascope.application.ui.email.callbacks.OnDeleteEmailCallback;
-import com.datascope.application.ui.email.callbacks.OnEditEmailCallback;
-import com.datascope.application.ui.email.callbacks.OnEmailGroupSelectedCallback;
+import com.datascope.application.ui.email.callbacks.OnDeleteEmailGroupCallback;
+import com.datascope.application.ui.email.callbacks.OnEditEmailGroupCallback;
 import com.datascope.application.ui.email.elements.EmailGridItem;
 import com.datascope.application.ui.email.elements.EmailGroupGridItem;
+import com.datascope.application.ui.utils.helper.Labels;
+import com.datascope.application.ui.utils.helper.SuperHelper;
 import com.datascope.application.ui.utils.factories.ButtonFactory;
 import com.datascope.bounded.contexts.email.domain.Email;
 import com.datascope.bounded.contexts.email.domain.EmailGroup;
@@ -20,56 +23,67 @@ import static com.vaadin.icons.VaadinIcons.EDIT;
 import static com.vaadin.ui.themes.ValoTheme.BUTTON_SMALL;
 
 @Component
-public class EmailGroupUiHelper {
+public class EmailGroupUiHelper extends SuperHelper {
 
-    private String CENTER_ALIGN = "v-align-center";
+    private static final int GRID_BUTTON_EXPAND_RATIO = 1;
+    private static final int GRID_FIELDS_EXPAND_RATIO = 8;
     private ListDataProvider<EmailGroupGridItem> emailGroupsProvider;
     private ListDataProvider<EmailGridItem> emailsProvider;
+    private String CENTER_ALIGN = "v-align-center";
 
-    public void initEmailGroupGrid(Grid<EmailGroupGridItem> emailGroupsGrid, OnEmailGroupSelectedCallback callback) {
+    public EmailGroupUiHelper(Labels labels) {
+        super(labels);
+    }
+
+    public void initEmailGroupGrid(Grid<EmailGroupGridItem> emailGroupsGrid, EmailGroupView view) {
         emailGroupsGrid.removeAllColumns();
 
         emailGroupsGrid.addColumn(EmailGroupGridItem::getName)
-                .setCaption(EmailGroupGridItem.NAME);
+                .setCaption(getLabel("email.grid.group.name"))
+                .setExpandRatio(GRID_FIELDS_EXPAND_RATIO);
 
         emailGroupsGrid.addSelectionListener(event ->
-                event.getFirstSelectedItem().ifPresent(callback::emailGroupSelected)
+                event.getFirstSelectedItem().ifPresent(view::emailGroupSelected)
         );
+
+        emailGroupsGrid
+                .addComponentColumn(item -> buildEditButton(item, view))
+                .setCaption(getLabel("email.grid.email.edit"))
+                .setExpandRatio(GRID_BUTTON_EXPAND_RATIO)
+                .setStyleGenerator(item -> CENTER_ALIGN);
+
+        emailGroupsGrid
+                .addComponentColumn(item -> buildEmailGroupGridDeleteButton(item, view))
+                .setCaption(getLabel("email.grid.email.delete"))
+                .setExpandRatio(GRID_BUTTON_EXPAND_RATIO)
+                .setStyleGenerator(item -> CENTER_ALIGN);
     }
 
     public void initEmailGrid(Grid<EmailGridItem> emailsGrid, EmailGroupView view) {
         emailsGrid.removeAllColumns();
 
         emailsGrid.addColumn(EmailGridItem::getEmail)
-                .setCaption(EmailGridItem.EMAIL)
-                .setExpandRatio(6);
+                .setCaption(getLabel("email.grid.email.email"))
+                .setExpandRatio(GRID_FIELDS_EXPAND_RATIO);
 
         emailsGrid
                 .addComponentColumn(item -> buildEmailGridDeleteButton(item, view))
-                .setCaption(EmailGridItem.DELETE)
-                .setExpandRatio(1)
-                .setStyleGenerator(item -> CENTER_ALIGN);
-
-        emailsGrid
-                .addComponentColumn(item -> buildEditButton(item, view))
-                .setCaption(EmailGridItem.EDIT)
-                .setExpandRatio(1)
+                .setCaption(getLabel("email.grid.email.delete"))
+                .setExpandRatio(GRID_BUTTON_EXPAND_RATIO)
                 .setStyleGenerator(item -> CENTER_ALIGN);
     }
 
+
+    private Button buildEmailGroupGridDeleteButton(EmailGroupGridItem item, OnDeleteEmailGroupCallback callback) {
+        return ButtonFactory.buildButton(CLOSE, BUTTON_SMALL, e -> callback.onDeleteEmailGroupClicked(item));
+    }
 
     private Button buildEmailGridDeleteButton(EmailGridItem item, OnDeleteEmailCallback callback) {
-        return ButtonFactory.buildButton(CLOSE, BUTTON_SMALL, e -> {
-
-            emailsProvider.getItems().remove(item);
-            emailsProvider.refreshAll();
-
-            callback.onDeleteEmailClicked(item);
-        });
+        return ButtonFactory.buildButton(CLOSE, BUTTON_SMALL, e -> callback.onDeleteEmailClicked(item));
     }
 
-    private Button buildEditButton(EmailGridItem item, OnEditEmailCallback callback) {
-        return ButtonFactory.buildButton(EDIT, BUTTON_SMALL, e -> callback.onEditEmailClicked(item));
+    private Button buildEditButton(EmailGroupGridItem item, OnEditEmailGroupCallback callback) {
+        return ButtonFactory.buildButton(EDIT, BUTTON_SMALL, e -> callback.onEditEmailGroupClicked(item));
     }
 
     private EmailGroupGridItem.List toEmailGroupGridItems(EmailGroup.List groups) {
@@ -112,5 +126,19 @@ public class EmailGroupUiHelper {
                 .stream()
                 .findFirst()
                 .ifPresent(emailsGrid::select);
+    }
+
+    public void removeEmailGroup(EmailGroupGridItem item) {
+        emailGroupsProvider.getItems().remove(item);
+        emailGroupsProvider.refreshAll();
+    }
+
+    public void removeEmailFromGroup(EmailGridItem item) {
+        emailsProvider.getItems().remove(item);
+        emailsProvider.refreshAll();
+    }
+
+    public void editEmailGroupItem(EmailGroupGridItem item) {
+        emailGroupsProvider.refreshItem(item);
     }
 }

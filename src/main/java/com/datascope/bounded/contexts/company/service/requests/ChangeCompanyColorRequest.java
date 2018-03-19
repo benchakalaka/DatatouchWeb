@@ -1,4 +1,4 @@
-package com.datascope.application.ui.company.requests;
+package com.datascope.bounded.contexts.company.service.requests;
 
 import com.datascope.bounded.contexts.core.services.SuperRequestView;
 import com.fasterxml.jackson.annotation.JsonProperty;

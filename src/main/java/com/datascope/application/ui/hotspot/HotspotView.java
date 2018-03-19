@@ -5,6 +5,7 @@ import com.datascope.application.ui.hotspot.callbacks.IAreaSelectedCallback;
 import com.datascope.application.ui.hotspot.callbacks.IDateSelectedCallback;
 import com.datascope.application.ui.hotspot.elements.AreaComboBoxItem;
 import com.datascope.application.ui.hotspot.elements.HotspotGridItem;
+import com.datascope.application.ui.hotspot.helpers.HotspotViewUiHelper;
 import com.datascope.application.ui.utils.notifications.DatatouchNotification;
 import com.datascope.bounded.contexts.area.domian.Area;
 import com.datascope.bounded.contexts.area.service.interfaces.IAreaService;
@@ -34,12 +35,17 @@ public class HotspotView extends HotspotDesign implements
     private IHotspotService service;
     private IAreaService areaService;
     private DatatouchNotification notifications;
-    private HotspotViewUiHelper helper = new HotspotViewUiHelper();
+    private HotspotViewUiHelper helper;
 
-    public HotspotView(IHotspotService service, IAreaService areaService, DatatouchNotification notifications) {
+    public HotspotView(
+    IHotspotService service,
+     IAreaService areaService,
+      DatatouchNotification notifications,
+      HotspotViewUiHelper helper) {
         this.service = service;
         this.areaService = areaService;
         this.notifications = notifications;
+        this.helper = helper;
     }
 
     @PostConstruct
@@ -84,7 +90,8 @@ public class HotspotView extends HotspotDesign implements
 
     @Override
     public void areasFound(Area.List areas) {
-        // TODO: to messages
+
+// TODO: Think how to localized such messages
         ofNullable(areas)
                 .ifPresent(item -> notifications.success(String.format("%s areas found", areas.size())));
 

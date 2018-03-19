@@ -1,4 +1,4 @@
-package com.datascope.infrastructure.ioc;
+package com.datascope.infrastructure.ioc.rest;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

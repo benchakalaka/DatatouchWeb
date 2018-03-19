@@ -1,4 +1,4 @@
-package com.datascope.application.ui.utils.notifications;
+package com.datascope.application.ui.utils.helper;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -6,12 +6,12 @@ import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Messages {
+public class Labels {
 
     private MessageSourceAccessor accessor;
 
-    public Messages(MessageSource messageSource) {
-        this.accessor = new MessageSourceAccessor(messageSource, LocaleContextHolder.getLocale());
+    public Labels(MessageSource labelSource) {
+        this.accessor = new MessageSourceAccessor(labelSource, LocaleContextHolder.getLocale());
     }
 
     public String get(String code) {

@@ -3,6 +3,7 @@ package com.datascope.application.ui.company;
 import com.datascope.application.ui.company.callbacks.CompanyColorChangedCallback;
 import com.datascope.application.ui.company.callbacks.OnCompanySelectedCallback;
 import com.datascope.application.ui.company.elements.CompanyGridItem;
+import com.datascope.application.ui.company.helpers.CompanyViewUiHelper;
 import com.datascope.application.ui.generated.CompanyDesign;
 import com.datascope.application.ui.utils.notifications.DatatouchNotification;
 import com.datascope.bounded.contexts.company.domain.Company;
@@ -29,11 +30,15 @@ public class CompanyView extends CompanyDesign implements
     public static final String NAME = "CompanyView";
     private ICompanyService service;
     private DatatouchNotification notification;
-    private CompanyViewUiHelper helper = new CompanyViewUiHelper();
+    private CompanyViewUiHelper helper;
 
-    public CompanyView(ICompanyService service, DatatouchNotification notification) {
+    public CompanyView(
+            ICompanyService service,
+            DatatouchNotification notification,
+            CompanyViewUiHelper helper) {
         this.service = service;
         this.notification = notification;
+        this.helper = helper;
     }
 
     @PostConstruct

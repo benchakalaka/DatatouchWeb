@@ -1,24 +1,35 @@
-package com.datascope.application.ui.report;
+package com.datascope.application.ui.report.helpers;
 
+import com.datascope.application.ui.report.elements.ReportGroupGridItem;
 import com.datascope.application.ui.report.callbacks.ReportSelectedCallback;
 import com.datascope.application.ui.report.callbacks.SelectReportGeneratedDateCallback;
+import com.datascope.application.ui.utils.helper.Labels;
+import com.datascope.application.ui.utils.helper.SuperHelper;
 import com.vaadin.data.TreeData;
 import com.vaadin.data.provider.TreeDataProvider;
 import com.vaadin.ui.DateField;
 import com.vaadin.ui.TreeGrid;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.function.Consumer;
 
-public class ReportViewUiHelper {
+@Component
+public class ReportViewUiHelper extends SuperHelper {
     private TreeData<ReportGroupGridItem> data = new TreeData<>();
     private TreeDataProvider<ReportGroupGridItem> reportGroupGridItemTreeDataProvider = new TreeDataProvider<>(data);
+    private static final int DEFAULT_EXPAND_RATIO = 3;
+
+
+    public ReportViewUiHelper(Labels labels) {
+        super(labels);
+    }
 
     public void initTree(TreeGrid<ReportGroupGridItem> treeGrid, ReportSelectedCallback callback) {
         treeGrid.setSizeFull();
         treeGrid.addColumn(ReportGroupGridItem::getCaption)
-                .setCaption(ReportGroupGridItem.REPORTS_COLUMN_NAME)
-                .setExpandRatio(3);
+                .setCaption(getLabel("report.grid.reports"))
+                .setExpandRatio(DEFAULT_EXPAND_RATIO);
 
         treeGrid.addItemClickListener(click -> {
             if (click.getItem().hasUrls())

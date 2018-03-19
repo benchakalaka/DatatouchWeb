@@ -10,10 +10,10 @@ import static com.vaadin.ui.Notification.Type.WARNING_MESSAGE;
 @Component
 public class DatatouchNotification {
 
-    private Messages messages;
+    private NotificationMessages notificationMessages;
 
-    public DatatouchNotification(Messages messages) {
-        this.messages = messages;
+    public DatatouchNotification(NotificationMessages notificationMessages) {
+        this.notificationMessages = notificationMessages;
     }
 
     public void warn(String message) {
@@ -34,7 +34,7 @@ public class DatatouchNotification {
 
     private String get(String message){
         try {
-            return messages.get(message);
+            return notificationMessages.get(message);
         } catch (Exception ex){
             return message;
         }

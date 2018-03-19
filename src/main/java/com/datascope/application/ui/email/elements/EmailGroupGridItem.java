@@ -4,9 +4,6 @@ import java.util.ArrayList;
 
 public class EmailGroupGridItem {
 
-    // TODO: move to properties files
-    public static final String NAME = "Name";
-
     private String name;
     private int id;
     private EmailGridItem.List emailGridItems;

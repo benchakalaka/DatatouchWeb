@@ -5,9 +5,6 @@ import com.datascope.bounded.contexts.company.domain.Company;
 import java.util.ArrayList;
 
 public class CompanyGridItem {
-
-    public static final String NAME = "Name";
-    public static final String COLOUR = "Colour";
     private final int id;
     private final String name;
     private final String colour;
@@ -19,7 +16,6 @@ public class CompanyGridItem {
         this.colour = colour;
         this.sortOrder = sortOrder;
     }
-
 
     public int getId() {
         return id;
