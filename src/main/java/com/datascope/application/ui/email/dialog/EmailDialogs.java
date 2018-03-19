@@ -1,7 +1,6 @@
 package com.datascope.application.ui.email.dialog;
 
 import com.datascope.application.ui.utils.helper.Labels;
-import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextField;
 import de.steinwedel.messagebox.MessageBox;
 import org.springframework.stereotype.Component;
@@ -33,7 +32,7 @@ public class EmailDialogs {
 
     public void editEmailGroup(TextField input, Runnable okListener) {
         MessageBox.createQuestion()
-                .withCaption("Text input")
+                .withCaption(labels.get("email.edit.group.name"))
                 .withMessage(input)
                 .withOkButton(okListener)
                 .withCancelButton()

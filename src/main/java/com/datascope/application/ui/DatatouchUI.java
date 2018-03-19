@@ -30,7 +30,7 @@ public class DatatouchUI extends UI {
         Navigator navigator = new Navigator(this, this);
         navigator.addProvider(provider);
         setNavigator(navigator);
-        getNavigator().navigateTo(ReportsView.NAME);
+        getNavigator().navigateTo(EmailGroupView.NAME);
     }
     //tests-valo-blueprint;
     //"tests-valo-dark");

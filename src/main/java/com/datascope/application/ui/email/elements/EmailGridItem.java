@@ -1,6 +1,6 @@
 package com.datascope.application.ui.email.elements;
 
-import com.datascope.bounded.contexts.email.domain.Email;
+import com.datascope.bounded.contexts.email.domain.EmailTemplate;
 
 import java.util.ArrayList;
 
@@ -25,7 +25,7 @@ public class EmailGridItem {
         return email;
     }
 
-    public static EmailGridItem fromEmail(Email email){
+    public static EmailGridItem fromEmail(EmailTemplate email){
         return new EmailGridItem(
                 email.getId(),
                 email.getEmail(),

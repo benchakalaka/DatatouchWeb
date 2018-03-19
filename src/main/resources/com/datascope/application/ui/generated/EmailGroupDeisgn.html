@@ -6,7 +6,7 @@
   <meta name="vaadin-version" content="8.0.5">
  </head>
  <body>
-  <vaadin-vertical-layout icon="fonticon://Vaadin-Icons/e682" size-full>
+  <vaadin-vertical-layout icon="fonticon://Vaadin-Icons/e682" spacing="false" size-full>
    <vaadin-horizontal-split-panel locked _id="horizontalSplitPanel" :middle :center :expand>
     <vaadin-grid icon="fonticon://Vaadin-Icons/e757" caption="Groups" size-full data-item-type="com.datascope.application.ui.email.elements.EmailGroupGridItem" _id="emailGroupsGrid">
      <table>
@@ -25,6 +25,7 @@
     </vaadin-grid>
     <vaadin-grid icon="fonticon://Vaadin-Icons/e684" caption="Emails" size-full data-item-type="com.datascope.application.ui.email.elements.EmailGridItem" _id="emailsGrid"></vaadin-grid>
    </vaadin-horizontal-split-panel>
+   <vaadin-button icon="fonticon://Vaadin-Icons/e7ff" style-name="icon-only valo-menu-responsive" plain-text _id="btnAddEmailToGroup" :bottom :right></vaadin-button>
   </vaadin-vertical-layout>
  </body>
 </html>

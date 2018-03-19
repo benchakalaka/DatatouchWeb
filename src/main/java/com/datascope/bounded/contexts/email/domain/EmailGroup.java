@@ -18,13 +18,13 @@ public class EmailGroup extends Model {
     private String name;
 
     @JsonProperty("Emails")
-    private Email.List Emails = new Email.List();
+    private EmailTemplate.List Emails = new EmailTemplate.List();
     
-    public Email.List getEmails() {
+    public EmailTemplate.List getEmails() {
         return Emails;
     }
 
-    public void setEmails(Email.List emails) {
+    public void setEmails(EmailTemplate.List emails) {
         Emails = emails;
     }
 

@@ -5,24 +5,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
 
-public class Email extends Model {
+public class EmailTemplate extends Model {
 
     @JsonProperty("Id")
-    private int id ;
+    private int id;
 
     @JsonProperty("Email")
     private String email;
 
     @JsonProperty("FullName")
-    private String FullName ;
+    private String fullName;
 
     @JsonProperty("FirstName")
-    private String FirstName;
+    private String firstName;
 
     @JsonProperty("LastName")
-    private String LastName ;
-
-
+    private String lastName;
 
     public int getId() {
         return id;
@@ -41,28 +39,29 @@ public class Email extends Model {
     }
 
     public String getFullName() {
-        return FullName;
+        return fullName;
     }
 
     public void setFullName(String fullName) {
-        FullName = fullName;
+        this.fullName = fullName;
     }
 
     public String getFirstName() {
-        return FirstName;
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
-        FirstName = firstName;
+        this.firstName = firstName;
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
 
     public void setLastName(String lastName) {
-        LastName = lastName;
+        this.lastName = lastName;
     }
 
-    public static class List extends ArrayList<Email>{}
+    public static class List extends ArrayList<EmailTemplate> {
+    }
 }

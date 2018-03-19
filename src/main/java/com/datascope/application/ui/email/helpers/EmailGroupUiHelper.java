@@ -9,11 +9,12 @@ import com.datascope.application.ui.email.elements.EmailGroupGridItem;
 import com.datascope.application.ui.utils.helper.Labels;
 import com.datascope.application.ui.utils.helper.SuperHelper;
 import com.datascope.application.ui.utils.factories.ButtonFactory;
-import com.datascope.bounded.contexts.email.domain.Email;
+import com.datascope.bounded.contexts.email.domain.EmailTemplate;
 import com.datascope.bounded.contexts.email.domain.EmailGroup;
 import com.vaadin.data.provider.ListDataProvider;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Grid;
+import com.vaadin.ui.TextField;
 import org.springframework.stereotype.Component;
 
 import java.util.stream.Collectors;
@@ -93,7 +94,7 @@ public class EmailGroupUiHelper extends SuperHelper {
                 .collect(Collectors.toCollection(EmailGroupGridItem.List::new));
     }
 
-    private EmailGridItem.List toEmailGridItems(Email.List emails) {
+    private EmailGridItem.List toEmailGridItems(EmailTemplate.List emails) {
         return emails
                 .stream()
                 .map(EmailGridItem::fromEmail)
@@ -140,5 +141,9 @@ public class EmailGroupUiHelper extends SuperHelper {
 
     public void editEmailGroupItem(EmailGroupGridItem item) {
         emailGroupsProvider.refreshItem(item);
+    }
+
+    public TextField createEditEmailGroupTextField() {
+        return new TextField(getLabel("email.email.group.new.name"));
     }
 }

@@ -11,8 +11,10 @@ import com.datascope.application.ui.email.helpers.EmailGroupUiHelper;
 import com.datascope.application.ui.generated.EmailGroupDeisgn;
 import com.datascope.application.ui.utils.notifications.DatatouchNotification;
 import com.datascope.bounded.contexts.email.domain.EmailGroup;
+import com.datascope.bounded.contexts.email.domain.EmailTemplate;
 import com.datascope.bounded.contexts.email.service.interfaces.IEmailService;
 import com.datascope.bounded.contexts.email.service.interfaces.callbacks.GetEmailGroupsCallback;
+import com.datascope.bounded.contexts.email.service.interfaces.callbacks.GetEmailTemplatesCallback;
 import com.vaadin.navigator.View;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.UIScope;
@@ -27,7 +29,7 @@ public class EmailGroupView extends EmailGroupDeisgn implements View,
         OnDeleteEmailCallback,
         OnEditEmailGroupCallback,
         OnEmailGroupSelectedCallback,
-        OnDeleteEmailGroupCallback {
+        OnDeleteEmailGroupCallback, GetEmailTemplatesCallback {
 
     public static final String NAME = "EmailGroupView";
     private IEmailService service;
@@ -50,7 +52,7 @@ public class EmailGroupView extends EmailGroupDeisgn implements View,
     public void init() {
         helper.initEmailGroupGrid(getEmailGroupsGrid(), this);
         helper.initEmailGrid(getEmailsGrid(), this);
-
+        service.getEmailTemplates(this);
         service.getEmailGroups(this);
     }
 
@@ -70,9 +72,13 @@ public class EmailGroupView extends EmailGroupDeisgn implements View,
 
     @Override
     public void onEditEmailGroupClicked(EmailGroupGridItem item) {
-        TextField input = new TextField("sss");
-        dialogs.editEmailGroup(input,() -> {
-            service.editGroupName(input.getValue(), item.getId());
+        TextField input = helper.createEditEmailGroupTextField();
+        input.setValue(item.getName());
+        dialogs.editEmailGroup(input, () -> {
+            String newName = input.getValue();
+            //TODO: check for empty string
+            service.editGroupName(newName, item.getId());
+            item.setName(newName);
             helper.editEmailGroupItem(item);
         });
     }
@@ -98,5 +104,15 @@ public class EmailGroupView extends EmailGroupDeisgn implements View,
 
     private int getSelectedGroupId() {
         return getEmailGroupsGrid().getSelectedItems().iterator().next().getId();
+    }
+
+    @Override
+    public void onEmailTemplatesFound(EmailTemplate.List templates) {
+
+    }
+
+    @Override
+    public void onEmailTemplatesNotFound() {
+
     }
 }
