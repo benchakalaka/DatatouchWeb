@@ -1,8 +1,7 @@
 package com.datascope.bounded.contexts.report.domain;
 
-import com.datascope.application.ui.report.elements.ReportGroupGridItem;
 import com.datascope.bounded.contexts.core.domain.Model;
-
+import com.datascope.ui.report.elements.ReportGroupGridItem;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;

@@ -1,5 +1,6 @@
 @import "variables";
 @import "../valo/valo";
+@import "addons.scss";
 
 .tests-valo-metro {
    @include valo;

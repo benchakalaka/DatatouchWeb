@@ -1,7 +1,7 @@
 package com.datascope.bounded.contexts.hotspot.domain;
 
-import com.datascope.application.ui.hotspot.elements.HotspotGridItem;
 import com.datascope.bounded.contexts.core.domain.Model;
+import com.datascope.ui.hotspot.elements.HotspotGridItem;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;

@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:true,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;datascope&quot;}">
+  <meta name="vaadin-version" content="8.0.5">
+ </head>
+ <body>
+  <vaadin-vertical-layout icon="fonticon://Vaadin-Icons/e682" spacing="false" size-full>
+   <vaadin-horizontal-split-panel locked _id="horizontalSplitPanel" :middle :center :expand>
+    <vaadin-grid icon="fonticon://Vaadin-Icons/e757" caption="Groups" size-full data-item-type="com.datascope.ui.email.elements.EmailGroupGridItem" _id="emailGroupsGrid">
+     <table>
+      <colgroup>
+       <col column-id="emailGridItems" sortable>
+       <col column-id="emails" sortable>
+       <col column-id="name" sortable>
+       <col column-id="id" sortable>
+      </colgroup>
+      <thead>
+       <tr default>
+        <th plain-text column-ids="emailGridItems">EmailGridItems</th>
+        <th plain-text column-ids="emails">Emails</th>
+        <th plain-text column-ids="name">Name</th>
+        <th plain-text column-ids="id">Id</th>
+       </tr>
+      </thead>
+      <tbody></tbody>
+     </table>
+    </vaadin-grid>
+    <vaadin-grid icon="fonticon://Vaadin-Icons/e684" caption="Emails" size-full data-item-type="com.datascope.ui.email.elements.EmailGridItem" _id="emailsGrid">
+     <table>
+      <colgroup>
+       <col column-id="fullName" sortable>
+       <col column-id="email" sortable>
+       <col column-id="id" sortable>
+      </colgroup>
+      <thead>
+       <tr default>
+        <th plain-text column-ids="fullName">FullName</th>
+        <th plain-text column-ids="email">Email</th>
+        <th plain-text column-ids="id">Id</th>
+       </tr>
+      </thead>
+      <tbody></tbody>
+     </table>
+    </vaadin-grid>
+   </vaadin-horizontal-split-panel>
+   <vaadin-button icon="fonticon://Vaadin-Icons/e7ff" style-name="icon-only valo-menu-responsive" plain-text _id="btnAddEmailToGroup" :bottom :right></vaadin-button>
+  </vaadin-vertical-layout>
+ </body>
+</html>

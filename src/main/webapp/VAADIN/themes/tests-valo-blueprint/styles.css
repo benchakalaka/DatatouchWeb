@@ -2403,6 +2403,489 @@ div.v-layout.v-horizontal.v-widget {
  * @group valo-menu
  */
 
+/**
+ * Flexbox for Vaadin
+ */
+
+@media only screen and (min-width: 641px) {
+	.app-layout-behaviour-left-responsive-hybrid app-header app-toolbar paper-icon-button#toggle, .app-layout-behaviour-left-responsive-hybrid app-header-layout app-toolbar paper-icon-button#toggle {
+		display: none;
+	}
+	.app-layout-behaviour-left-responsive-hybrid .app-bar-content {
+		left: 10px !important;
+	}
+}
+
+@media only screen and (min-width: 641px) and (max-width: 1024px) {
+	.app-layout-behaviour-left-responsive-hybrid {
+		--app-drawer-width: 64px !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid app-drawer[persistent].app-drawer-1 {
+		width: 64px !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid .app-bar-application-content {
+		left: 64px !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid .app-layout-menu-button-badge {
+		background: #fff;
+		color: transparent !important;
+		height: 5px !important;
+		width: 5px;
+		border-radius: 100% !important;
+		padding: 0 !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid .app-layout-menu-button span.v-button-caption {
+		opacity: 0;
+	}
+	.app-layout-behaviour-left-responsive-hybrid .app-layout-menu-bar-element {
+		padding-left: 0px !important;
+		padding-right: 0px !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid .app-layout-menu-bar-element .app-layout-round-image {
+		width: 64px !important;
+		height: 64px !important;
+		padding: 7px;
+	}
+	.app-layout-behaviour-left-responsive-hybrid .app-layout-menu-bar-element .app-layout-menu-header-title {
+		display: none;
+	}
+	.app-layout-behaviour-left-responsive-hybrid .app-layout-menu-bar-element .app-layout-menu-header-title {
+		display: none;
+	}
+	.app-layout-behaviour-left-responsive-hybrid .app-layout-menu-button {
+		font-size: 20px;
+	}
+	.app-layout-behaviour-left-responsive-hybrid .app-layout-menu-button .v-icon {
+		width: 100%;
+		text-align: center;
+	}
+	.app-layout-behaviour-left-responsive-hybrid .app-layout-menu-button .v-button-caption {
+		display: none;
+	}
+	.app-layout-behaviour-left-responsive-hybrid .app-layout-expanding-menu-container-button:after {
+		opacity: 0 !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid .app-bar-application-content {
+		margin-bottom: -64px !important;
+		padding-bottom: 64px !important;
+		margin-right: -64px !important;
+		padding-right: 64px !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid .app-layout-submenu-container {
+		padding-left: 0px !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid .app-drawer-layout-1 app-drawer[opened] .drawer-content {
+		width: 64px !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid .app-layout-menu-badge-button {
+		padding: 0px 16px !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid .app-layout-menu-button-badge {
+		margin-left: -20px !important;
+	}
+}
+
+@media only screen and (min-width: 641px) {
+	.app-layout-behaviour-left-responsive-hybrid-no-app-bar app-header app-toolbar {
+		display: none !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-bar-application-content {
+		margin-bottom: 0px !important;
+		padding-bottom: 0px !important;
+	}
+}
+
+@media only screen and (max-width: 640px) {
+	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .drawer-content {
+		margin-top: 64px;
+		box-sizing: border-box;
+		height: 100%;
+		margin-bottom: -64px;
+		padding-bottom: 64px;
+	}
+}
+
+@media only screen and (min-width: 641px) and (max-width: 1024px) {
+	.app-layout-behaviour-left-responsive-hybrid-no-app-bar {
+		--app-drawer-width: 64px !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-no-app-bar app-drawer[persistent].app-drawer-1 {
+		width: 64px !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-bar-application-content {
+		left: 64px !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-menu-button-badge {
+		background: #fff;
+		color: transparent !important;
+		height: 5px !important;
+		width: 5px;
+		border-radius: 100% !important;
+		padding: 0 !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-menu-button span.v-button-caption {
+		opacity: 0;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-menu-bar-element {
+		padding-left: 0px !important;
+		padding-right: 0px !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-menu-bar-element .app-layout-round-image {
+		width: 64px !important;
+		height: 64px !important;
+		padding: 7px;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-menu-bar-element .app-layout-menu-header-title {
+		display: none;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-menu-bar-element .app-layout-menu-header-title {
+		display: none;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-menu-button {
+		font-size: 20px;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-menu-button .v-icon {
+		width: 100%;
+		text-align: center;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-menu-button .v-button-caption {
+		display: none;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-expanding-menu-container-button:after {
+		opacity: 0 !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-bar-application-content {
+		margin-bottom: 0px !important;
+		padding-bottom: 0px !important;
+		margin-right: -64px !important;
+		padding-right: 64px !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-submenu-container {
+		padding-left: 0px !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-drawer-layout-1 app-drawer[opened] .drawer-content {
+		width: 64px !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-menu-badge-button {
+		padding: 0px 16px !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-menu-button-badge {
+		margin-left: -20px !important;
+	}
+}
+
+@media only screen and (min-width: 641px) {
+	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar app-toolbar {
+		display: none !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-bar-application-content {
+		margin-bottom: 0px !important;
+		padding-bottom: 0px !important;
+		margin-right: -256px !important;
+		padding-right: 256px !important;
+	}
+}
+
+@media only screen and (min-width: 641px) and (max-width: 1024px) {
+	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar {
+		--app-drawer-width: 64px !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar app-drawer[persistent].app-drawer-1 {
+		width: 64px !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-bar-application-content {
+		left: 64px !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-menu-button-badge {
+		background: #fff;
+		color: transparent !important;
+		height: 5px !important;
+		width: 5px;
+		border-radius: 100% !important;
+		padding: 0 !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-menu-button span.v-button-caption {
+		opacity: 0;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-menu-bar-element {
+		padding-left: 0px !important;
+		padding-right: 0px !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-menu-bar-element .app-layout-round-image {
+		width: 64px !important;
+		height: 64px !important;
+		padding: 7px;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-menu-bar-element .app-layout-menu-header-title {
+		display: none;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-menu-bar-element .app-layout-menu-header-title {
+		display: none;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-menu-button {
+		font-size: 20px;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-menu-button .v-icon {
+		width: 100%;
+		text-align: center;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-menu-button .v-button-caption {
+		display: none;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-expanding-menu-container-button:after {
+		opacity: 0 !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-bar-application-content {
+		margin-bottom: 0px !important;
+		padding-bottom: 0px !important;
+		margin-right: -64px !important;
+		padding-right: 64px !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-submenu-container {
+		padding-left: 0px !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-drawer-layout-1 app-drawer[opened] .drawer-content {
+		width: 64px !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-menu-badge-button {
+		padding: 0px 16px !important;
+	}
+	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-menu-button-badge {
+		margin-left: -20px !important;
+	}
+}
+
+@media only screen and (max-width: 640px) {
+	.app-layout-behaviour-left-responsive-overlay .drawer-content {
+		margin-top: 0px !important;
+	}
+}
+
+@media only screen and (min-width: 641px) {
+	.app-layout-behaviour-left-responsive-overlay .app-bar-application-content {
+		margin-bottom: -64px !important;
+		padding-bottom: 64px !important;
+		margin-right: -256px !important;
+		padding-right: 256px !important;
+	}
+}
+
+@media only screen and (max-width: 640px) {
+	.app-layout-behaviour-left-responsive-overlay-no-app-bar .app-bar-application-content {
+		margin-bottom: -64px !important;
+		padding-bottom: 64px !important;
+		margin-right: 0px !important;
+		padding-right: 0px !important;
+	}
+}
+
+@media only screen and (min-width: 641px) {
+	.app-layout-behaviour-left-responsive-overlay-no-app-bar .app-bar-application-content {
+		margin-bottom: 0px !important;
+		padding-bottom: 0px !important;
+		margin-right: -256px !important;
+		padding-right: 256px !important;
+	}
+}
+
+@media only screen and (min-width: 641px) {
+	.app-layout-behaviour-left-responsive-small {
+		--app-drawer-width: 64px !important;
+	}
+	.app-layout-behaviour-left-responsive-small app-drawer[persistent].app-drawer-1 {
+		width: 64px !important;
+	}
+	.app-layout-behaviour-left-responsive-small .app-bar-application-content {
+		left: 64px !important;
+	}
+	.app-layout-behaviour-left-responsive-small app-header app-toolbar paper-icon-button#toggle {
+		display: none;
+	}
+	.app-layout-behaviour-left-responsive-small .app-bar-content {
+		left: 10px !important;
+	}
+	.app-layout-behaviour-left-responsive-small .app-layout-menu-button-badge {
+		background: #fff;
+		color: transparent !important;
+		height: 5px !important;
+		width: 5px;
+		border-radius: 100% !important;
+		padding: 0 !important;
+	}
+	.app-layout-behaviour-left-responsive-small .app-layout-menu-button span.v-button-caption {
+		opacity: 0;
+	}
+	.app-layout-behaviour-left-responsive-small .app-layout-menu-bar-element {
+		padding-left: 0px !important;
+		padding-right: 0px !important;
+	}
+	.app-layout-behaviour-left-responsive-small .app-layout-menu-bar-element .app-layout-round-image {
+		width: 64px !important;
+		height: 64px !important;
+		padding: 7px;
+	}
+	.app-layout-behaviour-left-responsive-small .app-layout-menu-bar-element .app-layout-menu-header-title {
+		display: none;
+	}
+	.app-layout-behaviour-left-responsive-small .app-layout-menu-bar-element .app-layout-menu-header-title {
+		display: none;
+	}
+	.app-layout-behaviour-left-responsive-small .app-layout-menu-button {
+		font-size: 20px;
+	}
+	.app-layout-behaviour-left-responsive-small .app-layout-menu-button .v-icon {
+		width: 100%;
+		text-align: center;
+	}
+	.app-layout-behaviour-left-responsive-small .app-layout-menu-button .v-button-caption {
+		display: none;
+	}
+	.app-layout-behaviour-left-responsive-small .app-layout-expanding-menu-container-button:after {
+		opacity: 0 !important;
+	}
+	.app-layout-behaviour-left-responsive-small .app-bar-application-content {
+		margin-bottom: -64px !important;
+		padding-bottom: 64px !important;
+		margin-right: -64px !important;
+		padding-right: 64px !important;
+	}
+	.app-layout-behaviour-left-responsive-small .app-drawer-layout-1 app-drawer[opened] .drawer-content {
+		width: 64px !important;
+	}
+	.app-layout-behaviour-left-responsive-small .app-layout-menu-badge-button {
+		padding: 0px 16px !important;
+	}
+	.app-layout-behaviour-left-responsive-small .app-layout-menu-button-badge {
+		margin-left: -20px !important;
+	}
+}
+
+@media only screen and (min-width: 641px) {
+	.app-layout-behaviour-left-responsive-small-no-app-bar {
+		--app-drawer-width: 64px !important;
+	}
+	.app-layout-behaviour-left-responsive-small-no-app-bar app-drawer[persistent].app-drawer-1 {
+		width: 64px !important;
+	}
+	.app-layout-behaviour-left-responsive-small-no-app-bar .app-bar-application-content {
+		left: 64px !important;
+	}
+	.app-layout-behaviour-left-responsive-small-no-app-bar app-header app-toolbar {
+		display: none !important;
+	}
+	.app-layout-behaviour-left-responsive-small-no-app-bar .app-bar-application-content {
+		margin-bottom: 0px !important;
+		padding-bottom: 0px !important;
+		margin-right: -64px !important;
+		padding-right: 64px !important;
+	}
+	.app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-menu-button-badge {
+		background: #fff;
+		color: transparent !important;
+		height: 5px !important;
+		width: 5px;
+		border-radius: 100% !important;
+		padding: 0 !important;
+	}
+	.app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-menu-button span.v-button-caption {
+		opacity: 0;
+	}
+	.app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-menu-bar-element {
+		padding-left: 0px !important;
+		padding-right: 0px !important;
+	}
+	.app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-menu-bar-element .app-layout-round-image {
+		width: 64px !important;
+		height: 64px !important;
+		padding: 7px;
+	}
+	.app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-menu-bar-element .app-layout-menu-header-title {
+		display: none;
+	}
+	.app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-menu-bar-element .app-layout-menu-header-title {
+		display: none;
+	}
+	.app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-menu-button {
+		font-size: 20px;
+	}
+	.app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-menu-button .v-icon {
+		width: 100%;
+		text-align: center;
+	}
+	.app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-menu-button .v-button-caption {
+		display: none;
+	}
+	.app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-expanding-menu-container-button:after {
+		opacity: 0 !important;
+	}
+	.app-layout-behaviour-left-responsive-small-no-app-bar .drawer-content {
+		margin-top: 0px !important;
+		margin-bottom: 0px !important;
+		padding-bottom: 0px !important;
+	}
+	.app-layout-behaviour-left-responsive-small-no-app-bar .app-drawer-layout-1 app-drawer[opened] .drawer-content {
+		width: 64px !important;
+	}
+	.app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-menu-badge-button {
+		padding: 0px 16px !important;
+	}
+	.app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-menu-button-badge {
+		margin-left: -20px !important;
+	}
+}
+
+@media only screen and (min-width: 641px) {
+	.app-layout-behaviour-top app-toolbar paper-icon-button#toggle {
+		opacity: 0;
+		pointer-events: none;
+	}
+	.app-layout-behaviour-top .app-bar-content {
+		left: 10px !important;
+	}
+	.app-layout-behaviour-top app-drawer {
+		display: none;
+	}
+	.app-layout-behaviour-top .app-layout-bar-menu-holder {
+		display: flex !important;
+	}
+}
+
+@media only screen and (min-width: 641px) {
+	.app-layout-behaviour-top-large {
+		--app-bar-height: 128px !important;
+	}
+	.app-layout-behaviour-top-large app-toolbar paper-icon-button#toggle {
+		opacity: 0;
+		pointer-events: none;
+	}
+	.app-layout-behaviour-top-large .app-bar-content {
+		left: 10px !important;
+	}
+	.app-layout-behaviour-top-large .app-bar-menu-content {
+		left: 64px;
+		position: absolute;
+		top: 64px !important;
+		right: 0px;
+		bottom: 0px;
+	}
+	.app-layout-behaviour-top-large app-drawer {
+		display: none;
+	}
+	.app-layout-behaviour-top-large .app-bar-menu-content {
+		opacity: 1 !important;
+		pointer-events: auto !important;
+	}
+	.app-layout-behaviour-top-large .app-bar-application-content {
+		box-sizing: border-box;
+		height: 100vh;
+		margin-bottom: -128px !important;
+		padding-bottom: 128px !important;
+	}
+	.app-layout-behaviour-top-large .app-toolbar-1 {
+		height: 128px;
+	}
+}
+
 .tests-valo-blueprint.v-app, .tests-valo-blueprint.v-app-loading {
 	font: 300 18px/1.55 sans-serif;
 	color: #c1d3e9;
@@ -15630,4 +16113,1638 @@ div.v-layout.v-horizontal.v-widget {
 	display: inline-block;
 	width: 21px;
 	overflow: hidden;
+}
+
+.tests-valo-blueprint paper-icon-button {
+	width: 44px;
+	height: 44px;
+	margin: 10px;
+	padding: 6px;
+}
+
+.tests-valo-blueprint .app-layout-menu-element {
+	height: 48px !important;
+}
+
+.tests-valo-blueprint .drawer-content .v-spacing {
+	height: 14px !important;
+}
+
+.tests-valo-blueprint .drawer-content .v-margin-bottom {
+	padding-bottom: 41px !important;
+}
+
+.tests-valo-blueprint .drawer-content .v-margin-top {
+	padding-top: 41px !important;
+}
+
+.tests-valo-blueprint .app-bar-application-content {
+	position: fixed;
+	width: 100%;
+	box-sizing: border-box;
+	height: 100%;
+	transition: margin 0.2s ease, padding 0.2s ease;
+}
+
+.tests-valo-blueprint app-drawer[opened][persistent] + .app-bar-application-content, .tests-valo-blueprint app-drawer[opened][persistent] + #contentContainer .app-bar-application-content {
+	margin-bottom: -64px;
+	padding-bottom: 64px;
+	margin-right: -256px;
+	padding-right: 256px;
+}
+
+.tests-valo-blueprint app-header-layout.small app-drawer[opened] + .app-bar-application-content, .tests-valo-blueprint app-header-layout.small app-drawer[opened] + #contentContainer .app-bar-application-content {
+	margin-bottom: -64px;
+	padding-bottom: 64px;
+	margin-right: -64px;
+	padding-right: 64px;
+}
+
+.tests-valo-blueprint .app-bar-application-content {
+	margin-bottom: -64px;
+	padding-bottom: 64px;
+	margin-right: 0px;
+	padding-right: 0px;
+}
+
+.tests-valo-blueprint .app-layout-menu-bar-element {
+	padding-left: 18px;
+	padding-right: 18px;
+}
+
+.tests-valo-blueprint .v-absolutelayout-wrapper-app-layout-menu-button-badge {
+	pointer-events: none;
+}
+
+.tests-valo-blueprint app-drawer:not([persistent]):not([opened]) .drawer-content * {
+	overflow: hidden;
+}
+
+.tests-valo-blueprint .app-drawer-1 {
+	width: 256px;
+}
+
+.tests-valo-blueprint .app-drawer-layout-1 app-drawer[opened][persistent] + .app-bar-application-content, .tests-valo-blueprint .app-drawer-layout-1 app-drawer[opened][persistent] + #contentContainer .app-bar-application-content {
+	left: 256px;
+}
+
+.tests-valo-blueprint .app-drawer-layout-1.small app-drawer[opened][persistent] + .app-bar-application-content, .tests-valo-blueprint .app-drawer-layout-1.small app-drawer[opened][persistent] + #contentContainer .app-bar-application-content {
+	left: 64px;
+}
+
+.tests-valo-blueprint .app-drawer-layout-1 app-drawer[opened] .drawer-content {
+	width: 256px;
+}
+
+.tests-valo-blueprint .app-drawer-layout-1.small app-drawer[opened] .drawer-content {
+	width: 64px;
+}
+
+.tests-valo-blueprint .app-drawer-1 .app-drawer#scrim {
+	background: transparent !important;
+	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.tests-valo-blueprint .app-toolbar-1 {
+	height: 64px;
+}
+
+.tests-valo-blueprint .app-layout-default-design .app-layout-menu-button-badge {
+	padding: 0 10px;
+	background: #fff;
+	color: black;
+	font-size: 13px;
+	height: 20px;
+	line-height: 20px;
+	margin: 15px 5px;
+	margin-left: -50px;
+	text-align: center;
+	border-radius: 10px;
+}
+
+.tests-valo-blueprint .app-layout-default-design .v-absolutelayout-wrapper-app-bar-badge {
+	pointer-events: none;
+}
+
+.tests-valo-blueprint .app-layout-default-design .app-bar-badge {
+	background: #fff;
+	color: #474747;
+	font-size: 11px;
+	min-width: 18px;
+	min-height: 18px;
+	text-align: center;
+	line-height: 18px;
+	margin: 7px;
+	padding-right: 4px;
+	padding-left: 3px;
+	border-radius: 17px;
+}
+
+.tests-valo-blueprint .app-layout-default-design .app-layout-menu-button {
+	text-align: left !important;
+	transition: background 0.3s ease, color 0.3s ease;
+	border-radius: 0px;
+	transition: border 0.5s;
+	padding: 0px 18px;
+	height: 48px !important;
+}
+
+.tests-valo-blueprint .app-layout-default-design .app-layout-menu-button .v-icon + .v-captiontext, .tests-valo-blueprint .app-layout-default-design .app-layout-menu-button .v-icon + span {
+	margin-left: 16px;
+}
+
+.tests-valo-blueprint .app-layout-default-design .app-layout-menu-badge-button {
+	padding-right: 55px;
+}
+
+.tests-valo-blueprint .app-layout-default-design .app-layout-menu-element {
+	border-left: 5px transparent solid !important;
+	position: relative;
+	transition: border 0.3s;
+	position: relative;
+}
+
+.tests-valo-blueprint .app-layout-default-design .app-layout-menu-element:after {
+	position: absolute;
+	margin-left: -5px;
+	content: "";
+	left: 0px;
+	top: 0px !important;
+	bottom: 0px !important;
+	width: 5px;
+	box-shadow: 0px 0px 20px 4px rgba(255, 255, 255, 0);
+	transition: box-shadow 0.3s;
+	overflow: visible;
+}
+
+.tests-valo-blueprint .app-layout-default-design .app-layout-menu-element-active {
+	color: #fff !important;
+	border-left: 5px #fff solid !important;
+}
+
+.tests-valo-blueprint .app-layout-default-design .app-layout-menu-element-active:after {
+	box-shadow: 0px 0px 20px 4px rgba(255, 255, 255, 0.3);
+}
+
+.tests-valo-blueprint .app-layout-default-design .app-layout-menu-button:after {
+	box-shadow: none !important;
+	border-left: none;
+}
+
+.tests-valo-blueprint .app-layout-default-design.app-layout-behaviour-top .app-layout-menu-element-active, .tests-valo-blueprint .app-layout-default-design.app-layout-behaviour-top-large .app-layout-menu-element-active {
+	border-bottom: 2px solid #d3dff3;
+}
+
+.tests-valo-blueprint .app-layout-default-design.app-layout-behaviour-top .app-layout-menu-element-active .app-layout-menu-button, .tests-valo-blueprint .app-layout-default-design.app-layout-behaviour-top-large .app-layout-menu-element-active .app-layout-menu-button {
+	background: rgba(70, 70, 70, 0) !important;
+	color: #d3dff3 !important;
+}
+
+.tests-valo-blueprint .app-layout-default-design .app-layout-round-image {
+	border-radius: 100%;
+}
+
+.tests-valo-blueprint .app-layout-default-design .app-layout-menu-bar-element {
+	padding-left: 21px;
+}
+
+.tests-valo-blueprint .app-layout-material-design .app-layout-menu-button-badge {
+	padding: 0 10px;
+	background: #fff;
+	color: black;
+	font-size: 13px;
+	height: 20px;
+	line-height: 20px;
+	margin: 14px 15px;
+	margin-left: -50px;
+	text-align: center;
+	border-radius: 10px;
+}
+
+.tests-valo-blueprint .app-layout-material-design.app-layout-behaviour-top .app-layout-menu-button-badge, .tests-valo-blueprint .app-layout-material-design.app-layout-behaviour-top-large .app-layout-menu-button-badge {
+	margin: 15px 5px;
+	margin-left: -40px;
+}
+
+.tests-valo-blueprint .app-layout-material-design .v-absolutelayout-wrapper-app-bar-badge {
+	pointer-events: none;
+}
+
+.tests-valo-blueprint .app-layout-material-design .app-bar-badge {
+	background: #fff;
+	color: #474747;
+	font-size: 13px;
+	min-width: 18px;
+	min-height: 18px;
+	text-align: center;
+	line-height: 18px;
+	margin: 7px;
+	padding-right: 4px;
+	padding-left: 3px;
+	border-radius: 17px;
+	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.5);
+}
+
+.tests-valo-blueprint .app-layout-material-design .app-layout-menu-button {
+	text-align: left !important;
+	transition: background 0.3s ease, color 0.3s ease;
+	border-radius: 0px;
+	padding: 0px 18px;
+	height: 48px !important;
+}
+
+.tests-valo-blueprint .app-layout-material-design .app-layout-menu-button .v-icon + .v-captiontext, .tests-valo-blueprint .app-layout-material-design .app-layout-menu-button .v-icon + span {
+	margin-left: 16px;
+}
+
+.tests-valo-blueprint .app-layout-material-design .app-layout-menu-badge-button {
+	padding-right: 50px;
+}
+
+.tests-valo-blueprint .app-layout-material-design .app-layout-menu-element-active .app-layout-menu-button {
+	background: rgba(198, 215, 235, 0.1) !important;
+	color: #fff !important;
+}
+
+.tests-valo-blueprint .app-layout-material-design .app-layout-menu-button:after {
+	box-shadow: none !important;
+	border-left: none;
+}
+
+.tests-valo-blueprint .app-layout-material-design.app-layout-behaviour-top .app-layout-menu-element-active, .tests-valo-blueprint .app-layout-material-design.app-layout-behaviour-top-large .app-layout-menu-element-active {
+	border-bottom: 2px solid #d3dff3;
+}
+
+.tests-valo-blueprint .app-layout-material-design.app-layout-behaviour-top .app-layout-menu-element-active .app-layout-menu-button, .tests-valo-blueprint .app-layout-material-design.app-layout-behaviour-top-large .app-layout-menu-element-active .app-layout-menu-button {
+	background: rgba(70, 70, 70, 0) !important;
+	color: #d3dff3 !important;
+}
+
+.tests-valo-blueprint .app-layout-material-design .app-layout-round-image {
+	border-radius: 100%;
+}
+
+.tests-valo-blueprint .app-layout-custom-design .app-layout-menu-button-badge {
+	padding: 0 10px;
+	background: #fff;
+	color: black;
+	height: 20px;
+	line-height: 20px;
+	margin: 15px;
+	text-align: center;
+	border-radius: 10px;
+}
+
+.tests-valo-blueprint .app-layout-custom-design .v-absolutelayout-wrapper-app-bar-badge {
+	pointer-events: none;
+}
+
+.tests-valo-blueprint .app-layout-custom-design .app-bar-badge {
+	background: #fff;
+	color: transparent;
+	height: 5px;
+	width: 5px;
+	margin: 11px;
+	border-radius: 100%;
+	padding: 0;
+}
+
+.tests-valo-blueprint .app-layout-custom-design .app-layout-menu-button {
+	text-align: left !important;
+	transition: background 0.3s ease, color 0.3s ease;
+	border-radius: 0px;
+	padding: 0px 18px;
+	height: 48px !important;
+}
+
+.tests-valo-blueprint .app-layout-custom-design .app-layout-menu-button .v-icon + .v-captiontext, .tests-valo-blueprint .app-layout-custom-design .app-layout-menu-button .v-icon + span {
+	margin-left: 16px;
+}
+
+.tests-valo-blueprint .app-layout-custom-design .app-layout-menu-button-active {
+	background: rgba(198, 215, 235, 0.1) !important;
+	color: #fff !important;
+}
+
+.tests-valo-blueprint .app-layout-custom-design .app-layout-menu-button:after {
+	box-shadow: none !important;
+	border-left: none;
+}
+
+.tests-valo-blueprint .app-layout-custom-design .app-layout-menu-round-button img.v-icon {
+	width: 100%;
+	height: 100%;
+	border-radius: 100%;
+	vertical-align: unset !important;
+}
+
+.tests-valo-blueprint .app-layout-custom-design .app-layout-menu-section {
+	padding-left: 14px;
+}
+
+.tests-valo-blueprint .app-layout-notification-window .v-margin-left {
+	padding-left: 10px !important;
+}
+
+.tests-valo-blueprint .app-layout-notification-window .v-margin-bottom {
+	padding-bottom: 10px !important;
+}
+
+.tests-valo-blueprint .app-layout-notification-window .v-margin-right {
+	padding-right: 10px !important;
+}
+
+.tests-valo-blueprint .app-layout-notification-window .v-margin-top {
+	padding-top: 10px !important;
+}
+
+.tests-valo-blueprint .v-window .v-window-outerheader:after {
+	border-top: 1px solid transparent;
+}
+
+.tests-valo-blueprint .v-window-contents > .v-scrollable:before {
+	border-top: 1px solid transparent !important;
+}
+
+.tests-valo-blueprint .v-window.translucent {
+	background-color: transparent;
+	box-shadow: none;
+	overflow: visible !important;
+}
+
+.tests-valo-blueprint .v-window.translucent * :not(.app-layout-notification):not(.v-panel-content) {
+	background-color: transparent !important;
+	overflow: visible !important;
+}
+
+.tests-valo-blueprint .v-window.translucent .app-layout-notification {
+	transition: border 0.3s ease;
+	box-shadow: 0px 5px 11px -1px rgba(0, 0, 0, 0.4);
+	border-radius: 3px;
+}
+
+.tests-valo-blueprint .v-window.translucent .app-layout-notification .app-layout-notification-time {
+	position: relative;
+	font-size: 12px;
+	line-height: 24px;
+	margin-left: 4px;
+}
+
+.tests-valo-blueprint .v-window.translucent .app-layout-notification .app-layout-notification-time::before {
+	content: "\2022";
+	font-size: 17px;
+	line-height: 24px;
+	left: -11px;
+	color: #fff;
+	position: absolute;
+}
+
+.tests-valo-blueprint .v-window.translucent .app-layout-notification .app-layout-notification-title {
+	font-weight: 500;
+	color: #fff;
+}
+
+.tests-valo-blueprint .v-window.translucent .app-layout-notification .app-layout-notification-subtitle {
+	font-size: 14px;
+	text-overflow: ellipsis;
+	overflow: hidden !important;
+}
+
+.tests-valo-blueprint .v-window.translucent .app-layout-notification.app-layout-notification-priority-high {
+	background: #fff !important;
+}
+
+.tests-valo-blueprint .v-window.translucent .app-layout-notification.app-layout-notification-priority-high:not(.app-layout-notification-read) {
+	border-left: 3px solid black;
+}
+
+.tests-valo-blueprint .v-window.translucent .app-layout-notification.app-layout-notification-priority-high.app-layout-notification-read {
+	border-left: 3px solid transparent;
+}
+
+.tests-valo-blueprint .v-window.translucent .app-layout-notification.app-layout-notification-priority-high .app-layout-notification-subtitle {
+	color: #333333;
+}
+
+.tests-valo-blueprint .v-window.translucent .app-layout-notification.app-layout-notification-priority-high .app-layout-notification-title {
+	font-weight: 500;
+	color: black;
+}
+
+.tests-valo-blueprint .v-window.translucent .app-layout-notification.app-layout-notification-priority-high .app-layout-notification-time {
+	color: #4d4d4d;
+}
+
+.tests-valo-blueprint .v-window.translucent .app-layout-notification.app-layout-notification-priority-high .app-layout-notification-time::before {
+	color: black;
+}
+
+.tests-valo-blueprint .v-window.translucent .app-layout-notification.app-layout-notification-priority-medium {
+	background: white !important;
+}
+
+.tests-valo-blueprint .v-window.translucent .app-layout-notification.app-layout-notification-priority-medium:not(.app-layout-notification-read) {
+	border-left: 3px solid #fff;
+}
+
+.tests-valo-blueprint .v-window.translucent .app-layout-notification.app-layout-notification-priority-medium.app-layout-notification-read {
+	border-left: 3px solid transparent;
+}
+
+.tests-valo-blueprint .v-window.translucent .app-layout-notification.app-layout-notification-priority-medium .app-layout-notification-subtitle {
+	color: #333333;
+}
+
+.tests-valo-blueprint .v-window.translucent .app-layout-notification.app-layout-notification-priority-medium .app-layout-notification-time {
+	color: #4d4d4d;
+}
+
+.tests-valo-blueprint .v-window.translucent .app-layout-notification.app-layout-notification-priority-low {
+	background: #f5f5f5 !important;
+}
+
+.tests-valo-blueprint .v-window.translucent .app-layout-notification.app-layout-notification-priority-low:not(.app-layout-notification-read) {
+	border-left: 3px solid #c4c4c4;
+}
+
+.tests-valo-blueprint .v-window.translucent .app-layout-notification.app-layout-notification-priority-low.app-layout-notification-read {
+	border-left: 3px solid transparent;
+}
+
+.tests-valo-blueprint .v-window.translucent .app-layout-notification.app-layout-notification-priority-low .app-layout-notification-subtitle {
+	color: #313131;
+}
+
+.tests-valo-blueprint .v-window.translucent .app-layout-notification.app-layout-notification-priority-low .app-layout-notification-time {
+	color: #494949;
+}
+
+.tests-valo-blueprint .v-window.translucent .v-window-contents {
+	animation: valo-animate-in-fade 0.4s;
+}
+
+.tests-valo-blueprint .app-layout-expanding-menu-container {
+	transition: max-height 0.4s;
+	overflow: hidden;
+	max-height: 48px;
+}
+
+.tests-valo-blueprint .app-layout-expanding-menu-container-open {
+	max-height: 999px;
+}
+
+.tests-valo-blueprint .app-layout-expanding-menu-container-button {
+	position: relative;
+}
+
+.tests-valo-blueprint .app-layout-expanding-menu-container-button:after {
+	position: absolute;
+	content: "\E967";
+	font-family: "Vaadin-Icons";
+	line-height: 48px;
+	text-align: center;
+	width: 48px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	transform: rotate(0deg);
+	transition: opacity 0.3s, transform 0.3s !important;
+	pointer-events: none;
+}
+
+.tests-valo-blueprint .app-layout-expanding-menu-container-open > div > .app-layout-expanding-menu-container-button:after {
+	transform: rotate(90deg);
+}
+
+.tests-valo-blueprint .app-layout-submenu-container {
+	background: rgba(198, 215, 235, 0.05);
+	padding-left: 0px;
+}
+
+.tests-valo-blueprint .app-layout-top-menu.v-menubar * {
+	color: #d3dff3 !important;
+}
+
+.tests-valo-blueprint .v-csslayout.flex-row {
+	display: -webkit-box;
+	display: -moz-box;
+	display: box;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-moz-box-orient: horizontal;
+	box-orient: horizontal;
+	-webkit-flex-direction: row;
+	-moz-flex-direction: row;
+	flex-direction: row;
+	-ms-flex-direction: row;
+}
+
+.tests-valo-blueprint .v-csslayout.flex-column {
+	display: -webkit-box;
+	display: -moz-box;
+	display: box;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-moz-box-orient: vertical;
+	box-orient: vertical;
+	-webkit-flex-direction: column;
+	-moz-flex-direction: column;
+	flex-direction: column;
+	-ms-flex-direction: column;
+}
+
+.tests-valo-blueprint .v-csslayout.flex-row.overflow-auto {
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.tests-valo-blueprint .v-csslayout.flex-column.overflow-auto {
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.tests-valo-blueprint .v-csslayout.flex-row :not(.shrink):not(.grow), .tests-valo-blueprint .v-csslayout.flex-column :not(.shrink):not(.grow) {
+	-webkit-flex-grow: 0;
+	-moz-flex-grow: 0;
+	flex-grow: 0;
+	-ms-flex-positive: 0;
+	-webkit-flex-shrink: 0;
+	-moz-flex-shrink: 0;
+	flex-shrink: 0;
+	-ms-flex-negative: 0;
+}
+
+.tests-valo-blueprint .v-csslayout.flex-row .grow:not(.shrink), .tests-valo-blueprint .v-csslayout.flex-column .grow:not(.shrink) {
+	-webkit-flex-grow: 1;
+	-moz-flex-grow: 1;
+	flex-grow: 1;
+	-ms-flex-positive: 1;
+}
+
+.tests-valo-blueprint .v-csslayout.flex-row .shrink:not(.grow), .tests-valo-blueprint .v-csslayout.flex-column .shrink:not(.grow) {
+	-webkit-flex-shrink: 1;
+	-moz-flex-shrink: 1;
+	flex-shrink: 1;
+	-ms-flex-negative: 1;
+	overflow: auto;
+}
+
+.tests-valo-blueprint .v-csslayout.flex-row .grow.shrink, .tests-valo-blueprint .v-csslayout.flex-column .grow.shrink {
+	-webkit-flex-grow: 1;
+	-moz-flex-grow: 1;
+	flex-grow: 1;
+	-ms-flex-positive: 1;
+	-webkit-flex-shrink: 1;
+	-moz-flex-shrink: 1;
+	flex-shrink: 1;
+	-ms-flex-negative: 1;
+	overflow: auto;
+}
+
+.tests-valo-blueprint .v-csslayout.flex-row.justify-flex-start, .tests-valo-blueprint .v-csslayout.flex-column.justify-flex-start {
+	justify-content: flex-start;
+}
+
+.tests-valo-blueprint .v-csslayout.flex-row.justify-center, .tests-valo-blueprint .v-csslayout.flex-column.justify-center {
+	justify-content: center;
+}
+
+.tests-valo-blueprint .v-csslayout.flex-row.justify-flex-end, .tests-valo-blueprint .v-csslayout.flex-column.justify-flex-end {
+	justify-content: flex-end;
+}
+
+.tests-valo-blueprint .v-csslayout.flex-row.justify-space-between, .tests-valo-blueprint .v-csslayout.flex-column.justify-space-between {
+	justify-content: space-between;
+}
+
+.tests-valo-blueprint .v-csslayout.flex-row.justify-space-around, .tests-valo-blueprint .v-csslayout.flex-column.justify-space-around {
+	justify-content: space-around;
+}
+
+.tests-valo-blueprint .v-csslayout.flex-row.align-flex-start, .tests-valo-blueprint .v-csslayout.flex-column.align-flex-start {
+	align-items: flex-start;
+}
+
+.tests-valo-blueprint .v-csslayout.flex-row.align-flex-end, .tests-valo-blueprint .v-csslayout.flex-column.align-flex-end {
+	align-items: flex-end;
+}
+
+.tests-valo-blueprint .v-csslayout.flex-row.align-center, .tests-valo-blueprint .v-csslayout.flex-column.align-center {
+	align-items: center;
+}
+
+.tests-valo-blueprint .v-csslayout.flex-row.align-baseline, .tests-valo-blueprint .v-csslayout.flex-column.align-baseline {
+	align-items: baseline;
+}
+
+.tests-valo-blueprint .v-csslayout.flex-row.align-stretch, .tests-valo-blueprint .v-csslayout.flex-column.align-stretch {
+	align-items: stretch;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left {
+	--app-drawer-width: 256px;
+	--app-bar-height: 64px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left .app-bar-content {
+	left: 64px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left app-toolbar {
+	background-color: #4285f4;
+	color: #d3dff3;
+	position: relative;
+	z-index: 11;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+	padding: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left app-toolbar .v-button {
+	color: #d3dff3 !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left app-drawer {
+	--app-drawer-scrim-background: rgba(0, 0, 100, 0);
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left app-drawer[opened] {
+	z-index: 10;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left .drawer-content {
+	margin-top: 64px;
+	box-sizing: border-box;
+	height: 100%;
+	margin-bottom: -64px;
+	padding-bottom: 64px;
+	overflow: visible;
+	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+	background: #1d6dcd;
+	color: #c6d7eb !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid {
+	--app-drawer-width: 256px;
+	--app-bar-height: 64px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid .app-layout-menu-button span.v-button-caption, .tests-valo-blueprint .app-layout-behaviour-left-hybrid .app-layout-expanding-menu-container-button:after {
+	opacity: 1;
+	transition: opacity 0.3s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid .app-layout-round-image {
+	transition: width 0.3s, height 0.3s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid .app-layout-menu-button {
+	transition: font-size 0.3s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid .app-layout-menu-button-badge {
+	transition: color 0.3s, height 0.2s, width 0.3s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid.small {
+	--app-drawer-width: 64px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid.small app-drawer[persistent] + .app-bar-application-content, .tests-valo-blueprint .app-layout-behaviour-left-hybrid.small app-drawer[persistent] + #contentContainer .app-bar-application-content {
+	margin-bottom: -64px;
+	padding-bottom: 64px;
+	margin-right: -64px;
+	padding-right: 64px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid.small app-drawer[persistent].app-drawer-1 {
+	width: 64px !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid.small app-drawer[persistent] .app-bar-application-content {
+	left: 64px !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid.small .app-layout-menu-button-badge {
+	background: #fff;
+	color: transparent;
+	height: 5px;
+	width: 5px;
+	border-radius: 100%;
+	padding: 0;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid.small .app-layout-menu-button span.v-button-caption {
+	opacity: 0;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid.small .app-layout-menu-bar-element {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid.small .app-layout-menu-bar-element .app-layout-round-image {
+	width: 64px !important;
+	height: 64px !important;
+	padding: 7px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid.small .app-layout-menu-bar-element .app-layout-menu-header-title {
+	display: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid.small .app-layout-menu-bar-element .app-layout-menu-header-title {
+	display: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid.small .app-layout-menu-button {
+	font-size: 20px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid.small .app-layout-menu-button .v-icon {
+	width: 100%;
+	text-align: center;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid.small .app-layout-menu-button .v-button-caption {
+	display: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid.small .app-layout-expanding-menu-container-button:after {
+	opacity: 0;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid.small .app-layout-submenu-container {
+	padding-left: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid.small .app-drawer-layout-1 app-drawer[opened] .drawer-content {
+	width: 64px !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid.small .app-drawer-layout-1 app-drawer[opened][persistent] + .app-bar-application-content, .tests-valo-blueprint .app-layout-behaviour-left-hybrid.small .app-drawer-layout-1 app-drawer[opened][persistent] + #contentContainer .app-bar-application-content {
+	left: 64px !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid.small .app-layout-menu-badge-button {
+	padding: 0px 16px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid.small .app-layout-menu-button-badge {
+	margin-left: -20px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid .app-bar-content {
+	left: 64px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid app-header app-toolbar {
+	background-color: #4285f4;
+	color: #d3dff3;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+	position: relative;
+	z-index: 11;
+	padding: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid app-header app-toolbar .v-button {
+	color: #d3dff3 !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid app-header paper-icon-button {
+	--paper-icon-button-ink-color: #fff;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid app-drawer-layout {
+	--app-drawer-layout-content-transition: margin 0.2s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid app-drawer[opened] {
+	z-index: 10;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid app-drawer {
+	--app-drawer-content-container-background-color: #eee;
+	transition: all 0.5s;
+	--app-drawer-scrim-background: rgba(0, 0, 100, 0);
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid .drawer-content {
+	margin-top: 64px;
+	box-sizing: border-box;
+	height: 100%;
+	margin-bottom: -64px;
+	padding-bottom: 64px;
+	overflow: visible;
+	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+	background: #1d6dcd;
+	color: #c6d7eb !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid app-drawer[persistent] .drawer-content {
+	box-shadow: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-hybrid app-drawer[persistent] .drawer-content:after {
+	position: absolute;
+	box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
+	content: "";
+	top: 0px;
+	bottom: 0px;
+	right: 0px;
+	left: 0px;
+	pointer-events: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid {
+	--app-drawer-width: 256px;
+	--app-bar-height: 64px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid .app-layout-menu-button span.v-button-caption, .tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid .app-layout-expanding-menu-container-button:after {
+	opacity: 1;
+	transition: opacity 0.3s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid .app-layout-round-image {
+	transition: width 0.3s, height 0.3s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid .app-layout-menu-button {
+	transition: font-size 0.3s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid .app-layout-menu-button-badge {
+	transition: color 0.3s, height 0.2s, width 0.3s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid app-drawer[persistent] + app-toolbar, .tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid app-drawer[persistent] + #contentContainer app-toolbar {
+	display: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid .app-bar-content {
+	left: 64px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid app-header app-toolbar {
+	background-color: #4285f4;
+	color: #d3dff3;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+	position: relative;
+	z-index: 11;
+	padding: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid app-header app-toolbar .v-button {
+	color: #d3dff3 !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid app-header paper-icon-button {
+	--paper-icon-button-ink-color: #fff;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid app-drawer-layout {
+	--app-drawer-layout-content-transition: margin 0.2s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid app-drawer[opened] {
+	z-index: 10;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid app-drawer {
+	--app-drawer-content-container-background-color: #eee;
+	transition: all 0.5s;
+	--app-drawer-scrim-background: rgba(0, 0, 100, 0);
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid .drawer-content {
+	margin-top: 64px;
+	box-sizing: border-box;
+	height: 100%;
+	margin-bottom: -64px;
+	padding-bottom: 64px;
+	overflow: visible;
+	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+	background: #1d6dcd;
+	color: #c6d7eb !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid app-drawer[persistent] .drawer-content {
+	box-shadow: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid app-drawer[persistent] .drawer-content:after {
+	position: absolute;
+	box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
+	content: "";
+	top: 0px;
+	bottom: 0px;
+	right: 0px;
+	left: 0px;
+	pointer-events: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-no-app-bar {
+	--app-drawer-width: 256px;
+	--app-bar-height: 64px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-menu-button span.v-button-caption, .tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-expanding-menu-container-button:after {
+	opacity: 1;
+	transition: opacity 0.3s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-round-image {
+	transition: width 0.3s, height 0.3s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-menu-button {
+	transition: font-size 0.3s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-menu-button-badge {
+	transition: color 0.3s, height 0.2s, width 0.3s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-no-app-bar app-drawer[persistent] + app-toolbar, .tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-no-app-bar app-drawer[persistent] + #contentContainer app-toolbar {
+	display: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-bar-content {
+	left: 64px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-no-app-bar app-header app-toolbar {
+	background-color: #4285f4;
+	color: #d3dff3;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+	position: relative;
+	z-index: 11;
+	padding: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-no-app-bar app-header app-toolbar .v-button {
+	color: #d3dff3 !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-no-app-bar app-header paper-icon-button {
+	--paper-icon-button-ink-color: #fff;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-no-app-bar app-drawer-layout {
+	--app-drawer-layout-content-transition: margin 0.2s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-no-app-bar app-drawer[opened] {
+	z-index: 10;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-no-app-bar app-drawer {
+	--app-drawer-content-container-background-color: #eee;
+	transition: all 0.5s;
+	--app-drawer-scrim-background: rgba(0, 0, 100, 0);
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-no-app-bar .drawer-content {
+	height: 100%;
+	overflow: visible;
+	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+	background: #1d6dcd;
+	color: #c6d7eb !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-no-app-bar app-drawer[persistent] .drawer-content {
+	box-shadow: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-no-app-bar app-drawer[persistent] .drawer-content:after {
+	position: absolute;
+	box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
+	content: "";
+	top: 0px;
+	bottom: 0px;
+	right: 0px;
+	left: 0px;
+	pointer-events: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar {
+	--app-drawer-width: 256px;
+	--app-bar-height: 64px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-menu-button span.v-button-caption, .tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-expanding-menu-container-button:after {
+	opacity: 1;
+	transition: opacity 0.3s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-round-image {
+	transition: width 0.3s, height 0.3s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-menu-button {
+	transition: font-size 0.3s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-menu-button-badge {
+	transition: color 0.3s, height 0.2s, width 0.3s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar app-drawer[persistent] + app-toolbar, .tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar app-drawer[persistent] + #contentContainer app-toolbar {
+	display: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-bar-content {
+	left: 64px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar app-toolbar {
+	background-color: #4285f4;
+	color: #d3dff3;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+	position: relative;
+	z-index: 9;
+	padding: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar app-toolbar .v-button {
+	color: #d3dff3 !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar app-toolbar paper-icon-button {
+	--paper-icon-button-ink-color: #fff;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar app-drawer-layout {
+	--app-drawer-layout-content-transition: margin 0.2s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar app-drawer[opened] {
+	z-index: 10;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar app-drawer {
+	--app-drawer-content-container-background-color: #eee;
+	transition: all 0.5s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .drawer-content {
+	height: 100%;
+	overflow: visible;
+	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+	background: #1d6dcd;
+	color: #c6d7eb !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar app-drawer[persistent] .drawer-content {
+	box-shadow: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar app-drawer[persistent] .drawer-content:after {
+	position: absolute;
+	box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
+	content: "";
+	top: 0px;
+	bottom: 0px;
+	right: 0px;
+	left: 0px;
+	pointer-events: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-overlay {
+	--app-drawer-width: 256px;
+	--app-bar-height: 64px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-overlay .app-bar-content {
+	left: 64px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-overlay app-toolbar {
+	background-color: #4285f4;
+	color: #d3dff3;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+	padding: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-overlay app-toolbar .v-button {
+	color: #d3dff3 !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-overlay app-drawer[opened] {
+	z-index: 10;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-overlay .drawer-content {
+	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+	height: 100%;
+	margin-top: 0px !important;
+	overflow: visible;
+	background: #1d6dcd;
+	color: #c6d7eb !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive {
+	--app-drawer-width: 256px;
+	--app-bar-height: 64px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive .app-bar-content {
+	left: 64px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive app-header app-toolbar {
+	background-color: #4285f4;
+	color: #d3dff3;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+	position: relative;
+	z-index: 11;
+	padding: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive app-header app-toolbar .v-button {
+	color: #d3dff3 !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive app-header paper-icon-button {
+	--paper-icon-button-ink-color: #fff;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive app-drawer-layout {
+	--app-drawer-layout-content-transition: margin 0.2s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive app-drawer[opened] {
+	z-index: 10;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive app-drawer {
+	--app-drawer-content-container-background-color: #eee;
+	--app-drawer-scrim-background: rgba(0, 0, 100, 0);
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive .drawer-content {
+	margin-top: 64px;
+	box-sizing: border-box;
+	height: 100%;
+	margin-bottom: -64px;
+	padding-bottom: 64px;
+	overflow: visible;
+	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+	background: #1d6dcd;
+	color: #c6d7eb !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive app-drawer[persistent] .drawer-content {
+	box-shadow: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive app-drawer[persistent] .drawer-content:after {
+	position: absolute;
+	box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
+	content: "";
+	top: 0px;
+	bottom: 0px;
+	right: 0px;
+	left: 0px;
+	pointer-events: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-overlay {
+	--app-drawer-width: 256px;
+	--app-bar-height: 64px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-overlay app-drawer[persistent] + app-toolbar paper-icon-button, .tests-valo-blueprint .app-layout-behaviour-left-responsive-overlay app-drawer[persistent] + #contentContainer app-toolbar paper-icon-button {
+	display: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-overlay app-drawer + app-toolbar .app-bar-content, .tests-valo-blueprint .app-layout-behaviour-left-responsive-overlay app-drawer + #contentContainer app-toolbar .app-bar-content {
+	left: 64px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-overlay app-drawer[persistent] + app-toolbar .app-bar-content, .tests-valo-blueprint .app-layout-behaviour-left-responsive-overlay app-drawer[persistent] + #contentContainer app-toolbar .app-bar-content {
+	left: 16px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-overlay app-toolbar {
+	background-color: #4285f4;
+	color: #d3dff3;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+	padding: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-overlay app-toolbar .v-button {
+	color: #d3dff3 !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-overlay .drawer-content {
+	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+	height: 100%;
+	overflow: visible;
+	background: #1d6dcd;
+	color: #c6d7eb !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-overlay app-drawer[persistent] .drawer-content {
+	box-shadow: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-overlay app-drawer[persistent] .drawer-content:after {
+	position: absolute;
+	box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
+	content: "";
+	top: 0px;
+	bottom: 0px;
+	right: 0px;
+	left: 0px;
+	pointer-events: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-overlay app-drawer[opened] {
+	z-index: 10;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-overlay-no-app-bar {
+	--app-drawer-width: 256px;
+	--app-bar-height: 64px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-overlay-no-app-bar .app-bar-content {
+	left: 64px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-overlay-no-app-bar app-drawer[persistent] + app-toolbar, .tests-valo-blueprint .app-layout-behaviour-left-responsive-overlay-no-app-bar app-drawer[persistent] + #contentContainer app-toolbar {
+	display: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-overlay-no-app-bar app-toolbar {
+	background-color: #4285f4;
+	color: #d3dff3;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+	padding: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-overlay-no-app-bar app-toolbar .v-button {
+	color: #d3dff3 !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-overlay-no-app-bar .drawer-content {
+	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+	height: 100%;
+	overflow: visible;
+	background: #1d6dcd;
+	color: #c6d7eb !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-overlay-no-app-bar app-drawer[persistent] .drawer-content {
+	box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-overlay-no-app-bar app-drawer[opened] {
+	z-index: 10;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small {
+	--app-drawer-width: 256px;
+	--app-bar-height: 64px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small .app-bar-content {
+	left: 64px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small app-header app-toolbar {
+	background-color: #4285f4;
+	color: #d3dff3;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+	position: relative;
+	z-index: 11;
+	padding: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small app-header app-toolbar .v-button {
+	color: #d3dff3 !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small app-header paper-icon-button {
+	--paper-icon-button-ink-color: #fff;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small app-drawer-layout {
+	--app-drawer-layout-content-transition: margin 0.2s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small app-drawer[opened] {
+	z-index: 10;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small app-drawer {
+	--app-drawer-content-container-background-color: #eee;
+	transition: all 0.5s;
+	--app-drawer-scrim-background: rgba(0, 0, 100, 0);
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small .drawer-content {
+	margin-top: 64px;
+	box-sizing: border-box;
+	height: 100vh;
+	margin-bottom: -64px;
+	padding-bottom: 64px;
+	overflow: visible;
+	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+	background: #1d6dcd;
+	color: #c6d7eb !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small app-drawer[persistent] .drawer-content {
+	box-shadow: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small app-drawer[persistent] .drawer-content:after {
+	position: absolute;
+	box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
+	content: "";
+	top: 0px;
+	bottom: 0px;
+	right: 0px;
+	left: 0px;
+	pointer-events: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small .app-layout-submenu-container {
+	padding-left: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small-no-app-bar {
+	--app-drawer-width: 256px;
+	--app-bar-height: 64px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-menu-button span.v-button-caption, .tests-valo-blueprint .app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-expanding-menu-container-button:after {
+	opacity: 1;
+	transition: opacity 0.3s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-round-image {
+	transition: width 0.3s, height 0.3s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-menu-button {
+	transition: font-size 0.3s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-menu-button-badge {
+	transition: color 0.3s, height 0.2s, width 0.3s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small-no-app-bar app-drawer[persistent] + app-toolbar, .tests-valo-blueprint .app-layout-behaviour-left-responsive-small-no-app-bar app-drawer[persistent] + #contentContainer app-toolbar {
+	display: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small-no-app-bar .app-bar-content {
+	left: 64px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small-no-app-bar app-header app-toolbar {
+	background-color: #4285f4;
+	color: #d3dff3;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+	position: relative;
+	z-index: 11;
+	padding: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small-no-app-bar app-header app-toolbar .v-button {
+	color: #d3dff3 !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small-no-app-bar app-header paper-icon-button {
+	--paper-icon-button-ink-color: #fff;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small-no-app-bar app-drawer-layout {
+	--app-drawer-layout-content-transition: margin 0.2s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small-no-app-bar app-drawer[opened] {
+	z-index: 10;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small-no-app-bar app-drawer {
+	--app-drawer-content-container-background-color: #eee;
+	transition: all 0.5s;
+	--app-drawer-scrim-background: rgba(0, 0, 100, 0);
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small-no-app-bar .drawer-content {
+	margin-top: 64px;
+	box-sizing: border-box;
+	height: 100%;
+	margin-bottom: -64px;
+	padding-bottom: 64px;
+	overflow: visible;
+	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+	background: #1d6dcd;
+	color: #c6d7eb !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small-no-app-bar app-drawer[persistent] .drawer-content {
+	box-shadow: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small-no-app-bar app-drawer[persistent] .drawer-content:after {
+	position: absolute;
+	box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
+	content: "";
+	top: 0px;
+	bottom: 0px;
+	right: 0px;
+	left: 0px;
+	pointer-events: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-submenu-container {
+	padding-left: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-top {
+	--app-drawer-width: 256px;
+	--app-bar-height: 64px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-top .app-bar-content {
+	left: 64px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	transition: left 0.3s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-top .app-bar-content .app-layout-menu-bar-element {
+	display: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-top .app-layout-bar-menu-holder {
+	padding-left: 10px;
+	display: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-top app-toolbar paper-icon-button {
+	transition: opacity 0.3s;
+	opacity: 1;
+	position: absolute;
+	top: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-top app-toolbar {
+	background-color: #4285f4;
+	color: #d3dff3;
+	position: relative;
+	z-index: 11;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+	padding: 0px;
+	transition: height 0.3s ease;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-top app-toolbar .v-button {
+	color: #d3dff3 !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-top app-drawer {
+	--app-drawer-scrim-background: rgba(0, 0, 100, 0);
+}
+
+.tests-valo-blueprint .app-layout-behaviour-top app-drawer[opened] {
+	z-index: 10;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-top .drawer-content {
+	margin-top: 64px;
+	box-sizing: border-box;
+	height: 100%;
+	margin-bottom: -64px;
+	padding-bottom: 64px;
+	overflow: visible;
+	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+	background: #1d6dcd;
+	color: #c6d7eb !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-top-large {
+	--app-drawer-width: 256px;
+	--app-bar-height: 64px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-top-large .app-bar-content {
+	left: 64px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	height: 64px;
+	transition: left 0.3s;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-top-large .app-bar-menu-content .app-layout-menu-bar-element {
+	display: none;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-top-large app-toolbar paper-icon-button {
+	transition: opacity 0.3s;
+	opacity: 1;
+	position: absolute;
+	top: 0px;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-top-large .app-bar-menu-content {
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.3s ease;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-top-large app-toolbar {
+	background-color: #4285f4;
+	color: #d3dff3;
+	position: relative;
+	z-index: 11;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+	padding: 0px;
+	transition: height 0.3s ease;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-top-large app-toolbar .v-button {
+	color: #d3dff3 !important;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-top-large app-drawer {
+	--app-drawer-scrim-background: rgba(0, 0, 100, 0);
+}
+
+.tests-valo-blueprint .app-layout-behaviour-top-large app-drawer[opened] {
+	z-index: 10;
+}
+
+.tests-valo-blueprint .app-layout-behaviour-top-large .drawer-content {
+	margin-top: 64px;
+	box-sizing: border-box;
+	height: 100%;
+	margin-bottom: -64px;
+	padding-bottom: 64px;
+	overflow: visible;
+	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+	background: #1d6dcd;
+	color: #c6d7eb !important;
 }

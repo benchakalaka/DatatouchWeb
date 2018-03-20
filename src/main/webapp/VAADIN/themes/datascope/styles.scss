@@ -1,6 +1,9 @@
 @import "variables";
+@import "addons.scss";
 @import "../valo/valo";
 
 .datascope {
    @include valo;
+   @include addons
+
 }

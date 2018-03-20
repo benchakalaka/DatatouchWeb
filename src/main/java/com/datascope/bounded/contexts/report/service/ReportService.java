@@ -1,12 +1,12 @@
 package com.datascope.bounded.contexts.report.service;
 
-import com.datascope.application.ui.utils.common.DateUtils;
 import com.datascope.bounded.contexts.report.domain.ReportGroup;
 import com.datascope.bounded.contexts.report.service.interfaces.IReportService;
 import com.datascope.bounded.contexts.report.service.interfaces.callbacks.GetReportGroupsCallback;
 import com.datascope.bounded.contexts.report.service.requests.GetReportGroupsRequest;
 import com.datascope.bounded.contexts.core.services.IRestClient;
 import com.datascope.bounded.contexts.core.services.concrete.SuperRestService;
+import com.datascope.ui.utils.common.DateUtils;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

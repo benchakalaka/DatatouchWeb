@@ -1,6 +1,8 @@
 @import "variables";
 @import "../valo/valo";
+@import "addons.scss";
 
 .tests-valo-dark {
    @include valo;
+   @include addons
 }
