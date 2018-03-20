@@ -1,4 +1,4 @@
-package com.datascope.ui.company.helpers;
+package com.datascope.ui.company.controller;
 
 import com.datascope.bounded.contexts.company.domain.Company;
 import com.datascope.ui.company.callbacks.CompanyColorChangedCallback;
@@ -6,7 +6,7 @@ import com.datascope.ui.company.callbacks.OnCompanySelectedCallback;
 import com.datascope.ui.company.elements.CompanyGridItem;
 import com.datascope.ui.utils.common.ColorUtils;
 import com.datascope.ui.utils.helper.Labels;
-import com.datascope.ui.utils.helper.SuperHelper;
+import com.datascope.ui.utils.helper.UiHelper;
 import com.vaadin.shared.ui.colorpicker.Color;
 import com.vaadin.ui.ColorPickerArea;
 import com.vaadin.ui.Grid;
@@ -15,9 +15,9 @@ import org.springframework.stereotype.Component;
 import java.util.stream.Collectors;
 
 @Component
-public class CompanyViewUiHelper extends SuperHelper {
+public class CompanyViewController extends UiHelper {
 
-    public CompanyViewUiHelper(Labels labels) {
+    public CompanyViewController(Labels labels) {
         super(labels);
     }
 

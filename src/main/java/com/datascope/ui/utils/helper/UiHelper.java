@@ -3,11 +3,11 @@ package com.datascope.ui.utils.helper;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SuperHelper {
+public class UiHelper {
 
     private Labels labels;
 
-    public SuperHelper(Labels labels) {
+    public UiHelper(Labels labels) {
         this.labels = labels;
     }
 

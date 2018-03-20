@@ -6,14 +6,15 @@ import com.datascope.bounded.contexts.company.service.interfaces.ICompanyService
 import com.datascope.ui.company.callbacks.CompanyColorChangedCallback;
 import com.datascope.ui.company.callbacks.OnCompanySelectedCallback;
 import com.datascope.ui.company.elements.CompanyGridItem;
-import com.datascope.ui.company.helpers.CompanyViewUiHelper;
+import com.datascope.ui.company.controller.CompanyViewController;
 import com.datascope.ui.generated.CompanyDesign;
-import com.datascope.ui.utils.notifications.DatatouchNotification;
+import com.datascope.ui.utils.notifications.Messages;
 import com.github.appreciated.app.layout.annotations.MenuCaption;
 import com.github.appreciated.app.layout.annotations.MenuIcon;
 import com.github.appreciated.app.layout.annotations.NavigatorViewName;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
+import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.shared.ui.colorpicker.Color;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.UIScope;
@@ -35,46 +36,48 @@ public class CompanyView extends CompanyDesign implements
         OnCompanySelectedCallback,
         CompanyColorChangedCallback {
 
-    public static final String NAME = "CompanyView";
+    static final String NAME = "CompanyView";
     private ICompanyService service;
-    private DatatouchNotification notification;
-    private CompanyViewUiHelper helper;
+    private Messages messages;
+    private CompanyViewController controller;
 
     public CompanyView(
             ICompanyService service,
-            DatatouchNotification notification,
-            CompanyViewUiHelper helper) {
+            Messages messages,
+            CompanyViewController controller) {
         this.service = service;
-        this.notification = notification;
-        this.helper = helper;
+        this.messages = messages;
+        this.controller = controller;
     }
 
     @PostConstruct
     public void init() {
-        helper.initGrid(getCompaniesGrid(), this);
-        helper.setOnColorPicker(getColorPickerArea(), this);
-        getCompanies();
-    }
+        controller.initGrid(getCompaniesGrid(), this);
+        controller.setOnColorPicker(getColorPickerArea(), this);
 
-    private void getCompanies() {
-        service.getCompanies(this);
     }
 
     @Override
+    public void enter(ViewChangeListener.ViewChangeEvent event) {
+        service.getCompanies(this);
+    }
+
+
+    @Override
     public void companiesFound(Company.List companies) {
-        CompanyGridItem.List items = helper.toGridItems(companies);
+        CompanyGridItem.List items = controller.toGridItems(companies);
         getCompaniesGrid().setItems(items);
         ofNullable(companies).ifPresent(item -> getCompaniesGrid().select(items.get(0)));
     }
 
     @Override
     public void companiesNotFound() {
-        notification.warn("no.companies.found");
+        messages.warn("no.companies.found");
     }
 
     @Override
     public void companySelected(CompanyGridItem item) {
-        Color color = helper.getColor(item.getColour());
+        Color color = controller.getColor(item.getColour());
         getColorPickerArea().setValue(color);
     }
 

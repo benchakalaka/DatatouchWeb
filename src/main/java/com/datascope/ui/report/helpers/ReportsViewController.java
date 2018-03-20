@@ -4,7 +4,7 @@ import com.datascope.ui.report.callbacks.ReportSelectedCallback;
 import com.datascope.ui.report.callbacks.SelectReportGeneratedDateCallback;
 import com.datascope.ui.report.elements.ReportGroupGridItem;
 import com.datascope.ui.utils.helper.Labels;
-import com.datascope.ui.utils.helper.SuperHelper;
+import com.datascope.ui.utils.helper.UiHelper;
 import com.vaadin.data.TreeData;
 import com.vaadin.data.provider.TreeDataProvider;
 import com.vaadin.ui.DateField;
@@ -15,13 +15,13 @@ import java.time.LocalDate;
 import java.util.function.Consumer;
 
 @Component
-public class ReportViewUiHelper extends SuperHelper {
+public class ReportsViewController extends UiHelper {
     private TreeData<ReportGroupGridItem> data = new TreeData<>();
     private TreeDataProvider<ReportGroupGridItem> reportGroupGridItemTreeDataProvider = new TreeDataProvider<>(data);
     private static final int DEFAULT_EXPAND_RATIO = 3;
 
 
-    public ReportViewUiHelper(Labels labels) {
+    public ReportsViewController(Labels labels) {
         super(labels);
     }
 

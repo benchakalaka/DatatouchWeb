@@ -13,4 +13,8 @@ public interface IEmailService {
     void deleteEmailGroup(int groupId);
 
     void editGroupName(String value, int groupId);
+
+    void removeEmailFromGroup(int emailTemplateId, int groupId);
+
+    void addEmailToGroup(int emailTemplateId, int groupId);
 }

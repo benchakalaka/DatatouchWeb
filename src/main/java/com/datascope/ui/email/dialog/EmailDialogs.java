@@ -1,8 +1,12 @@
 package com.datascope.ui.email.dialog;
 
+import com.datascope.bounded.contexts.email.domain.EmailTemplate;
 import com.datascope.ui.utils.helper.Labels;
 
+import com.vaadin.icons.VaadinIcons;
+import com.vaadin.ui.Grid;
 import com.vaadin.ui.TextField;
+import de.steinwedel.messagebox.ButtonOption;
 import de.steinwedel.messagebox.ButtonType;
 import de.steinwedel.messagebox.MessageBox;
 import org.springframework.stereotype.Component;
@@ -43,4 +47,16 @@ public class EmailDialogs {
         input.addValueChangeListener((e) -> messageBox.getButton(ButtonType.OK).setEnabled(!e.getValue().isEmpty()));
         messageBox.open();
     }
+
+    public void selectEmailsInGroup(com.vaadin.ui.Component components, String groupName) {
+        MessageBox.create()
+                .withCaption(groupName)
+                .withMessage(components)
+                .withCloseButton(ButtonOption.icon(VaadinIcons.CLOSE))
+                .withWidth("50%")
+                .withHeight("80%")
+                .open();
+    }
+
+
 }

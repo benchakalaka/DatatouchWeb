@@ -12,8 +12,8 @@ import com.datascope.ui.hotspot.callbacks.IAreaSelectedCallback;
 import com.datascope.ui.hotspot.callbacks.IDateSelectedCallback;
 import com.datascope.ui.hotspot.elements.AreaComboBoxItem;
 import com.datascope.ui.hotspot.elements.HotspotGridItem;
-import com.datascope.ui.hotspot.helpers.HotspotViewUiHelper;
-import com.datascope.ui.utils.notifications.DatatouchNotification;
+import com.datascope.ui.hotspot.controller.HotspotViewController;
+import com.datascope.ui.utils.notifications.Messages;
 import com.github.appreciated.app.layout.annotations.MenuCaption;
 import com.github.appreciated.app.layout.annotations.MenuIcon;
 import com.github.appreciated.app.layout.annotations.NavigatorViewName;
@@ -22,7 +22,6 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.UIScope;
-import com.vaadin.ui.Component;
 
 import javax.annotation.PostConstruct;
 import java.time.LocalDate;
@@ -30,30 +29,19 @@ import java.time.LocalDate;
 import static java.util.Optional.ofNullable;
 
 @UIScope
-
-
 @MenuCaption("Hotspots")
 @MenuIcon(VaadinIcons.REPLY)
 @NavigatorViewName(HotspotView.NAME)
 @SpringView(name = HotspotView.NAME)
-public class HotspotView extends HotspotDesign implements
-        View,
-        IGetAreaHotspotsCallback,
-        IDateSelectedCallback,
-        GetAreasCallback,
-        IAreaSelectedCallback {
+public class HotspotView extends HotspotDesign implements View, IGetAreaHotspotsCallback, IDateSelectedCallback, GetAreasCallback, IAreaSelectedCallback {
 
     static final String NAME = "HotspotView";
     private IHotspotService service;
     private IAreaService areaService;
-    private DatatouchNotification notifications;
-    private HotspotViewUiHelper helper;
+    private Messages notifications;
+    private HotspotViewController helper;
 
-    public HotspotView(
-            IHotspotService service,
-            IAreaService areaService,
-            DatatouchNotification notifications,
-            HotspotViewUiHelper helper) {
+    public HotspotView(IHotspotService service, IAreaService areaService, Messages notifications, HotspotViewController helper) {
         this.service = service;
         this.areaService = areaService;
         this.notifications = notifications;

@@ -6,14 +6,15 @@ import com.datascope.bounded.contexts.area.service.interfaces.IAreaService;
 import com.datascope.bounded.contexts.area.service.interfaces.callbacks.GetAreasCallback;
 import com.datascope.ui.area.callbacks.IAreaSelectedCallback;
 import com.datascope.ui.area.elements.AreaGridItem;
-import com.datascope.ui.area.helper.AreaViewUiHelper;
+import com.datascope.ui.area.controller.AreaViewController;
 import com.datascope.ui.generated.AreasDesign;
-import com.datascope.ui.utils.notifications.DatatouchNotification;
+import com.datascope.ui.utils.notifications.Messages;
 import com.github.appreciated.app.layout.annotations.MenuCaption;
 import com.github.appreciated.app.layout.annotations.MenuIcon;
 import com.github.appreciated.app.layout.annotations.NavigatorViewName;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
+import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.UIScope;
@@ -22,43 +23,41 @@ import javax.annotation.PostConstruct;
 
 @UIScope
 @MenuCaption("Areas")
-@MenuIcon(VaadinIcons.ADJUST)
+@MenuIcon(VaadinIcons.BOOK)
 @NavigatorViewName(AreasView.NAME)
 @SpringView(name = AreasView.NAME)
 public class AreasView extends AreasDesign implements View, GetAreasCallback, IAreaSelectedCallback {
-
-    //TODO: Select first area
     static final String NAME = "AreaView";
 
     private IAreaService areaService;
-    private DatatouchNotification notification;
+    private Messages messages;
     private String areaFilesUrl;
-    private AreaViewUiHelper helper;
+    private AreaViewController controller;
 
     public AreasView(
             IAreaService areaService,
-            DatatouchNotification notification,
+            Messages messages,
             String areaFilesUrl,
-            AreaViewUiHelper helper) {
+            AreaViewController controller) {
         this.areaService = areaService;
-        this.notification = notification;
+        this.messages = messages;
         this.areaFilesUrl = areaFilesUrl;
-        this.helper = helper;
+        this.controller = controller;
     }
 
     @PostConstruct
     public void init() {
-        helper.initAreasGrid(getAreasGrid(), this);
-        getAreas();
+        controller.initAreasGrid(getAreasGrid(), this);
     }
 
-    private void getAreas() {
+    @Override
+    public void enter(ViewChangeListener.ViewChangeEvent event) {
         areaService.getAreas(this);
     }
 
     @Override
     public void areasFound(Area.List areas) {
-        getAreasGrid().setItems(helper.toGridItems(areas));
+        controller.setAreasToGrid(areas, getAreasGrid());
     }
 
     @Override
@@ -68,7 +67,7 @@ public class AreasView extends AreasDesign implements View, GetAreasCallback, IA
 
     @Override
     public void areasNotFound() {
-        notification.warn("areas.not.found");
+        messages.warn("areas.not.found");
     }
 
 }

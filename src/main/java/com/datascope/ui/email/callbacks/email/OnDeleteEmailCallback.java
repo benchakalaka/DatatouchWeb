@@ -1,4 +1,4 @@
-package com.datascope.ui.email.callbacks;
+package com.datascope.ui.email.callbacks.email;
 
 import com.datascope.ui.email.elements.EmailGridItem;
 

@@ -1,4 +1,4 @@
-package com.datascope.ui.hotspot.helpers;
+package com.datascope.ui.hotspot.controller;
 
 import com.datascope.bounded.contexts.area.domian.Area;
 import com.datascope.ui.hotspot.callbacks.IAreaSelectedCallback;
@@ -6,7 +6,7 @@ import com.datascope.ui.hotspot.callbacks.IDateSelectedCallback;
 import com.datascope.ui.hotspot.elements.AreaComboBoxItem;
 import com.datascope.ui.hotspot.elements.HotspotGridItem;
 import com.datascope.ui.utils.helper.Labels;
-import com.datascope.ui.utils.helper.SuperHelper;
+import com.datascope.ui.utils.helper.UiHelper;
 import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.DateField;
 import com.vaadin.ui.Grid;
@@ -18,12 +18,12 @@ import java.time.LocalDate;
 import java.util.stream.Collectors;
 
 @Component
-public class HotspotViewUiHelper extends SuperHelper {
+public class HotspotViewController extends UiHelper {
 
     private static final int TABLE_DEFAULT_EXPAND_RATIO = 2;
     private static final int PROGRESS_EXPAND_RATIO = 3;
 
-    public HotspotViewUiHelper(Labels labels) {
+    public HotspotViewController(Labels labels) {
         super(labels);
     }
 
@@ -65,10 +65,10 @@ public class HotspotViewUiHelper extends SuperHelper {
     }
 
     public void setAreas(ComboBox<AreaComboBoxItem> cbAreas, Area.List items) {
-        AreaComboBoxItem.List comboboxItems = toComboBoxItems(items);
-        cbAreas.setItems(comboboxItems);
-        if (CollectionUtils.isNotEmpty(comboboxItems))
-            cbAreas.setSelectedItem(comboboxItems.get(0));
+        AreaComboBoxItem.List areaComboBoxItems = toComboBoxItems(items);
+        cbAreas.setItems(areaComboBoxItems);
+        if (CollectionUtils.isNotEmpty(areaComboBoxItems))
+            cbAreas.setSelectedItem(areaComboBoxItems.get(0));
     }
 
 

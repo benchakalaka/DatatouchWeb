@@ -8,11 +8,11 @@ import static com.vaadin.ui.Notification.Type.TRAY_NOTIFICATION;
 import static com.vaadin.ui.Notification.Type.WARNING_MESSAGE;
 
 @Component
-public class DatatouchNotification {
+public class Messages {
 
     private NotificationMessages notificationMessages;
 
-    public DatatouchNotification(NotificationMessages notificationMessages) {
+    public Messages(NotificationMessages notificationMessages) {
         this.notificationMessages = notificationMessages;
     }
 

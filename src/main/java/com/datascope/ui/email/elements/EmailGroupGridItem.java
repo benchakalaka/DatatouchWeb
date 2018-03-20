@@ -44,6 +44,11 @@ public class EmailGroupGridItem {
         return id;
     }
 
+    public boolean containsEmailTemplate(int emailId) {
+        return emailGridItems.stream().anyMatch(item -> item.getId() == emailId);
+    }
+
+
     public static class List extends ArrayList<EmailGroupGridItem> {
     }
 }

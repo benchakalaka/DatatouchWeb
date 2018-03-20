@@ -61,4 +61,14 @@ public class EmailService implements IEmailService {
     public void editGroupName(String newName, int groupId) {
         rest.post(Integer.class, EDIT_EMAIL_GROUP_NAME, new EditEmailGroupName(newName, groupId));
     }
+
+    @Override
+    public void removeEmailFromGroup(int emailTemplateId, int groupId) {
+        //rest.post(Integer.class, EDIT_EMAIL_GROUP_NAME, new EditEmailGroupName(newName, groupId));
+    }
+
+    @Override
+    public void addEmailToGroup(int emailTemplateId, int groupId) {
+        //rest.post(Integer.class, EDIT_EMAIL_GROUP_NAME, new EditEmailGroupName(newName, groupId));
+    }
 }
