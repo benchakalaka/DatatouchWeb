@@ -10,7 +10,15 @@ import com.vaadin.ui.UI;
 @SpringUI
 @Title("Datatouch")
 @Theme("datascope")
-// TODO: Mapper,EventBus
+// TODO: Mapper
+// TODO: EventBus
+// TODO: Inject Strings directly
+// TODO: UnitTests,
+// TODO: Regression UI Tests
+// TODO: Loading Progress Views
+// TODO: Login
+// TODO: Get all params from request
+// TODO: Load Area
 public class DatatouchUI extends UI {
 
     private MenuBuilder menuBuilder;

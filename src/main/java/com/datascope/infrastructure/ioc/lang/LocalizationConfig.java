@@ -3,9 +3,12 @@ package com.datascope.infrastructure.ioc.lang;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 
 @Configuration
+@PropertySource("classpath:labels.properties")
+@PropertySource("classpath:notifications.properties")
 public class LocalizationConfig {
 
     private static final String NOTIFICATIONS_PROPERTIES_FILE_NAME = "notifications";

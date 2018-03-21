@@ -9,8 +9,6 @@ import static org.springframework.beans.factory.config.BeanDefinition.SCOPE_PROT
 @Configuration
 public class RestServicesConfig {
 
-    // TODO: do everything dynamically
-
     @Bean
     @Scope(SCOPE_PROTOTYPE)
     public int siteId() {
@@ -25,8 +23,8 @@ public class RestServicesConfig {
 
     @Bean
     @Scope(SCOPE_PROTOTYPE)
-    public String areaFilesUrl(){
-        return rootUrl() +"QuiltFiles/"+ database()+"/AreaFiles/";
+    public String areaFilesUrl() {
+        return rootUrl() + "QuiltFiles/" + database() + "/AreaFiles/";
     }
 
     @Bean
@@ -37,7 +35,7 @@ public class RestServicesConfig {
 
     @Bean
     @Scope(SCOPE_PROTOTYPE)
-    public String token( ) {
+    public String token() {
         return "c48e9f37-ac90-427a-9101-119c096593de";
     }
 }

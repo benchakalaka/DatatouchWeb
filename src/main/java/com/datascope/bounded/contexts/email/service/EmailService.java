@@ -2,6 +2,7 @@ package com.datascope.bounded.contexts.email.service;
 
 import com.datascope.bounded.contexts.email.domain.EmailTemplate;
 import com.datascope.bounded.contexts.email.service.interfaces.callbacks.GetEmailTemplatesCallback;
+import com.datascope.bounded.contexts.email.service.requests.AddEmailToGroupRequest;
 import com.datascope.bounded.contexts.email.service.requests.DeleteEmailGroupRequest;
 import com.datascope.bounded.contexts.email.service.requests.DeleteEmailRequest;
 import com.datascope.bounded.contexts.email.domain.EmailGroup;
@@ -21,6 +22,7 @@ public class EmailService implements IEmailService {
     private static final String DELETE_EMAIL_GROUP = "Email/DeleteGroup";
     private static final String EDIT_EMAIL_GROUP_NAME = "Email/EditGroupName";
     private static final String GET_EMAIL_TEMPLATES = "Email/GetAllEmailTemplates";
+    private static final String ADD_EMAIL_TO_GROUP = "Email/AddEmailTemplateToGroup";
 
     public EmailService(IRestClient client) {
         this.rest = client;
@@ -64,11 +66,11 @@ public class EmailService implements IEmailService {
 
     @Override
     public void removeEmailFromGroup(int emailTemplateId, int groupId) {
-        //rest.post(Integer.class, EDIT_EMAIL_GROUP_NAME, new EditEmailGroupName(newName, groupId));
+        rest.post(Integer.class, DELETE_EMAIL_FROM_GROUP, new DeleteEmailRequest(groupId, emailTemplateId));
     }
 
     @Override
     public void addEmailToGroup(int emailTemplateId, int groupId) {
-        //rest.post(Integer.class, EDIT_EMAIL_GROUP_NAME, new EditEmailGroupName(newName, groupId));
+        rest.post(Integer.class, ADD_EMAIL_TO_GROUP, new AddEmailToGroupRequest(groupId, emailTemplateId));
     }
 }

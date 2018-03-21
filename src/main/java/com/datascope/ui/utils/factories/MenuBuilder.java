@@ -50,7 +50,7 @@ public class MenuBuilder {
                 .withDesign(AppBarDesign.MATERIAL)
                 .add(new MenuHeader(labels.get("application.version"), new ThemeResource("logo.png")), HEADER)
                 .add(HotspotView.class)
-                .add(ReportsView.class)
+                .add(badge, ReportsView.class)
                 .add(CDISubmenuBuilder.get(labels.get("menu.admin"), VaadinIcons.COG)
                         .add(AreasView.class)
                         .add(EmailGroupView.class)

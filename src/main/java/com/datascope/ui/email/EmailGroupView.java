@@ -112,7 +112,7 @@ public class EmailGroupView extends EmailGroupDeisgn implements View, GetEmailGr
     @Override
     public void onEmailTemplatesFound(EmailTemplate.List templates) {
         Grid<EmailTemplate> grid = controller.buildEmailsGrid(templates, this);
-        dialogs.selectEmailsInGroup(grid,controller.getLastClickedEmailGroupName());
+        dialogs.selectEmailsInGroup(grid, controller.getLastClickedEmailGroupName());
     }
 
     @Override
@@ -130,8 +130,8 @@ public class EmailGroupView extends EmailGroupDeisgn implements View, GetEmailGr
     @Override
     public void onEmailTemplateClicked(int emailTemplateId, int groupId, boolean isSelected) {
         if (isSelected)
-            service.removeEmailFromGroup(emailTemplateId,groupId);
+            service.addEmailToGroup(emailTemplateId, groupId);
         else
-            service.addEmailToGroup(emailTemplateId,groupId);
+            service.removeEmailFromGroup(emailTemplateId, groupId);
     }
 }
