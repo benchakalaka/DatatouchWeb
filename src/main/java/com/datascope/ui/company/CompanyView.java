@@ -5,8 +5,8 @@ import com.datascope.bounded.contexts.company.service.interfaces.GetCompaniesCal
 import com.datascope.bounded.contexts.company.service.interfaces.ICompanyService;
 import com.datascope.ui.company.callbacks.CompanyColorChangedCallback;
 import com.datascope.ui.company.callbacks.OnCompanySelectedCallback;
-import com.datascope.ui.company.elements.CompanyGridItem;
 import com.datascope.ui.company.controller.CompanyViewController;
+import com.datascope.ui.company.elements.CompanyGridItem;
 import com.datascope.ui.generated.CompanyDesign;
 import com.datascope.ui.utils.notifications.Messages;
 import com.github.appreciated.app.layout.annotations.MenuCaption;
@@ -14,14 +14,13 @@ import com.github.appreciated.app.layout.annotations.MenuIcon;
 import com.github.appreciated.app.layout.annotations.NavigatorViewName;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
-import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.shared.ui.colorpicker.Color;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.UIScope;
 
 import javax.annotation.PostConstruct;
+import java.util.Optional;
 
-import static java.util.Optional.ofNullable;
 
 @UIScope
 
@@ -54,11 +53,6 @@ public class CompanyView extends CompanyDesign implements
     public void init() {
         controller.initGrid(getCompaniesGrid(), this);
         controller.setOnColorPicker(getColorPickerArea(), this);
-
-    }
-
-    @Override
-    public void enter(ViewChangeListener.ViewChangeEvent event) {
         service.getCompanies(this);
     }
 
@@ -67,7 +61,7 @@ public class CompanyView extends CompanyDesign implements
     public void companiesFound(Company.List companies) {
         CompanyGridItem.List items = controller.toGridItems(companies);
         getCompaniesGrid().setItems(items);
-        ofNullable(companies).ifPresent(item -> getCompaniesGrid().select(items.get(0)));
+        Optional.ofNullable(companies).ifPresent(item -> getCompaniesGrid().select(items.get(0)));
     }
 
     @Override

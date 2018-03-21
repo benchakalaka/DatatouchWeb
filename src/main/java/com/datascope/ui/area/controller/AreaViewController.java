@@ -1,10 +1,13 @@
 package com.datascope.ui.area.controller;
 
 import com.datascope.bounded.contexts.area.domian.Area;
+import com.datascope.ui.area.AreasView;
 import com.datascope.ui.area.callbacks.IAreaSelectedCallback;
+import com.datascope.ui.area.callbacks.OnUploadAreaClickedCallback;
 import com.datascope.ui.area.elements.AreaGridItem;
 import com.datascope.ui.utils.helper.Labels;
 import com.datascope.ui.utils.helper.UiHelper;
+import com.vaadin.ui.Button;
 import com.vaadin.ui.Grid;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.stereotype.Component;
@@ -40,4 +43,8 @@ public class AreaViewController extends UiHelper {
                 .map(area -> new AreaGridItem(area.getAreaName(), area.getCreatedAt(), area.getId(), area.getAreaFiles()))
                 .collect(Collectors.toCollection(AreaGridItem.List::new));
     }
+
+//    public void initUploadNewAreaButton(Button btnAddArea, OnUploadAreaClickedCallback view) {
+//        btnAddArea.addClickListener(clickEvent -> view.uploadAreaClicked());
+//    }
 }

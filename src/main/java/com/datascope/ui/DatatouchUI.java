@@ -13,7 +13,7 @@ import com.vaadin.ui.UI;
 // TODO: Mapper
 // TODO: EventBus
 // TODO: Inject Strings directly
-// TODO: UnitTests,
+// TODO: UnitTests
 // TODO: Regression UI Tests
 // TODO: Loading Progress Views
 // TODO: Login

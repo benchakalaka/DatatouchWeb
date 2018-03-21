@@ -62,13 +62,8 @@ public class Area extends Model {
         this.areaFiles = areaFiles;
     }
 
-    public double getProgress() {
-        return 0.5;
-    }
 
-    public static double[] getWeightHistory() {
-        return new double[]{123, 100, 10, 12, 41, 51, 190, 311};
-    }
+
 
     public static class List extends ArrayList<Area> {
 

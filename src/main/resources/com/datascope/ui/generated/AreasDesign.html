@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:true,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;datascope&quot;}">
   <meta name="vaadin-version" content="8.0.5">
+  <meta name="package-mapping" content="com_wcs_wcslib_vaadin_widget_multifileupload_component:com.wcs.wcslib.vaadin.widget.multifileupload.component">
  </head>
  <body>
-  <vaadin-horizontal-layout style-name="app-shell" spacing="false" responsive size-full>
-   <vaadin-vertical-layout style-name="content-container" spacing="false" size-full margin="false" :expand>
-    <vaadin-horizontal-split-panel split-position="30%" _id="horizontalSplit">
-     <vaadin-grid size-full data-item-type="com.datascope.ui.area.elements.AreaGridItem" _id="areasGrid">
+  <vaadin-vertical-split-panel split-position="90.3%">
+   <vaadin-vertical-layout style-name="content-container" size-full margin="false">
+    <vaadin-horizontal-split-panel width="90%" height="90%" split-position="30%" _id="horizontalSplit" :middle :center>
+     <vaadin-grid icon="fonticon://Vaadin-Icons/e682" caption="Areas" size-full data-item-type="com.datascope.ui.area.elements.AreaGridItem" _id="areasGrid">
       <table>
        <colgroup>
         <col column-id="areaName" sortable>
@@ -29,6 +30,7 @@
      <vaadin-browser-frame size-full _id="browser"></vaadin-browser-frame>
     </vaadin-horizontal-split-panel>
    </vaadin-vertical-layout>
-  </vaadin-horizontal-layout>
+   <com_wcs_wcslib_vaadin_widget_multifileupload_component-multi-upload _id="multiFileUpload"></com_wcs_wcslib_vaadin_widget_multifileupload_component-multi-upload>
+  </vaadin-vertical-split-panel>
  </body>
 </html>
