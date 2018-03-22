@@ -3,14 +3,14 @@ package com.datascope.bounded.contexts.email.service.requests;
 import com.datascope.bounded.contexts.core.services.SuperRequestView;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class DeleteEmailRequest extends SuperRequestView {
+public class DeleteEmailFromGroupRequest extends SuperRequestView {
     @JsonProperty("GroupId")
     private int groupId;
 
     @JsonProperty("EmailId")
     private int emailId;
 
-    public DeleteEmailRequest(int groupId, int emailId) {
+    public DeleteEmailFromGroupRequest(int groupId, int emailId) {
         this.groupId = groupId;
         this.emailId = emailId;
     }

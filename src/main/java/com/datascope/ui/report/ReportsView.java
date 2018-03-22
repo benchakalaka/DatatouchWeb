@@ -33,7 +33,9 @@ import java.time.LocalDate;
 public class ReportsView extends ReportDesign implements View, GetReportGroupsCallback, SelectReportGeneratedDateCallback, ReportSelectedCallback {
 
     // TODO: Expand all nodes, and select first report
+    // TODO: Show module selector
     static final String NAME = "ReportsView";
+    static final int STATIC_ID = 75631;
 
     private TreeGrid<ReportGroupGridItem> reportsTree = new TreeGrid<>();
     private IReportService service;
@@ -74,7 +76,7 @@ public class ReportsView extends ReportDesign implements View, GetReportGroupsCa
     }
 
     private void getGroups(LocalDate selectedDate) {
-        this.service.getReportGroups(71538, selectedDate, this);
+        this.service.getReportGroups(STATIC_ID, selectedDate, this);
     }
 
     @Override

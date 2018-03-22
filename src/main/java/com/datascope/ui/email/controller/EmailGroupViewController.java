@@ -1,13 +1,10 @@
 package com.datascope.ui.email.controller;
 
-import com.datascope.bounded.contexts.email.domain.EmailTemplate;
 import com.datascope.bounded.contexts.email.domain.EmailGroup;
+import com.datascope.bounded.contexts.email.domain.EmailTemplate;
 import com.datascope.ui.email.EmailGroupView;
 import com.datascope.ui.email.callbacks.email.OnDeleteEmailCallback;
-import com.datascope.ui.email.callbacks.email.OnEmailTemplateSelectedInGroupCallback;
-import com.datascope.ui.email.callbacks.emailgroup.OnAddEmailToGroupCallback;
 import com.datascope.ui.email.callbacks.emailgroup.OnDeleteEmailGroupCallback;
-import com.datascope.ui.email.callbacks.emailgroup.OnEditEmailGroupCallback;
 import com.datascope.ui.email.elements.EmailGridItem;
 import com.datascope.ui.email.elements.EmailGroupGridItem;
 import com.datascope.ui.utils.factories.ButtonFactory;
@@ -18,12 +15,12 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.TextField;
+import com.vaadin.ui.renderers.ComponentRenderer;
 import org.springframework.stereotype.Component;
 
-import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static com.vaadin.icons.VaadinIcons.*;
+import static com.vaadin.icons.VaadinIcons.CLOSE;
 import static com.vaadin.ui.themes.ValoTheme.BUTTON_SMALL;
 
 @Component
@@ -34,7 +31,7 @@ public class EmailGroupViewController extends UiHelper {
     private ListDataProvider<EmailGroupGridItem> emailGroupsProvider;
     private ListDataProvider<EmailGridItem> emailsProvider;
     private String CENTER_ALIGN = "v-align-center";
-    private EmailGroupGridItem lastEmailGroupClicked;
+
 
     public EmailGroupViewController(Labels labels) {
         super(labels);
@@ -43,25 +40,17 @@ public class EmailGroupViewController extends UiHelper {
     public void initEmailGroupGrid(Grid<EmailGroupGridItem> emailGroupsGrid, EmailGroupView view) {
         emailGroupsGrid.removeAllColumns();
 
+        emailGroupsGrid.getEditor().setEnabled(true);
+        emailGroupsGrid.getEditor().addSaveListener(editorSaveEvent -> view.onEditEmailGroupClicked(editorSaveEvent.getBean()));
+
         emailGroupsGrid.addColumn(EmailGroupGridItem::getName)
                 .setCaption(getLabel("email.grid.group.name"))
+                .setEditorComponent(new TextField(), EmailGroupGridItem::setName)
                 .setExpandRatio(GRID_FIELDS_EXPAND_RATIO);
 
         emailGroupsGrid.addSelectionListener(event ->
-                event.getFirstSelectedItem().ifPresent(view::emailGroupSelected)
+                event.getFirstSelectedItem().ifPresent(this::emailGroupSelected)
         );
-
-        emailGroupsGrid
-                .addComponentColumn(item -> buildAddButton(item, view))
-                .setCaption(getLabel("email.grid.email.add"))
-                .setExpandRatio(GRID_BUTTON_EXPAND_RATIO)
-                .setStyleGenerator(item -> CENTER_ALIGN);
-
-        emailGroupsGrid
-                .addComponentColumn(item -> buildEditButton(item, view))
-                .setCaption(getLabel("email.grid.email.edit"))
-                .setExpandRatio(GRID_BUTTON_EXPAND_RATIO)
-                .setStyleGenerator(item -> CENTER_ALIGN);
 
         emailGroupsGrid
                 .addComponentColumn(item -> buildEmailGroupGridDeleteButton(item, view))
@@ -73,9 +62,29 @@ public class EmailGroupViewController extends UiHelper {
     public void initEmailGrid(Grid<EmailGridItem> emailsGrid, EmailGroupView view) {
         emailsGrid.removeAllColumns();
 
+        emailsGrid.getEditor().setEnabled(true);
+        emailsGrid.getEditor().addSaveListener(editorSaveEvent -> view.onEditEmailTemplate(editorSaveEvent.getBean()));
+
+        emailsGrid.addColumn(EmailGridItem::getName)
+                .setCaption(getLabel("email.grid.email.name"))
+                .setEditorComponent(new TextField(), EmailGridItem::setName)
+                .setExpandRatio(GRID_FIELDS_EXPAND_RATIO);
+
+        emailsGrid.addColumn(EmailGridItem::getLastName)
+                .setEditorComponent(new TextField(), EmailGridItem::setLastName)
+                .setCaption(getLabel("email.grid.email.last.name"))
+                .setExpandRatio(GRID_FIELDS_EXPAND_RATIO);
+
         emailsGrid.addColumn(EmailGridItem::getEmail)
                 .setCaption(getLabel("email.grid.email.email"))
+                .setEditorComponent(new TextField(), EmailGridItem::setEmail)
                 .setExpandRatio(GRID_FIELDS_EXPAND_RATIO);
+
+        emailsGrid.addColumn(email -> getEmailGridItemActiveCheckBox(email, view))
+                .setExpandRatio(1)
+                .setRenderer(new ComponentRenderer())
+                .setCaption(getLabel("email.grid.email.active"))
+                .setStyleGenerator(item -> CENTER_ALIGN);
 
         emailsGrid
                 .addComponentColumn(item -> buildEmailGridDeleteButton(item, view))
@@ -84,29 +93,19 @@ public class EmailGroupViewController extends UiHelper {
                 .setStyleGenerator(item -> CENTER_ALIGN);
     }
 
-    public Grid<EmailTemplate> buildEmailsGrid(EmailTemplate.List templates, OnEmailTemplateSelectedInGroupCallback callback) {
-        Grid<EmailTemplate> grid = new Grid<>();
-        grid.setItems(templates);
 
-        grid.addColumn(EmailTemplate::getFullName)
-                .setCaption(getLabel("email.grid.email.name"))
-                .setExpandRatio(5);
+    private void emailGroupSelected(EmailGroupGridItem group) {
+        emailsProvider.getItems().forEach(item ->
+                item.setActive(group.containsEmailTemplate(item.getId()))
+        );
 
-        grid.addColumn(EmailTemplate::getEmail)
-                .setCaption(getLabel("email.grid.email.email"))
-                .setExpandRatio(5);
-
-        grid.addComponentColumn(item -> buildCheckbox(item, callback))
-                .setExpandRatio(1)
-                .setStyleGenerator(item -> CENTER_ALIGN);
-
-        return grid;
+        emailsProvider.refreshAll();
     }
 
-    private CheckBox buildCheckbox(EmailTemplate item, OnEmailTemplateSelectedInGroupCallback callback) {
-        CheckBox checkBox = new CheckBox("", lastEmailGroupClicked.containsEmailTemplate(item.getId()));
-        checkBox.addValueChangeListener(e -> callback.onEmailTemplateClicked(item.getId(),getLastClickedEmailGroupId(),e.getValue()));
-        return checkBox;
+    private CheckBox getEmailGridItemActiveCheckBox(EmailGridItem email, EmailGroupView view) {
+        CheckBox checkBoxIsActive = new CheckBox("", email.isActive());
+        checkBoxIsActive.addValueChangeListener(e -> view.onEmailTemplateClicked(email.getId(), e.getValue()));
+        return checkBoxIsActive;
     }
 
     private Button buildEmailGroupGridDeleteButton(EmailGroupGridItem item, OnDeleteEmailGroupCallback callback) {
@@ -117,13 +116,6 @@ public class EmailGroupViewController extends UiHelper {
         return ButtonFactory.buildButton(CLOSE, BUTTON_SMALL, e -> callback.onDeleteEmailClicked(item));
     }
 
-    private Button buildEditButton(EmailGroupGridItem item, OnEditEmailGroupCallback callback) {
-        return ButtonFactory.buildButton(EDIT, BUTTON_SMALL, e -> callback.onEditEmailGroupClicked(item));
-    }
-
-    private Button buildAddButton(EmailGroupGridItem item, OnAddEmailToGroupCallback callback) {
-        return ButtonFactory.buildButton(PLUS_CIRCLE, BUTTON_SMALL, e -> callback.onAddEmailToGroupClicked(item));
-    }
 
     private EmailGroupGridItem.List toEmailGroupGridItems(EmailGroup.List groups) {
         return groups
@@ -132,21 +124,17 @@ public class EmailGroupViewController extends UiHelper {
                 .collect(Collectors.toCollection(EmailGroupGridItem.List::new));
     }
 
-    private EmailGridItem.List toEmailGridItems(EmailTemplate.List emails) {
+    public EmailGridItem.List toEmailGridItems(EmailTemplate.List emails) {
         return emails
                 .stream()
                 .map(EmailGridItem::fromEmail)
                 .collect(Collectors.toCollection(EmailGridItem.List::new));
     }
 
-    public void setEmailGroups(Grid<EmailGroupGridItem> emailsGrid, EmailGroup.List groups) {
+    public void showEmailGroupsInGrid(Grid<EmailGroupGridItem> emailsGrid, EmailGroup.List groups) {
         refreshEmailGroupProvider(toEmailGroupGridItems(groups));
         emailsGrid.setDataProvider(emailGroupsProvider);
-        emailGroupsProvider
-                .getItems()
-                .stream()
-                .findFirst()
-                .ifPresent(emailsGrid::select);
+
     }
 
     private void refreshEmailGroupProvider(EmailGroupGridItem.List items) {
@@ -160,11 +148,6 @@ public class EmailGroupViewController extends UiHelper {
     public void setEmails(Grid<EmailGridItem> emailsGrid, EmailGridItem.List emailGridItems) {
         refreshEmailProvider(emailGridItems);
         emailsGrid.setDataProvider(emailsProvider);
-        emailsProvider
-                .getItems()
-                .stream()
-                .findFirst()
-                .ifPresent(emailsGrid::select);
     }
 
     public void removeEmailGroup(EmailGroupGridItem item) {
@@ -177,28 +160,11 @@ public class EmailGroupViewController extends UiHelper {
         emailsProvider.refreshAll();
     }
 
-    public void editEmailGroupItem(EmailGroupGridItem item) {
-        emailGroupsProvider.refreshItem(item);
-    }
-
-    public TextField createEditEmailGroupTextField() {
-        return new TextField(getLabel("email.email.group.new.name"));
-    }
-
-
-    public void setLastEmailGroupClicked(EmailGroupGridItem item) {
-        this.lastEmailGroupClicked = item;
-    }
-
-    public String getLastClickedEmailGroupName() {
-        return null != lastEmailGroupClicked
-                ? lastEmailGroupClicked.getName()
-                : "";
-    }
-
-    private int getLastClickedEmailGroupId() {
-        return null != lastEmailGroupClicked
-                ? lastEmailGroupClicked.getId()
-                : 0;
+    public void selectFirstEmailGroup(Grid<EmailGroupGridItem> grid) {
+        emailGroupsProvider
+                .getItems()
+                .stream()
+                .findFirst()
+                .ifPresent(grid::select);
     }
 }

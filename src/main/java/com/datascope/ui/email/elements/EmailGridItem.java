@@ -6,30 +6,58 @@ import java.util.ArrayList;
 
 public class EmailGridItem {
 
-
+    private String lastName;
     private int id;
     private String email;
-    private final String fullName;
+    private String name;
+    private boolean isActive;
 
-    public EmailGridItem(int id, String email, String fullName) {
+    public EmailGridItem(int id, String email, String name, String lastName) {
         this.id = id;
         this.email = email;
-        this.fullName = fullName;
+        this.name = name;
+        this.lastName = lastName;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public static EmailGridItem fromEmail(EmailTemplate email){
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    public static EmailGridItem fromEmail(EmailTemplate email) {
         return new EmailGridItem(
                 email.getId(),
                 email.getEmail(),
-                email.getFullName());
+                email.getFirstName(),
+                email.getLastName());
     }
 
     public int getId() {
@@ -40,5 +68,6 @@ public class EmailGridItem {
         this.id = id;
     }
 
-    public static class List extends ArrayList<EmailGridItem>{}
+    public static class List extends ArrayList<EmailGridItem> {
+    }
 }

@@ -63,5 +63,8 @@ public class EmailTemplate extends Model {
     }
 
     public static class List extends ArrayList<EmailTemplate> {
+        public static List empty() {
+            return new List();
+        }
     }
 }

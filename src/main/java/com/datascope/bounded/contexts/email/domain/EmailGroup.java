@@ -52,5 +52,9 @@ public class EmailGroup extends Model {
         this.name = name;
     }
 
-    public static class List extends ArrayList<EmailGroup>{}
+    public static class List extends ArrayList<EmailGroup>{
+        public static List empty() {
+            return new List();
+        }
+    }
 }

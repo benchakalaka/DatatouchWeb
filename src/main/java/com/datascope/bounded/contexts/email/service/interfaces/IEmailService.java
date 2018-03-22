@@ -1,14 +1,18 @@
 package com.datascope.bounded.contexts.email.service.interfaces;
 
+import com.datascope.bounded.contexts.email.domain.EmailGroup;
+import com.datascope.bounded.contexts.email.domain.EmailTemplate;
 import com.datascope.bounded.contexts.email.service.interfaces.callbacks.GetEmailGroupsCallback;
 import com.datascope.bounded.contexts.email.service.interfaces.callbacks.GetEmailTemplatesCallback;
 
+import java.util.function.Consumer;
+
 public interface IEmailService {
-    void getEmailGroups(GetEmailGroupsCallback callback);
+    void getEmailGroups(Consumer<EmailGroup.List> onSuccess);
 
-    void getEmailTemplates(GetEmailTemplatesCallback callback);
+    void getEmailTemplates(Consumer<EmailTemplate.List> onSuccess);
 
-    void deleteEmail(int groupId, int emailId);
+    void deleteEmailTemplate(int templateId);
 
     void deleteEmailGroup(int groupId);
 
@@ -17,4 +21,6 @@ public interface IEmailService {
     void removeEmailFromGroup(int emailTemplateId, int groupId);
 
     void addEmailToGroup(int emailTemplateId, int groupId);
+
+    void editEmailTemplate(int emailId, String email, String name, String lastName);
 }
