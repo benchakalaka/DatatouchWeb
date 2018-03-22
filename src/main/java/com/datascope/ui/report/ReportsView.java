@@ -3,6 +3,8 @@ package com.datascope.ui.report;
 import com.datascope.bounded.contexts.report.domain.ReportGroup;
 import com.datascope.bounded.contexts.report.service.interfaces.IReportService;
 import com.datascope.bounded.contexts.report.service.interfaces.callbacks.GetReportGroupsCallback;
+import com.datascope.bounded.contexts.settingslab.domain.SettingsLab;
+import com.datascope.bounded.contexts.settingslab.service.callbacks.ISettingsLabService;
 import com.datascope.ui.generated.ReportDesign;
 import com.datascope.ui.report.callbacks.ReportSelectedCallback;
 import com.datascope.ui.report.callbacks.SelectReportGeneratedDateCallback;
@@ -39,15 +41,18 @@ public class ReportsView extends ReportDesign implements View, GetReportGroupsCa
 
     private TreeGrid<ReportGroupGridItem> reportsTree = new TreeGrid<>();
     private IReportService service;
+    private ISettingsLabService settingsLabService;
     private Messages notification;
 
     private ReportsViewController controller;
 
     public ReportsView(
             IReportService service,
+            ISettingsLabService settingsLabService,
             Messages notification,
             ReportsViewController helper) {
         this.service = service;
+        this.settingsLabService = settingsLabService;
         this.notification = notification;
         controller = helper;
     }
@@ -56,6 +61,11 @@ public class ReportsView extends ReportDesign implements View, GetReportGroupsCa
     public void init() {
         controller.initDatePicker(getDatePicker(), this);
         controller.initTree(reportsTree, this);
+        settingsLabService.getSettingsLab(this::onSettingsLabFound);
+    }
+
+    private void onSettingsLabFound(SettingsLab settingsLab) {
+
     }
 
     @Override

@@ -53,7 +53,7 @@ public class UnirestClient implements IRestClient {
     public <TResult> TResult post(Class<TResult> ofType, String path, Object params) {
         try {
             String url = rootUrl + path;
-
+            System.out.println("Execute request ["+url+"]");
             HttpResponse<TResult> result = Unirest
                     .post(url)
                     .header(ACCEPT, JSON)
