@@ -6,6 +6,7 @@ public class GetSettingsLabRequest extends SuperRequestView {
 
 
 
-    public GetSettingsLabRequest() {
+    public GetSettingsLabRequest(int siteId) {
+        setSiteId(siteId);
     }
 }

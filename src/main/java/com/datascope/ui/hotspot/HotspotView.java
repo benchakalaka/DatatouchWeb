@@ -13,7 +13,7 @@ import com.datascope.ui.hotspot.callbacks.IDateSelectedCallback;
 import com.datascope.ui.hotspot.elements.AreaComboBoxItem;
 import com.datascope.ui.hotspot.elements.HotspotGridItem;
 import com.datascope.ui.hotspot.controller.HotspotViewController;
-import com.datascope.ui.utils.notifications.Messages;
+import com.datascope.ui.utils.notifications.Notifications;
 import com.github.appreciated.app.layout.annotations.MenuCaption;
 import com.github.appreciated.app.layout.annotations.MenuIcon;
 import com.github.appreciated.app.layout.annotations.NavigatorViewName;
@@ -38,10 +38,10 @@ public class HotspotView extends HotspotDesign implements View, IGetAreaHotspots
     static final String NAME = "HotspotView";
     private IHotspotService service;
     private IAreaService areaService;
-    private Messages notifications;
+    private Notifications notifications;
     private HotspotViewController helper;
 
-    public HotspotView(IHotspotService service, IAreaService areaService, Messages notifications, HotspotViewController helper) {
+    public HotspotView(IHotspotService service, IAreaService areaService, Notifications notifications, HotspotViewController helper) {
         this.service = service;
         this.areaService = areaService;
         this.notifications = notifications;

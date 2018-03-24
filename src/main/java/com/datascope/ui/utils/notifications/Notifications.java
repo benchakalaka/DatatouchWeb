@@ -8,11 +8,11 @@ import static com.vaadin.ui.Notification.Type.TRAY_NOTIFICATION;
 import static com.vaadin.ui.Notification.Type.WARNING_MESSAGE;
 
 @Component
-public class Messages {
+public class Notifications {
 
     private NotificationMessages notificationMessages;
 
-    public Messages(NotificationMessages notificationMessages) {
+    public Notifications(NotificationMessages notificationMessages) {
         this.notificationMessages = notificationMessages;
     }
 

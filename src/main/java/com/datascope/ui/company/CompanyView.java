@@ -8,7 +8,7 @@ import com.datascope.ui.company.callbacks.OnCompanySelectedCallback;
 import com.datascope.ui.company.controller.CompanyViewController;
 import com.datascope.ui.company.elements.CompanyGridItem;
 import com.datascope.ui.generated.CompanyDesign;
-import com.datascope.ui.utils.notifications.Messages;
+import com.datascope.ui.utils.notifications.Notifications;
 import com.github.appreciated.app.layout.annotations.MenuCaption;
 import com.github.appreciated.app.layout.annotations.MenuIcon;
 import com.github.appreciated.app.layout.annotations.NavigatorViewName;
@@ -37,15 +37,15 @@ public class CompanyView extends CompanyDesign implements
 
     static final String NAME = "CompanyView";
     private ICompanyService service;
-    private Messages messages;
+    private Notifications notifications;
     private CompanyViewController controller;
 
     public CompanyView(
             ICompanyService service,
-            Messages messages,
+            Notifications notifications,
             CompanyViewController controller) {
         this.service = service;
-        this.messages = messages;
+        this.notifications = notifications;
         this.controller = controller;
     }
 
@@ -66,7 +66,7 @@ public class CompanyView extends CompanyDesign implements
 
     @Override
     public void companiesNotFound() {
-        messages.warn("no.companies.found");
+        notifications.warn("no.companies.found");
     }
 
     @Override

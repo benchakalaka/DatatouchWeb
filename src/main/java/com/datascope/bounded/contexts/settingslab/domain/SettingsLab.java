@@ -14,4 +14,20 @@ public class SettingsLab extends Model {
 
     public SettingsLab() {
     }
+
+    public StaticModuleIds getStaticModuleIds() {
+        return staticModuleIds;
+    }
+
+    public void setStaticModuleIds(StaticModuleIds staticModuleIds) {
+        this.staticModuleIds = staticModuleIds;
+    }
+
+    public SettingsModule.List getModules() {
+        return modules;
+    }
+
+    public void setModules(SettingsModule.List modules) {
+        this.modules = modules;
+    }
 }

@@ -12,13 +12,13 @@ public class RestServicesConfig {
     @Bean
     @Scope(SCOPE_PROTOTYPE)
     public int siteId() {
-        return 22;
+        return 2;
     }
 
     @Bean
     @Scope(SCOPE_PROTOTYPE)
     public String rootUrl() {
-        return "http://www.datascopesystem.com/datatouch/";
+        return "http://www.datascopesystem.com/datatouch_dev/";
     }
 
     @Bean
@@ -30,7 +30,7 @@ public class RestServicesConfig {
     @Bean
     @Scope(SCOPE_PROTOTYPE)
     public String database() {
-        return "mace_framework";
+        return "quilt_development";
     }
 
     @Bean

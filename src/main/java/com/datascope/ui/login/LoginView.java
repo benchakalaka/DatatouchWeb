@@ -8,7 +8,7 @@ import com.datascope.bounded.contexts.user.service.interfaces.IUserService;
 import com.datascope.bounded.contexts.user.service.interfaces.callbacks.GetUsersCallback;
 import com.datascope.bounded.contexts.user.service.interfaces.callbacks.LoginUserCallback;
 import com.datascope.ui.generated.LoginDesign;
-import com.datascope.ui.utils.notifications.Messages;
+import com.datascope.ui.utils.notifications.Notifications;
 import com.vaadin.navigator.View;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.UIScope;
@@ -24,12 +24,12 @@ public class LoginView extends LoginDesign implements View, LoginUserCallback, G
 
     private IUserService service;
     private ISiteService siteService;
-    private Messages notification;
+    private Notifications notification;
 
     public LoginView(
             IUserService userService,
             ISiteService siteService,
-            Messages notification) {
+            Notifications notification) {
         this.service = userService;
         this.siteService = siteService;
         this.notification = notification;

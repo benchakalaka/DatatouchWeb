@@ -30,7 +30,7 @@ public class EmailService implements IEmailService {
     }
 
     @Override
-    public void getEmailGroups(Consumer<EmailGroup.List> consumer) {
+    public void getGroups(Consumer<EmailGroup.List> consumer) {
         Observable.just(rest.post(EmailGroup.List.class, GET_GROUPS))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(Schedulers.io())
@@ -39,7 +39,7 @@ public class EmailService implements IEmailService {
     }
 
     @Override
-    public void getEmailTemplates(Consumer<EmailTemplate.List> onSuccess) {
+    public void getTemplates(Consumer<EmailTemplate.List> onSuccess) {
         Observable.just(rest.post(EmailTemplate.List.class, GET_EMAIL_TEMPLATES))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(Schedulers.io())
@@ -49,31 +49,43 @@ public class EmailService implements IEmailService {
 
     @Override
     public void deleteEmailTemplate(int templateId) {
-        rest.post(Integer.class, DELETE_EMAIL_TEMPLATE, new DeleteEmailTemplateRequest(templateId));
+        Observable.just(rest.post(Integer.class, DELETE_EMAIL_TEMPLATE, new DeleteEmailTemplateRequest(templateId)))
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(Schedulers.io());
     }
 
     @Override
     public void deleteEmailGroup(int groupId) {
-        rest.post(Integer.class, DELETE_EMAIL_GROUP, new DeleteEmailGroupRequest(groupId));
+        Observable.just(rest.post(Integer.class, DELETE_EMAIL_GROUP, new DeleteEmailGroupRequest(groupId)))
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(Schedulers.io());
     }
 
     @Override
     public void editGroupName(String newName, int groupId) {
-        rest.post(Integer.class, EDIT_EMAIL_GROUP_NAME, new EditEmailGroupName(newName, groupId));
+        Observable.just(rest.post(Integer.class, EDIT_EMAIL_GROUP_NAME, new EditEmailGroupName(newName, groupId)))
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(Schedulers.io());
     }
 
     @Override
     public void removeEmailFromGroup(int emailTemplateId, int groupId) {
-        rest.post(Integer.class, DELETE_EMAIL_FROM_GROUP, new DeleteEmailFromGroupRequest(groupId, emailTemplateId));
+        Observable.just(rest.post(Integer.class, DELETE_EMAIL_FROM_GROUP, new DeleteEmailFromGroupRequest(groupId, emailTemplateId)))
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(Schedulers.io());
     }
 
     @Override
     public void addEmailToGroup(int emailTemplateId, int groupId) {
-        rest.post(Integer.class, ADD_EMAIL_TO_GROUP, new AddEmailToGroupRequest(groupId, emailTemplateId));
+        Observable.just(rest.post(Integer.class, ADD_EMAIL_TO_GROUP, new AddEmailToGroupRequest(groupId, emailTemplateId)))
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(Schedulers.io());
     }
 
     @Override
     public void editEmailTemplate(int emailId, String email, String name, String lastName) {
-        rest.post(Integer.class, EDIT_EMAIL_TEMPLATE, new EditEmailTemplateRequest(emailId, email, name, lastName));
+        Observable.just(rest.post(Integer.class, EDIT_EMAIL_TEMPLATE, new EditEmailTemplateRequest(emailId, email, name, lastName)))
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(Schedulers.io());
     }
 }

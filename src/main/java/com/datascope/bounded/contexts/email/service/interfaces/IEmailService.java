@@ -8,9 +8,9 @@ import com.datascope.bounded.contexts.email.service.interfaces.callbacks.GetEmai
 import java.util.function.Consumer;
 
 public interface IEmailService {
-    void getEmailGroups(Consumer<EmailGroup.List> onSuccess);
+    void getGroups(Consumer<EmailGroup.List> onSuccess);
 
-    void getEmailTemplates(Consumer<EmailTemplate.List> onSuccess);
+    void getTemplates(Consumer<EmailTemplate.List> onSuccess);
 
     void deleteEmailTemplate(int templateId);
 

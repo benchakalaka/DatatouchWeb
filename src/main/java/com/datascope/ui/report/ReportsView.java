@@ -10,13 +10,12 @@ import com.datascope.ui.report.callbacks.ReportSelectedCallback;
 import com.datascope.ui.report.callbacks.SelectReportGeneratedDateCallback;
 import com.datascope.ui.report.elements.ReportGroupGridItem;
 import com.datascope.ui.report.helpers.ReportsViewController;
-import com.datascope.ui.utils.notifications.Messages;
+import com.datascope.ui.utils.notifications.Notifications;
 import com.github.appreciated.app.layout.annotations.MenuCaption;
 import com.github.appreciated.app.layout.annotations.MenuIcon;
 import com.github.appreciated.app.layout.annotations.NavigatorViewName;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
-import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.UIScope;
@@ -26,30 +25,30 @@ import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 
 @UIScope
-
-
 @MenuCaption("Reports")
 @MenuIcon(VaadinIcons.ADD_DOCK)
 @NavigatorViewName(ReportsView.NAME)
 @SpringView(name = ReportsView.NAME)
-public class ReportsView extends ReportDesign implements View, GetReportGroupsCallback, SelectReportGeneratedDateCallback, ReportSelectedCallback {
+public class ReportsView extends ReportDesign implements View,
+        GetReportGroupsCallback,
+        SelectReportGeneratedDateCallback,
+        ReportSelectedCallback {
 
-    // TODO: Expand all nodes, and select first report
-    // TODO: Show module selector
+    // TODO: and select first report
     static final String NAME = "ReportsView";
-    static final int STATIC_ID = 75631;
+
 
     private TreeGrid<ReportGroupGridItem> reportsTree = new TreeGrid<>();
     private IReportService service;
     private ISettingsLabService settingsLabService;
-    private Messages notification;
+    private Notifications notification;
 
     private ReportsViewController controller;
 
     public ReportsView(
             IReportService service,
             ISettingsLabService settingsLabService,
-            Messages notification,
+            Notifications notification,
             ReportsViewController helper) {
         this.service = service;
         this.settingsLabService = settingsLabService;
@@ -59,25 +58,21 @@ public class ReportsView extends ReportDesign implements View, GetReportGroupsCa
 
     @PostConstruct
     public void init() {
-        controller.initDatePicker(getDatePicker(), this);
+        controller.initDatePicker(getDatePicker(), this::getGroups);
         controller.initTree(reportsTree, this);
+        getHorizontalSplit().addComponent(reportsTree);
+        controller.initComboBox(getCbModules(), this::getGroups);
         settingsLabService.getSettingsLab(this::onSettingsLabFound);
     }
 
     private void onSettingsLabFound(SettingsLab settingsLab) {
-
-    }
-
-    @Override
-    public void enter(ViewChangeListener.ViewChangeEvent event) {
-        //TODO: unfortunately, on second time it's cause issue
-        getHorizontalSplit().addComponent(reportsTree);
-        getGroups(getSelectedDate());
+        controller.showModules(getCbModules(), settingsLab.getModules());
     }
 
     @Override
     public void reportGroupsFound(ReportGroup.List reports) {
         controller.setReports(reports.toGridItems());
+        controller.expandAll(reportsTree);
     }
 
     @Override
@@ -85,8 +80,8 @@ public class ReportsView extends ReportDesign implements View, GetReportGroupsCa
         getBrowserFrame().setSource(new ExternalResource(reportUrl));
     }
 
-    private void getGroups(LocalDate selectedDate) {
-        this.service.getReportGroups(STATIC_ID, selectedDate, this);
+    private void getGroups() {
+        this.service.getReportGroups(getSelectedModuleId(), getSelectedDate(), this);
     }
 
     @Override
@@ -97,11 +92,16 @@ public class ReportsView extends ReportDesign implements View, GetReportGroupsCa
 
     @Override
     public void onReportGeneratedDateChanged(LocalDate selectedDate) {
-        getGroups(selectedDate);
+        getGroups();
     }
 
     private LocalDate getSelectedDate() {
         return getDatePicker().getValue();
     }
 
+    private int getSelectedModuleId() {
+        return getCbModules().getSelectedItem().isPresent()
+                ? getCbModules().getSelectedItem().get().getId()
+                : 0;
+    }
 }
