@@ -26,7 +26,7 @@ import java.time.LocalDate;
 
 @UIScope
 @MenuCaption("Reports")
-@MenuIcon(VaadinIcons.ADD_DOCK)
+@MenuIcon(VaadinIcons.CHART_3D)
 @NavigatorViewName(ReportsView.NAME)
 @SpringView(name = ReportsView.NAME)
 public class ReportsView extends ReportDesign implements View,
@@ -86,7 +86,6 @@ public class ReportsView extends ReportDesign implements View,
 
     @Override
     public void noReportGroupsFound() {
-        notification.warn("no.report.groups.found");
         controller.clearReportsTree();
     }
 

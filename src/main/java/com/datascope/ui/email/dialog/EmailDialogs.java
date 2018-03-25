@@ -7,7 +7,6 @@ import de.steinwedel.messagebox.MessageBox;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 @Component
@@ -29,7 +28,7 @@ public class EmailDialogs {
     private String editGroupNameLabel;
 
     @Value("${email.edit.group.create.new}")
-    private String createNewGroup;
+    private String createNew;
 
     public EmailDialogs() {
     }
@@ -50,14 +49,14 @@ public class EmailDialogs {
                 .withNoButton().open();
     }
 
-    public void createNewGroup(Consumer<String> okListener) {
+    private void showDialogWithInput(String title, Consumer<String> okListener) {
         TextField text = new TextField();
 
         MessageBox messageBox = MessageBox.create()
-                .withCaption(createNewGroup)
+                .withCaption(title)
                 .withMessage(text)
                 .withOkButton(() -> okListener.accept(text.getValue())
-                        , ButtonOption.disable())
+                        ,ButtonOption.disable())
                 .withCancelButton();
 
         text.addValueChangeListener((valueEvent) ->
@@ -65,5 +64,13 @@ public class EmailDialogs {
                         .setEnabled(!valueEvent.getValue().isEmpty()));
 
         messageBox.open();
+    }
+
+    public void createNewGroup(Consumer<String> okListener) {
+        showDialogWithInput(createNew, okListener);
+    }
+
+    public void createNewTemplate(Consumer<String> okListener) {
+        showDialogWithInput(createNew, okListener);
     }
 }

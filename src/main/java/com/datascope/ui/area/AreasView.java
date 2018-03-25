@@ -29,7 +29,7 @@ import java.util.Collection;
 
 @UIScope
 @MenuCaption("Areas")
-@MenuIcon(VaadinIcons.BOOK)
+@MenuIcon(VaadinIcons.SITEMAP)
 @NavigatorViewName(AreasView.NAME)
 @SpringView(name = AreasView.NAME)
 public class AreasView extends AreasDesign implements View, GetAreasCallback, IAreaSelectedCallback, OnUploadAreaClickedCallback {

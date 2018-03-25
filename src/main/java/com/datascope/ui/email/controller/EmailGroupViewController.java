@@ -80,7 +80,12 @@ public class EmailGroupViewController {
 
         Button buttonCreateNewGroup = new Button(name, VaadinIcons.PLUS);
         buttonCreateNewGroup.addClickListener(e -> onAddNewGroup.run());
-        buttonCreateNewGroup.addStyleName(ValoTheme.BUTTON_BORDERLESS);
+
+        buttonCreateNewGroup.addStyleNames(
+                ValoTheme.BUTTON_FRIENDLY,
+                ValoTheme.LABEL_TINY,
+                ValoTheme.BUTTON_SMALL);
+
         emailGroupsGrid
                 .getDefaultHeaderRow()
                 .getCell(name)
@@ -90,6 +95,7 @@ public class EmailGroupViewController {
     public void initEmailGrid(Grid<EmailGridItem> emailsGrid,
                               Consumer<EmailGridItem> onEditEmailTemplate,
                               Consumer<EmailGridItem> onDeleteEmailTemplate,
+                              Runnable onAddNewEmailTemplate,
                               EmailGroupView view) {
         emailsGrid.removeAllColumns();
 
@@ -109,9 +115,42 @@ public class EmailGroupViewController {
                 .setExpandRatio(GRID_FIELDS_EXPAND_RATIO);
 
         emailsGrid.addColumn(EmailGridItem::getEmail)
-                .setCaption(email)
+                .setId(email)
                 .setEditorComponent(new TextField(), EmailGridItem::setEmail)
                 .setExpandRatio(GRID_FIELDS_EXPAND_RATIO);
+
+        Button buttonCreateNewTemplate = new Button(email, VaadinIcons.PLUS);
+        //buttonCreateNewTemplate.addClickListener(e -> onAddNewEmailTemplate.run());
+        buttonCreateNewTemplate.addStyleNames(ValoTheme.BUTTON_FRIENDLY, ValoTheme.LABEL_TINY, ValoTheme.BUTTON_SMALL);
+
+        buttonCreateNewTemplate.addClickListener(e -> {
+            if (emailsGrid.getEditor().isOpen())
+                return;
+
+            EmailGridItem item = EmailGridItem.empty();
+            emailsProvider.getItems().add(item);
+            emailsProvider.refreshAll();
+
+
+//            emailsGrid
+//                    .getEditor()
+//                    .setSaveCaption("Create New Template")
+//                    .addCancelListener(cancel -> {
+//
+//                        emailsGrid.getEditor().addSaveListener(editorSaveEvent -> onEditEmailTemplate.accept(editorSaveEvent.getBean()));
+//                        emailsProvider.getItems().remove(item);
+//                        emailsProvider.refreshAll();
+//                    });
+
+            emailsGrid.getEditor().editRow(0);
+
+
+        });
+
+        emailsGrid
+                .getDefaultHeaderRow()
+                .getCell(email)
+                .setComponent(buttonCreateNewTemplate);
 
         emailsGrid.addColumn(email -> getEmailGridItemActiveCheckBox(email, view))
                 .setExpandRatio(GRID_BUTTON_EXPAND_RATIO)
@@ -126,6 +165,8 @@ public class EmailGroupViewController {
                 .setHidable(true)
                 .setExpandRatio(GRID_BUTTON_EXPAND_RATIO)
                 .setStyleGenerator(item -> CENTER_ALIGN);
+
+
     }
 
     private Button buildEmailGridDeleteButton(EmailGridItem item, Consumer<EmailGridItem> callback) {

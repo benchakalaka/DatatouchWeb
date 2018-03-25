@@ -22,11 +22,13 @@ import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.spring.navigator.SpringViewProvider;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+
 import static com.github.appreciated.app.layout.builder.AppLayoutConfiguration.Position.HEADER;
 
 @Component
 @UIScope
-public class MenuBuilder {
+public class MenuBuilder implements Serializable{
 
     private DefaultNotificationHolder notifications = new DefaultNotificationHolder();
     private DefaultBadgeHolder badge = new DefaultBadgeHolder();

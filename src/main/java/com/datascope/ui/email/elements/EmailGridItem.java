@@ -12,6 +12,9 @@ public class EmailGridItem {
     private String name;
     private boolean isActive;
 
+    public EmailGridItem() {
+    }
+
     public EmailGridItem(int id, String email, String name, String lastName) {
         this.id = id;
         this.email = email;
@@ -66,6 +69,10 @@ public class EmailGridItem {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public static EmailGridItem empty() {
+        return new EmailGridItem(0,"","not provided","not provided");
     }
 
     public static class List extends ArrayList<EmailGridItem> {

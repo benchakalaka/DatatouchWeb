@@ -19,7 +19,7 @@ import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.UIScope;
-import com.vaadin.ui.TextField;
+import com.vaadin.ui.Component;
 
 import javax.annotation.PostConstruct;
 
@@ -27,7 +27,7 @@ import javax.annotation.PostConstruct;
 @UIScope
 @NavigatorViewName(EmailGroupView.NAME)
 @MenuCaption("Emails")
-@MenuIcon(VaadinIcons.SITEMAP)
+@MenuIcon(VaadinIcons.AT)
 @SpringView(name = EmailGroupView.NAME)
 public class EmailGroupView extends EmailGroupDeisgn implements View,
         OnDeleteEmailCallback,
@@ -49,13 +49,17 @@ public class EmailGroupView extends EmailGroupDeisgn implements View,
 
     @PostConstruct
     public void init() {
-        controller.initGroupGrid(getEmailGroupsGrid(), this::editGroup, this::deleteGroup, () -> dialogs.createNewGroup(this::createNewGroupService));
-        controller.initEmailGrid(getEmailsGrid(), this::editTemplate, this::deleteTemplate, this);
+        controller.initGroupGrid(getEmailGroupsGrid(), this::editGroup, this::deleteGroup, () -> dialogs.createNewGroup(this::createNewGroup));
+        controller.initEmailGrid(getEmailsGrid(), this::editTemplate, this::deleteTemplate, () -> dialogs.createNewTemplate(this::createNewTemplateService) ,this);
         service.getGroups(this::groupsLoaded);
         service.getTemplates(this::templatesLoaded);
     }
 
-    private void createNewGroupService(String newGroup) {
+    private void createNewTemplateService(String newGroup) {
+        //service.createNewTemplate(this::addNewGroupToGrid, newGroup);
+    }
+
+    private void createNewGroup(String newGroup) {
         service.createNewGroup(this::addNewGroupToGrid, newGroup);
     }
 

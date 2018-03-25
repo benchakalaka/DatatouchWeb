@@ -30,7 +30,7 @@ import static java.util.Optional.ofNullable;
 
 @UIScope
 @MenuCaption("Hotspots")
-@MenuIcon(VaadinIcons.REPLY)
+@MenuIcon(VaadinIcons.MAP_MARKER)
 @NavigatorViewName(HotspotView.NAME)
 @SpringView(name = HotspotView.NAME)
 public class HotspotView extends HotspotDesign implements View, IGetAreaHotspotsCallback, IDateSelectedCallback, GetAreasCallback, IAreaSelectedCallback {
