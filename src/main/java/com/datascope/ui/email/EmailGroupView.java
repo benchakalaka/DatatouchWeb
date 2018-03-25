@@ -19,8 +19,10 @@ import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.UIScope;
+import com.vaadin.ui.TextField;
 
 import javax.annotation.PostConstruct;
+
 
 @UIScope
 @NavigatorViewName(EmailGroupView.NAME)
@@ -47,10 +49,18 @@ public class EmailGroupView extends EmailGroupDeisgn implements View,
 
     @PostConstruct
     public void init() {
-        controller.initGroupGrid(getEmailGroupsGrid(), this::editGroup, this::deleteGroup);
-        controller.initEmailGrid(getEmailsGrid(), this::editTemplate,this::deleteTemplate, this);
+        controller.initGroupGrid(getEmailGroupsGrid(), this::editGroup, this::deleteGroup, () -> dialogs.createNewGroup(this::createNewGroupService));
+        controller.initEmailGrid(getEmailsGrid(), this::editTemplate, this::deleteTemplate, this);
         service.getGroups(this::groupsLoaded);
         service.getTemplates(this::templatesLoaded);
+    }
+
+    private void createNewGroupService(String newGroup) {
+        service.createNewGroup(this::addNewGroupToGrid, newGroup);
+    }
+
+    private void addNewGroupToGrid(int groupId, String groupName) {
+        controller.addNewGroupToGrid(groupId, groupName);
     }
 
     private void editGroup(EmailGroupGridItem item) {

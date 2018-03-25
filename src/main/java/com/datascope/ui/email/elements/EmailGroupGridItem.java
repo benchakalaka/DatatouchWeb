@@ -14,6 +14,10 @@ public class EmailGroupGridItem {
         this.emailGridItems = emailGridItems;
     }
 
+    public EmailGroupGridItem(int id, String name) {
+        this(id,name, new EmailGridItem.List());
+    }
+
     public EmailGridItem.List getEmailGridItems() {
         return emailGridItems;
     }

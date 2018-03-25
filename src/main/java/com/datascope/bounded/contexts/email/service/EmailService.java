@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import rx.Observable;
 import rx.schedulers.Schedulers;
 
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 @Service
@@ -24,6 +25,7 @@ public class EmailService implements IEmailService {
     private static final String ADD_EMAIL_TO_GROUP = "Email/AddEmailTemplateToGroup";
     private static final String DELETE_EMAIL_TEMPLATE = "Email/DeleteEmailTemplate";
     private static final String EDIT_EMAIL_TEMPLATE = "Email/EditEmailTemplate";
+    private static final String CREATE_GROUP = "Email/CreateGroup";
 
     public EmailService(IRestClient client) {
         this.rest = client;
@@ -87,5 +89,13 @@ public class EmailService implements IEmailService {
         Observable.just(rest.post(Integer.class, EDIT_EMAIL_TEMPLATE, new EditEmailTemplateRequest(emailId, email, name, lastName)))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(Schedulers.io());
+    }
+
+    @Override
+    public void createNewGroup(BiConsumer<Integer, String> onGroupCreatedListener, String newGroupName) {
+        Observable.just(rest.post(Integer.class, CREATE_GROUP, new CreateGroupRequest(newGroupName)))
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(Schedulers.io())
+        .subscribe(groupId -> onGroupCreatedListener.accept(groupId,newGroupName));
     }
 }

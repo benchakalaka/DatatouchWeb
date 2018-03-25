@@ -6,14 +6,15 @@ import com.datascope.ui.email.EmailGroupView;
 import com.datascope.ui.email.elements.EmailGridItem;
 import com.datascope.ui.email.elements.EmailGroupGridItem;
 import com.datascope.ui.utils.factories.ButtonFactory;
-import com.datascope.ui.utils.helper.Labels;
-import com.datascope.ui.utils.helper.UiHelper;
 import com.vaadin.data.provider.ListDataProvider;
+import com.vaadin.icons.VaadinIcons;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.renderers.ComponentRenderer;
+import com.vaadin.ui.themes.ValoTheme;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Consumer;
@@ -23,7 +24,7 @@ import static com.vaadin.icons.VaadinIcons.CLOSE;
 import static com.vaadin.ui.themes.ValoTheme.BUTTON_SMALL;
 
 @Component
-public class EmailGroupViewController extends UiHelper {
+public class EmailGroupViewController {
 
     private static final int GRID_BUTTON_EXPAND_RATIO = 1;
     private static final int GRID_FIELDS_EXPAND_RATIO = 8;
@@ -31,14 +32,30 @@ public class EmailGroupViewController extends UiHelper {
     private ListDataProvider<EmailGridItem> emailsProvider;
     private String CENTER_ALIGN = "v-align-center";
 
+    @Value("${email.grid.group.name}")
+    private String name;
 
-    public EmailGroupViewController(Labels labels) {
-        super(labels);
+    @Value("${email.grid.email.delete}")
+    private String delete;
+
+    @Value("${email.grid.email.active}")
+    private String active;
+
+    @Value("${email.grid.email.last.name}")
+    private String lastName;
+
+    @Value("${email.grid.email.email}")
+    private String email;
+
+
+    public EmailGroupViewController() {
+
     }
 
     public void initGroupGrid(Grid<EmailGroupGridItem> emailGroupsGrid,
                               Consumer<EmailGroupGridItem> onEdit,
-                              Consumer<EmailGroupGridItem> onDelete) {
+                              Consumer<EmailGroupGridItem> onDelete,
+                              Runnable onAddNewGroup) {
 
         emailGroupsGrid.removeAllColumns();
 
@@ -46,7 +63,7 @@ public class EmailGroupViewController extends UiHelper {
         emailGroupsGrid.getEditor().addSaveListener(event -> onEdit.accept(event.getBean()));
 
         emailGroupsGrid.addColumn(EmailGroupGridItem::getName)
-                .setCaption(getLabel("email.grid.group.name"))
+                .setId(name)
                 .setEditorComponent(new TextField(), EmailGroupGridItem::setName)
                 .setExpandRatio(GRID_FIELDS_EXPAND_RATIO);
 
@@ -56,9 +73,18 @@ public class EmailGroupViewController extends UiHelper {
 
         emailGroupsGrid
                 .addComponentColumn(item -> buildEmailGroupGridDeleteButton(item, onDelete))
-                .setCaption(getLabel("email.grid.email.delete"))
+                .setCaption(delete)
                 .setExpandRatio(GRID_BUTTON_EXPAND_RATIO)
+                .setHidable(true)
                 .setStyleGenerator(item -> CENTER_ALIGN);
+
+        Button buttonCreateNewGroup = new Button(name, VaadinIcons.PLUS);
+        buttonCreateNewGroup.addClickListener(e -> onAddNewGroup.run());
+        buttonCreateNewGroup.addStyleName(ValoTheme.BUTTON_BORDERLESS);
+        emailGroupsGrid
+                .getDefaultHeaderRow()
+                .getCell(name)
+                .setComponent(buttonCreateNewGroup);
     }
 
     public void initEmailGrid(Grid<EmailGridItem> emailsGrid,
@@ -71,29 +97,33 @@ public class EmailGroupViewController extends UiHelper {
         emailsGrid.getEditor().addSaveListener(editorSaveEvent -> onEditEmailTemplate.accept(editorSaveEvent.getBean()));
 
         emailsGrid.addColumn(EmailGridItem::getName)
-                .setCaption(getLabel("email.grid.email.name"))
+                .setCaption(name)
+                .setHidable(true)
                 .setEditorComponent(new TextField(), EmailGridItem::setName)
                 .setExpandRatio(GRID_FIELDS_EXPAND_RATIO);
 
         emailsGrid.addColumn(EmailGridItem::getLastName)
                 .setEditorComponent(new TextField(), EmailGridItem::setLastName)
-                .setCaption(getLabel("email.grid.email.last.name"))
+                .setCaption(lastName)
+                .setHidable(true)
                 .setExpandRatio(GRID_FIELDS_EXPAND_RATIO);
 
         emailsGrid.addColumn(EmailGridItem::getEmail)
-                .setCaption(getLabel("email.grid.email.email"))
+                .setCaption(email)
                 .setEditorComponent(new TextField(), EmailGridItem::setEmail)
                 .setExpandRatio(GRID_FIELDS_EXPAND_RATIO);
 
         emailsGrid.addColumn(email -> getEmailGridItemActiveCheckBox(email, view))
-                .setExpandRatio(1)
+                .setExpandRatio(GRID_BUTTON_EXPAND_RATIO)
                 .setRenderer(new ComponentRenderer())
-                .setCaption(getLabel("email.grid.email.active"))
+                .setCaption(active)
+                .setHidable(true)
                 .setStyleGenerator(item -> CENTER_ALIGN);
 
         emailsGrid
                 .addComponentColumn(item -> buildEmailGridDeleteButton(item, onDeleteEmailTemplate))
-                .setCaption(getLabel("email.grid.email.delete"))
+                .setCaption(delete)
+                .setHidable(true)
                 .setExpandRatio(GRID_BUTTON_EXPAND_RATIO)
                 .setStyleGenerator(item -> CENTER_ALIGN);
     }
@@ -120,8 +150,6 @@ public class EmailGroupViewController extends UiHelper {
     private Button buildEmailGroupGridDeleteButton(EmailGroupGridItem item, Consumer<EmailGroupGridItem> onDeleteEmailGroup) {
         return ButtonFactory.buildButton(CLOSE, BUTTON_SMALL, e -> onDeleteEmailGroup.accept(item));
     }
-
-
 
 
     private EmailGroupGridItem.List toEmailGroupGridItems(EmailGroup.List groups) {
@@ -173,5 +201,10 @@ public class EmailGroupViewController extends UiHelper {
                 .stream()
                 .findFirst()
                 .ifPresent(grid::select);
+    }
+
+    public void addNewGroupToGrid(int groupId, String groupName) {
+        emailGroupsProvider.getItems().add(new EmailGroupGridItem(groupId, groupName));
+        emailGroupsProvider.refreshAll();
     }
 }

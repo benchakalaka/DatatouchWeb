@@ -9,7 +9,7 @@ import com.vaadin.ui.UI;
 
 @SpringUI
 @Title("Datatouch")
-@Theme("tests-valo-flat")
+@Theme("datascope")
 // TODO: Mapper
 // TODO: EventBus
 // TODO: Inject Strings directly

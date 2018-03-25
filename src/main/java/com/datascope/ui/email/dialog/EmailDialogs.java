@@ -1,30 +1,35 @@
 package com.datascope.ui.email.dialog;
 
-import com.vaadin.icons.VaadinIcons;
+import com.vaadin.ui.TextField;
 import de.steinwedel.messagebox.ButtonOption;
+import de.steinwedel.messagebox.ButtonType;
 import de.steinwedel.messagebox.MessageBox;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+
 @Component
 public class EmailDialogs {
 
-    @Value(value = "${email.delete.email.template}")
+    @Value("${email.delete.email.template}")
     private String deleteEmailLabel;
 
-    @Value(value = "${email.delete.are.you.sure}")
+    @Value("${email.delete.are.you.sure}")
     private String areYouSureLabel;
 
-    @Value(value = "${email.delete.email.template.warning}")
+    @Value("${email.delete.email.template.warning}")
     private String willDeleteEmailTemplateCompletely;
 
-
-
-    @Value(value = "${email.delete.group}")
+    @Value("${email.delete.group}")
     private String deleteGroupLabel;
 
-    @Value(value = "${email.edit.group.name}")
+    @Value("${email.edit.group.name}")
     private String editGroupNameLabel;
+
+    @Value("${email.edit.group.create.new}")
+    private String createNewGroup;
 
     public EmailDialogs() {
     }
@@ -45,13 +50,20 @@ public class EmailDialogs {
                 .withNoButton().open();
     }
 
-    public void selectEmailsInGroup(com.vaadin.ui.Component components, String groupName) {
-        MessageBox.create()
-                .withCaption(groupName)
-                .withMessage(components)
-                .withCloseButton(ButtonOption.icon(VaadinIcons.CLOSE))
-                .withWidth("50%")
-                .withHeight("80%")
-                .open();
+    public void createNewGroup(Consumer<String> okListener) {
+        TextField text = new TextField();
+
+        MessageBox messageBox = MessageBox.create()
+                .withCaption(createNewGroup)
+                .withMessage(text)
+                .withOkButton(() -> okListener.accept(text.getValue())
+                        , ButtonOption.disable())
+                .withCancelButton();
+
+        text.addValueChangeListener((valueEvent) ->
+                messageBox.getButton(ButtonType.OK)
+                        .setEnabled(!valueEvent.getValue().isEmpty()));
+
+        messageBox.open();
     }
 }

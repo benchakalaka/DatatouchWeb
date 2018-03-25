@@ -5,6 +5,7 @@ import com.datascope.bounded.contexts.email.domain.EmailTemplate;
 import com.datascope.bounded.contexts.email.service.interfaces.callbacks.GetEmailGroupsCallback;
 import com.datascope.bounded.contexts.email.service.interfaces.callbacks.GetEmailTemplatesCallback;
 
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 public interface IEmailService {
@@ -23,4 +24,6 @@ public interface IEmailService {
     void addEmailToGroup(int emailTemplateId, int groupId);
 
     void editEmailTemplate(int emailId, String email, String name, String lastName);
+
+    void createNewGroup(BiConsumer<Integer, String> groupName, String newGroupName);
 }
