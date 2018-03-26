@@ -14,10 +14,14 @@ public class GetAreaHotspotsRequest extends SuperRequestView {
     @JsonProperty("AreaId")
     private int areaId;
 
-    public GetAreaHotspotsRequest(  int areaId, LocalDate date) {
-
+    public GetAreaHotspotsRequest(int areaId, LocalDate date) {
         this.areaId = areaId;
         this.date = DateUtils.parseDate(date);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("[AreaId:%s, Date:%s]", areaId, date);
     }
 
     public String getDate() {
@@ -27,7 +31,6 @@ public class GetAreaHotspotsRequest extends SuperRequestView {
     public void setDate(String date) {
         this.date = date;
     }
-
 
 
     public int getAreaId() {

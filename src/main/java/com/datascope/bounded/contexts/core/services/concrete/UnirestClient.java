@@ -1,12 +1,14 @@
 package com.datascope.bounded.contexts.core.services.concrete;
 
 
+import com.datascope.bounded.contexts.core.services.RequestInfo;
 import com.datascope.bounded.contexts.core.services.IRestClient;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.mashape.unirest.http.HttpResponse;
 
 import com.mashape.unirest.http.ObjectMapper;
 import com.mashape.unirest.http.Unirest;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -24,45 +26,50 @@ public class UnirestClient implements IRestClient {
     private static final String CLIENT_NAME = "DatatouchWeb";
     private static final String CLIENT = "Client";
     private static final String VERSION = "Version";
-    private static final String VERSION_NAME = "0.0.1";
 
-    private String rootUrl;
-    private String database;
-    private String token;
-    private int siteId;
+    @Value("${application.version}")
+    private String version;
+
 
     private static boolean isInitialized = false;
+    private RequestInfo requestInfoProvider;
 
-    public UnirestClient(String rootUrl, String database, String token, int siteId) {
-        this.rootUrl = rootUrl;
-        this.database = database;
-        this.token = token;
-        this.siteId = siteId;
+    public UnirestClient(RequestInfo requestInfoProvider) {
+        this.requestInfoProvider = requestInfoProvider;
     }
 
     public int getSiteId() {
-        return siteId;
+        return requestInfoProvider.getSiteId();
     }
 
     @Override
     public <TResult> TResult post(Class<TResult> ofType, String path) {
-        return post(ofType,path,null);
+        return post(ofType, path, null);
     }
 
     @Override
-    public <TResult> TResult post(Class<TResult> ofType, String path, Object params) {
+    public <TResult> TResult post(Class<TResult> ofType, String servicePath, Object params) {
         try {
-            String url = rootUrl + path;
-            System.out.println("Execute request ["+url+"]");
+            String url = requestInfoProvider.getRootUrl() + servicePath;
+
+            System.out.println(String.format("Execute request %s", url));
+
+            if (null != params)
+                System.out.println(String.format("Params %s", params.toString()));
+
+            System.out.println("--------------------------Headers");
+            System.out.println(requestInfoProvider.toString());
+            System.out.println("--------------------------Headers");
+
             HttpResponse<TResult> result = Unirest
                     .post(url)
                     .header(ACCEPT, JSON)
                     .header(CONTENT_TYPE, JSON)
-                    .header(SITE_ID, String.valueOf(siteId))
-                    .header(TOKEN, token)
+                    .header(SITE_ID, String.valueOf(requestInfoProvider.getSiteId()))
+                    .header(TOKEN, requestInfoProvider.getToken())
                     .header(CLIENT, CLIENT_NAME)
-                    .header(VERSION, VERSION_NAME)
-                    .header(DATABASE, database)
+                    .header(VERSION, version)
+                    .header(DATABASE, requestInfoProvider.getDatabase())
                     .body(params)
                     .asObject(ofType);
 

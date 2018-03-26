@@ -36,12 +36,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.wcs.wcslib</groupId>
-            <artifactId>wcslib-vaadin-widget-multifileupload</artifactId>
-            <version>4.0</version>
-        </dependency>
-
-        <dependency>
             <groupId>com.github.appreciated</groupId>
             <artifactId>app-layout-addon</artifactId>
             <version>0.9.20</version>

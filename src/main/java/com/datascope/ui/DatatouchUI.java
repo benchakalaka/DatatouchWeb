@@ -1,5 +1,6 @@
 package com.datascope.ui;
 
+import com.datascope.bounded.contexts.core.services.concrete.CookieRequestInfo;
 import com.datascope.ui.utils.factories.MenuBuilder;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
@@ -29,6 +30,7 @@ public class DatatouchUI extends UI {
 
     @Override
     protected void init(VaadinRequest request) {
+        CookieRequestInfo.setInfo();
         setContent(menuBuilder.build());
     }
 }

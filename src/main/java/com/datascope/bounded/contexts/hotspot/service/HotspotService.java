@@ -24,11 +24,11 @@ public class HotspotService extends SuperRestService implements IHotspotService 
     @Override
     public void getAreaHotspots(int areaId, LocalDate date, IGetAreaHotspotsCallback callback) {
         GetAreaHotspotsRequest request = new GetAreaHotspotsRequest(areaId, date);
-        Hotspot.List hotspots = rest.post(Hotspot.List.class, GET_HOTSPOTS,request);
+        Hotspot.List hotspots = rest.post(Hotspot.List.class, GET_HOTSPOTS, request);
 
         if (isNotEmpty(hotspots))
-            callback.noHotspotsFound();
-        else
             callback.hotspotsFound(hotspots);
+        else
+            callback.noHotspotsFound();
     }
 }
