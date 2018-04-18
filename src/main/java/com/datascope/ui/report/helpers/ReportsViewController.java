@@ -2,7 +2,6 @@ package com.datascope.ui.report.helpers;
 
 import com.datascope.bounded.contexts.settingslab.domain.SettingsModule;
 import com.datascope.ui.report.callbacks.ReportSelectedCallback;
-import com.datascope.ui.report.callbacks.SelectReportGeneratedDateCallback;
 import com.datascope.ui.report.elements.ModuleComboBoxItem;
 import com.datascope.ui.report.elements.ReportGroupGridItem;
 import com.datascope.ui.utils.helper.Labels;
@@ -15,7 +14,7 @@ import com.vaadin.ui.TreeGrid;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.Optional;
+import java.util.List;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
@@ -90,5 +89,17 @@ public class ReportsViewController extends UiHelper {
 
     public void expandAll(TreeGrid<ReportGroupGridItem> tree) {
         tree.expand(reportGroupGridItemTreeDataProvider.getTreeData().getRootItems());
+    }
+
+    public void setDefaultSelection(TreeGrid<ReportGroupGridItem> tree, ReportSelectedCallback callback) {
+        List<ReportGroupGridItem> rootItems = tree.getTreeData().getRootItems();
+        rootItems.stream()
+                .filter(ReportGroupGridItem::hasReports)
+                .findFirst()
+                .ifPresent(rootItem -> {
+                    ReportGroupGridItem child = tree.getTreeData().getChildren(rootItem).get(0);
+                    tree.select(child);
+                    callback.onReportSelected(child.getUrl());
+                });
     }
 }

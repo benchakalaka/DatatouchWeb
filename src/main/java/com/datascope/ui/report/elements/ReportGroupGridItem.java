@@ -48,6 +48,10 @@ public class ReportGroupGridItem {
         return null != url && !"".equals(url);
     }
 
+    public boolean hasReports() {
+        return null != reports && reports.size() > 0;
+    }
+
     public static class List extends ArrayList<ReportGroupGridItem> {
 
         public static ReportGroupGridItem.List empty() {

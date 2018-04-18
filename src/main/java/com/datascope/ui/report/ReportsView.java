@@ -73,6 +73,7 @@ public class ReportsView extends ReportDesign implements View,
     public void reportGroupsFound(ReportGroup.List reports) {
         controller.setReports(reports.toGridItems());
         controller.expandAll(reportsTree);
+        controller.setDefaultSelection(reportsTree, this);
     }
 
     @Override
