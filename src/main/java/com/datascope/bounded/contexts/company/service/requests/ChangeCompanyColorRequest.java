@@ -1,6 +1,7 @@
 package com.datascope.bounded.contexts.company.service.requests;
 
 import com.datascope.bounded.contexts.core.services.SuperRequestView;
+import com.datascope.ui.utils.common.ColorUtils;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ChangeCompanyColorRequest extends SuperRequestView {
@@ -13,17 +14,7 @@ public class ChangeCompanyColorRequest extends SuperRequestView {
 
     public ChangeCompanyColorRequest(int companyId, int alpha, int r, int g, int b) {
         this.companyId = companyId;
-
-        String alphaHex = To00Hex(alpha);
-        String blueHex = To00Hex(b);
-        String greenHex = To00Hex(g);
-        String redHex = To00Hex(r);
-
-
-        this.colour = "#" + alphaHex +
-                blueHex +
-                greenHex +
-                redHex;
+        this.colour = ColorUtils.getHexColorFromARGB(alpha, r, g, b);
     }
 
     public int getCompanyId() {
@@ -40,10 +31,5 @@ public class ChangeCompanyColorRequest extends SuperRequestView {
 
     public void setColour(String colour) {
         this.colour = colour;
-    }
-
-    private static String To00Hex(int value) {
-        String hex = "00".concat(Integer.toHexString(value));
-        return hex.substring(hex.length()-2, hex.length());
     }
 }

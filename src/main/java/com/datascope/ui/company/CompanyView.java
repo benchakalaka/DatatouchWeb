@@ -14,7 +14,6 @@ import com.github.appreciated.app.layout.annotations.MenuIcon;
 import com.github.appreciated.app.layout.annotations.NavigatorViewName;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
-import com.vaadin.shared.ui.colorpicker.Color;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.UIScope;
 
@@ -51,8 +50,8 @@ public class CompanyView extends CompanyDesign implements
 
     @PostConstruct
     public void init() {
-        controller.initGrid(getCompaniesGrid(), this);
-        controller.setOnColorPicker(getColorPickerArea(), this);
+        controller.applyColorPickerStyle();
+        controller.initGrid(getCompaniesGrid(), this, this);
         service.getCompanies(this);
     }
 
@@ -71,14 +70,12 @@ public class CompanyView extends CompanyDesign implements
 
     @Override
     public void companySelected(CompanyGridItem item) {
-        Color color = controller.getColor(item.getColour());
-        getColorPickerArea().setValue(color);
+
     }
 
     @Override
-    public void companyColorChanged(int alpha, int r, int g, int b) {
-        if (isCompanySelected())
-            service.changeCompanyColor(getSelectedCompanyId(), alpha, r, g, b);
+    public void companyColorChanged(CompanyGridItem item, int alpha, int r, int g, int b) {
+        service.changeCompanyColor(item.getId(), alpha, r, g, b);
     }
 
     private int getSelectedCompanyId() {

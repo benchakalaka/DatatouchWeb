@@ -20,7 +20,6 @@ import com.vaadin.ui.ColorPickerArea;
 @SuppressWarnings("serial")
 public class CompanyDesign extends HorizontalLayout {
     private Grid<com.datascope.ui.company.elements.CompanyGridItem> companiesGrid;
-    private ColorPickerArea colorPickerArea;
 
     public CompanyDesign() {
         Design.read(this);
@@ -29,9 +28,4 @@ public class CompanyDesign extends HorizontalLayout {
     public Grid<com.datascope.ui.company.elements.CompanyGridItem> getCompaniesGrid() {
         return companiesGrid;
     }
-
-    public ColorPickerArea getColorPickerArea() {
-        return colorPickerArea;
-    }
-
 }

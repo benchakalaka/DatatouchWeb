@@ -1,13 +1,14 @@
 package com.datascope.ui.company.elements;
 
 import com.datascope.bounded.contexts.company.domain.Company;
+import com.datascope.ui.utils.common.ColorUtils;
 
 import java.util.ArrayList;
 
 public class CompanyGridItem {
     private final int id;
     private final String name;
-    private final String colour;
+    private String colour;
     private final int sortOrder;
 
     public CompanyGridItem(int id, String name, String colour, int sortOrder) {
@@ -27,6 +28,10 @@ public class CompanyGridItem {
 
     public String getColour() {
         return colour;
+    }
+
+    public void setColour(int colour) {
+        this.colour = ColorUtils.toHexColor(colour);
     }
 
     public int getSortOrder() {
