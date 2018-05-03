@@ -3,11 +3,13 @@ package com.datascope.ui.area;
 import com.datascope.bounded.contexts.area.domian.Area;
 import com.datascope.bounded.contexts.area.service.interfaces.IAreaService;
 import com.datascope.bounded.contexts.area.service.interfaces.callbacks.GetAreasCallback;
+import com.datascope.ui.area.callbacks.IAreaFileUploadCallback;
 import com.datascope.ui.area.callbacks.IAreaSelectedCallback;
 import com.datascope.ui.area.callbacks.OnUploadAreaClickedCallback;
 import com.datascope.ui.area.controller.AreaViewController;
 import com.datascope.ui.area.elements.AreaGridItem;
 import com.datascope.ui.generated.AreasDesign;
+import com.datascope.ui.utils.common.FileUtilsWrapper;
 import com.datascope.ui.utils.notifications.Notifications;
 import com.github.appreciated.app.layout.annotations.MenuCaption;
 import com.github.appreciated.app.layout.annotations.MenuIcon;
@@ -25,7 +27,8 @@ import javax.annotation.PostConstruct;
 @MenuIcon(VaadinIcons.SITEMAP)
 @NavigatorViewName(AreasView.NAME)
 @SpringView(name = AreasView.NAME)
-public class AreasView extends AreasDesign implements View, GetAreasCallback, IAreaSelectedCallback, OnUploadAreaClickedCallback {
+public class AreasView extends AreasDesign implements View, GetAreasCallback, IAreaSelectedCallback, OnUploadAreaClickedCallback,
+        IAreaFileUploadCallback {
     static final String NAME = "AreaView";
 
     private IAreaService areaService;
@@ -44,6 +47,7 @@ public class AreasView extends AreasDesign implements View, GetAreasCallback, IA
     @PostConstruct
     public void init() {
         controller.initAreasGrid(getAreasGrid(), this);
+        controller.initAreaFileUploadGridHeader(getAreasGrid(), this);
         areaService.getAreas(this);
     }
 
@@ -65,5 +69,21 @@ public class AreasView extends AreasDesign implements View, GetAreasCallback, IA
     @Override
     public void uploadAreaClicked() {
 
+    }
+
+    @Override
+    public void areaFileUploadFinished(String areaName, String areaFileName, byte[] fileData) {
+        if (FileUtilsWrapper.isPdfFile(areaFileName)) {
+            areaService.createAreaFromPdf(areaName, areaFileName, fileData, this::areaCreated);
+        } else {
+            areaService.createAreaFromImage(areaName, areaFileName, fileData, this::areaCreated);
+        }
+    }
+
+    private void areaCreated(Area area) {
+        getUI().access(() -> {
+            areaService.getAreas(this);
+            notifications.success("areas.creation.success");
+        });
     }
 }
