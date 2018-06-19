@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:true,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;datascope&quot;}">
+    <meta name="vaadin-version" content="8.0.5">
+</head>
+<body>
+<vaadin-horizontal-layout size-full margin>
+    <vaadin-horizontal-split-panel split-position="100%" :expand>
+        <vaadin-grid size-full data-item-type="com.datascope.ui.usermanagement.elements.UserSettingsGridItem" _id="userSettingsGrid">
+            <table>
+                <colgroup>
+                    <col column-id="id" sortable>
+                    <col column-id="name" sortable>
+                </colgroup>
+                <thead>
+                <tr default>
+                    <th plain-text column-ids="id">Id</th>
+                    <th plain-text column-ids="name">Name</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </vaadin-grid>
+    </vaadin-horizontal-split-panel>
+</vaadin-horizontal-layout>
+</body>
+</html>

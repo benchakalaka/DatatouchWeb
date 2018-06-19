@@ -5,6 +5,7 @@ import com.datascope.ui.company.CompanyView;
 import com.datascope.ui.email.EmailGroupView;
 import com.datascope.ui.hotspot.HotspotView;
 import com.datascope.ui.report.ReportsView;
+import com.datascope.ui.usermanagement.UserManagementView;
 import com.datascope.ui.utils.helper.Labels;
 import com.github.appreciated.app.layout.behaviour.Behaviour;
 import com.github.appreciated.app.layout.builder.AppLayout;
@@ -57,6 +58,7 @@ public class MenuBuilder implements Serializable{
                         .add(AreasView.class)
                         .add(EmailGroupView.class)
                         .add(CompanyView.class)
+                        .add(UserManagementView.class)
                         .build())
                 .build();
     }
