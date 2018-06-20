@@ -47,4 +47,8 @@ public class UserManagementView extends UserManagementDesign implements
         UserSettingsGridItem.List items = controller.toGridItems(active);
         getUserSettingsGrid().setItems(items);
     }
+
+    private void chanagePin(UserSettingsGridItem item) {
+
+    }
 }
