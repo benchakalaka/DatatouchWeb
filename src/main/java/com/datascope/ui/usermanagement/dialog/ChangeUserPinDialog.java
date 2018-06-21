@@ -1,8 +1,10 @@
 package com.datascope.ui.usermanagement.dialog;
 
+import com.datascope.ui.usermanagement.callbacks.IChangeUserPinCallback;
 import com.datascope.ui.utils.notifications.Notifications;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.ui.*;
+import de.steinwedel.messagebox.MessageBox;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -25,11 +27,25 @@ public class ChangeUserPinDialog extends Window {
     @Value("${usersettings.changepin.dialog.buttonunassign}")
     private String textButonUnassign;
 
+    @Value("${usersettings.changepin.dialog.unassignconfirm}")
+    private String textUnassignConfirm;
+
     private Notifications notifications;
 
     private String pinCodeValue;
 
     private HorizontalLayout pinIndicatorLayout;
+
+    private int userId;
+    private IChangeUserPinCallback callback = new IChangeUserPinCallback() {
+        @Override
+        public void onUserPinUpdate(int userId, String newPin) {
+        }
+
+        @Override
+        public void onUserPinUnassign(int userId) {
+        }
+    };
 
     public ChangeUserPinDialog(Notifications notifications) {
         super();
@@ -46,16 +62,30 @@ public class ChangeUserPinDialog extends Window {
         setClosable(true);
         setModal(true);
         setResizable(false);
+        reset();
 
         setContent(buildPinBoard());
     }
 
     @Override
     public void close() {
-       // reset();
+        reset();
         super.close();
     }
 
+    private void reset() {
+        pinCodeValue = "";
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public void setChangeUserPinCallback(IChangeUserPinCallback callback) {
+        if (callback != null) {
+            this.callback = callback;
+        }
+    }
 
     private GridLayout buildPinBoard() {
         GridLayout gridLayout = new GridLayout(3, 6);
@@ -124,12 +154,14 @@ public class ChangeUserPinDialog extends Window {
         Button button = new Button(textButonOk);
         button.setWidth(PIN_BUTTON_SIZE, Unit.PIXELS);
         button.setHeight(PIN_BUTTON_SIZE, Unit.PIXELS);
+        button.addClickListener(event -> onButtonOkClick());
         return button;
     }
 
     private Button buildUnassignPinButton() {
         Button button = new Button(textButonUnassign);
         button.setWidth(100, Unit.PERCENTAGE);
+        button.addClickListener(event -> onButtonUnassignClick());
         return button;
     }
 
@@ -145,19 +177,39 @@ public class ChangeUserPinDialog extends Window {
 
     private void updatePinIndicator() {
         int blockCount = pinCodeValue.length() / PIN_INDICATOR_COUNT;
-        int hilightCount = pinCodeValue.length() - (blockCount * PIN_INDICATOR_COUNT);
-        if (pinCodeValue.length() == PIN_INDICATOR_COUNT) {
+        int digitCount = blockCount * PIN_INDICATOR_COUNT;
+        int hilightCount = pinCodeValue.length() - digitCount;
+
+        if (pinCodeValue.length() == digitCount && digitCount > 0) {
             hilightCount = PIN_INDICATOR_COUNT;
         }
 
-        for (int i = 0; i< hilightCount; i++) {
+        for (int i = 0; i < hilightCount; i++) {
             com.vaadin.ui.Component component = pinIndicatorLayout.getComponent(i);
             component.setIcon(VaadinIcons.CIRCLE);
         }
 
-        for (int i = hilightCount; i< PIN_INDICATOR_COUNT; i++) {
+        for (int i = hilightCount; i < PIN_INDICATOR_COUNT; i++) {
             com.vaadin.ui.Component component = pinIndicatorLayout.getComponent(i);
             component.setIcon(VaadinIcons.CIRCLE_THIN);
         }
     }
+
+    private void onButtonOkClick() {
+        if (pinCodeValue.isEmpty()) {
+            notifications.error("usermanagement.changepin.emptypin");
+            return;
+        }
+        callback.onUserPinUpdate(userId, pinCodeValue);
+        close();
+    }
+
+    private void onButtonUnassignClick() {
+        MessageBox.createQuestion()
+                .withCaption(textButonUnassign)
+                .withMessage(textUnassignConfirm)
+                .withYesButton(() -> callback.onUserPinUnassign(userId))
+                .withNoButton().open();
+    }
+
 }

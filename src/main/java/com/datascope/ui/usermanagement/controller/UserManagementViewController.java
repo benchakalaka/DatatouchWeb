@@ -1,6 +1,7 @@
 package com.datascope.ui.usermanagement.controller;
 
 import com.datascope.bounded.contexts.sitesettings.domain.UserSettings;
+import com.datascope.ui.usermanagement.callbacks.IChangeUserPinCallback;
 import com.datascope.ui.usermanagement.dialog.ChangeUserPinDialog;
 import com.datascope.ui.usermanagement.elements.UserSettingsGridItem;
 import com.datascope.ui.utils.factories.ButtonFactory;
@@ -33,7 +34,7 @@ public class UserManagementViewController extends UiHelper {
         return userSettingsList.stream().map(UserSettingsGridItem::fromUserSettings).collect(Collectors.toCollection(UserSettingsGridItem.List::new));
     }
 
-    public void initGrid(Grid<UserSettingsGridItem> grid) {
+    public void initGrid(Grid<UserSettingsGridItem> grid, IChangeUserPinCallback changeUserPinCallback) {
         grid.removeAllColumns();
 
         grid.addColumn(UserSettingsGridItem::getFullName)
@@ -43,6 +44,8 @@ public class UserManagementViewController extends UiHelper {
         grid.addComponentColumn(item -> buildChangePinButton(item, grid))
             .setCaption(getLabel("usersettings.grid.usersettings.changepin"))
             .setStyleGenerator(item -> STYLE_CENTER_ALIGN);
+
+        changeUserPinDialog.setChangeUserPinCallback(changeUserPinCallback);
     }
 
     private Button buildChangePinButton(UserSettingsGridItem item, Grid<UserSettingsGridItem> grid) {
@@ -53,6 +56,7 @@ public class UserManagementViewController extends UiHelper {
     }
 
     private void onChangePinButtonClick(UserSettingsGridItem item) {
+        changeUserPinDialog.setUserId(item.getId());
         UI.getCurrent().addWindow(changeUserPinDialog);
     }
 }

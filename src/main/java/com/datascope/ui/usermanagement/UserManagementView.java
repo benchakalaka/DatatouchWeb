@@ -2,7 +2,9 @@ package com.datascope.ui.usermanagement;
 
 import com.datascope.bounded.contexts.sitesettings.domain.UserSettings;
 import com.datascope.bounded.contexts.sitesettings.service.interfaces.ISiteSettingsService;
+import com.datascope.bounded.contexts.user.service.interfaces.IUserService;
 import com.datascope.ui.generated.UserManagementDesign;
+import com.datascope.ui.usermanagement.callbacks.IChangeUserPinCallback;
 import com.datascope.ui.usermanagement.controller.UserManagementViewController;
 import com.datascope.ui.usermanagement.elements.UserSettingsGridItem;
 import com.datascope.ui.utils.notifications.Notifications;
@@ -20,35 +22,48 @@ import javax.annotation.PostConstruct;
 @NavigatorViewName(UserManagementView.NAME)
 @SpringView(name = UserManagementView.NAME )
 public class UserManagementView extends UserManagementDesign implements
-        View {
+        View,
+        IChangeUserPinCallback {
 
     static final String NAME = "UserManagementView";
-    private ISiteSettingsService service;
+
+    private ISiteSettingsService siteSettingsService;
+    private IUserService userService;
+
     private Notifications notifications;
     private UserManagementViewController controller;
 
     public UserManagementView(
-            ISiteSettingsService service,
+            ISiteSettingsService siteSettingsService,
+            IUserService userService,
             Notifications notifications,
             UserManagementViewController controller) {
-        this.service = service;
+        this.siteSettingsService = siteSettingsService;
+        this.userService = userService;
         this.notifications = notifications;
         this.controller = controller;
     }
 
     @PostConstruct
     public void init() {
-        controller.initGrid(getUserSettingsGrid());
-        service.getUserSettings(this::setupUserSettings);
+        controller.initGrid(getUserSettingsGrid(), this);
+        siteSettingsService.getUserSettings(this::setupUserSettings);
     }
 
     private void setupUserSettings(UserSettings.List userSettingsList) {
         UserSettings.List active = userSettingsList.getActiveUsers();
         UserSettingsGridItem.List items = controller.toGridItems(active);
         getUserSettingsGrid().setItems(items);
+        getUserSettingsGrid().getDataProvider().refreshAll();
     }
 
-    private void chanagePin(UserSettingsGridItem item) {
+    @Override
+    public void onUserPinUpdate(int userId, String newPin) {
+        userService.updateUserPin(userId, newPin);
+    }
 
+    @Override
+    public void onUserPinUnassign(int userId) {
+        //userService.unassignPin(userId);
     }
 }

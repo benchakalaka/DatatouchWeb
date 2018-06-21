@@ -6,4 +6,6 @@ import com.datascope.bounded.contexts.user.service.interfaces.callbacks.LoginUse
 public interface IUserService {
     void getUsers(GetUsersCallback callback);
     void login(int userId, String pin, LoginUserCallback callback);
+    void updateUserPin(int userId, String userPin);
+    void unassignPin(int userId);
 }
