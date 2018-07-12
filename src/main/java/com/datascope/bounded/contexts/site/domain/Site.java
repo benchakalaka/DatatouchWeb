@@ -5,6 +5,7 @@ import com.datascope.bounded.contexts.core.domain.Model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class Site extends Model {
 
@@ -38,8 +39,11 @@ public class Site extends Model {
         return String.valueOf(getName());
     }
 
-    public static class List extends ArrayList<Site>
-
-    {
+    public static class List extends ArrayList<Site> {
+        public Optional<Site> findSiteById(int siteId) {
+            return stream()
+                    .filter(model -> model.getId() == siteId)
+                    .findFirst();
+        }
     }
 }

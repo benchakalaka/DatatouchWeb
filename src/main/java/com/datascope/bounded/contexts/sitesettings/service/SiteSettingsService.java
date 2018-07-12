@@ -30,15 +30,11 @@ public class SiteSettingsService extends SuperRestService implements ISiteSettin
     @Override
     public void getUserSettings(Consumer<UserSettings.List> onSuccess) {
         GetSiteSettingsRequest request = new GetSiteSettingsRequest(getSiteId());
-        Observable.just(rest.post(SiteSettings.class, GET_SITE_SETTINGS, request))
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(Schedulers.io())
-                .map(siteSettings -> {
-                    if (siteSettings != null && CollectionUtils.isNotEmpty(siteSettings.getUserSettings())) {
-                        return siteSettings.getUserSettings();
-                    }
-                    return UserSettings.List.empty();
-                })
-                .subscribe(onSuccess::accept);
+        SiteSettings siteSettings = rest.post(SiteSettings.class, GET_SITE_SETTINGS, request);
+        if (siteSettings != null) {
+            if (CollectionUtils.isNotEmpty(siteSettings.getUserSettings())) {
+                onSuccess.accept(siteSettings.getUserSettings());
+            }
+        }
     }
 }

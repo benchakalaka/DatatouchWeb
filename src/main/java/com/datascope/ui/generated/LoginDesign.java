@@ -23,7 +23,7 @@ import com.vaadin.ui.Button;
 @SuppressWarnings("serial")
 public class LoginDesign extends VerticalLayout {
     private ComboBox<com.datascope.bounded.contexts.site.domain.Site> cbSites;
-    private Grid<com.datascope.bounded.contexts.user.domain.User> usersGrid;
+    private Grid<com.datascope.ui.login.elements.UserSettingsLoginGridItem> usersGrid;
     private FormLayout fLogin;
     private PasswordField etPassword;
     private Button btnLogin;
@@ -36,7 +36,7 @@ public class LoginDesign extends VerticalLayout {
         return cbSites;
     }
 
-    public Grid<com.datascope.bounded.contexts.user.domain.User> getUsersGrid() {
+    public Grid<com.datascope.ui.login.elements.UserSettingsLoginGridItem> getUsersGrid() {
         return usersGrid;
     }
 

@@ -3,9 +3,11 @@ package com.datascope.bounded.contexts.user.service;
 import com.datascope.bounded.contexts.core.services.IRestClient;
 import com.datascope.bounded.contexts.core.services.concrete.SuperRestService;
 import com.datascope.bounded.contexts.core.services.concrete.UnirestClient;
+import com.datascope.bounded.contexts.user.domain.User;
 import com.datascope.bounded.contexts.user.service.interfaces.IUserService;
 import com.datascope.bounded.contexts.user.service.interfaces.callbacks.GetUsersCallback;
 import com.datascope.bounded.contexts.user.service.interfaces.callbacks.LoginUserCallback;
+import com.datascope.bounded.contexts.user.service.requests.LoginUserRequest;
 import com.datascope.bounded.contexts.user.service.requests.UnassignPinRequest;
 import com.datascope.bounded.contexts.user.service.requests.UpdateUserPinRequest;
 import org.springframework.context.annotation.Scope;
@@ -41,12 +43,13 @@ public class UserService extends SuperRestService implements IUserService {
     }
 
     public void login(int userId, String pin, LoginUserCallback callback) {
-//        User user = rest.post(User.class, LOGIN, LoginUserRequest.create(userId, pin, rest.getSiteId()));
-//
-//        if (null == user)
-//            callback.loginFailed();
-//        else
-//            callback.loginSuccess(user);
+        User user = rest.post(User.class, LOGIN, LoginUserRequest.create(userId, pin, getSiteId()));
+
+        if (null == user) {
+            callback.loginFailed();
+        } else {
+            callback.loginSuccess(user);
+        }
     }
 
     @Override

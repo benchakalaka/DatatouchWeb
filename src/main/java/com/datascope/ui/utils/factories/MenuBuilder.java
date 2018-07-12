@@ -16,6 +16,7 @@ import com.github.appreciated.app.layout.builder.entities.DefaultNotification;
 import com.github.appreciated.app.layout.builder.entities.DefaultNotificationHolder;
 import com.github.appreciated.app.layout.builder.providers.DefaultSpringNavigationElementInfoProvider;
 import com.github.appreciated.app.layout.component.MenuHeader;
+import com.github.appreciated.app.layout.component.button.AppBarButton;
 import com.github.appreciated.app.layout.component.button.AppBarNotificationButton;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.server.ThemeResource;
@@ -41,7 +42,7 @@ public class MenuBuilder implements Serializable{
         this.labels = labels;
     }
 
-    public com.vaadin.ui.Component build() {
+    public com.vaadin.ui.Component build(Runnable onSignOutClick) {
         notifications.addNotification(new DefaultNotification("New notification", "Do something please", DefaultNotification.Priority.MEDIUM));
         badge.setCount(3);
 
@@ -50,6 +51,7 @@ public class MenuBuilder implements Serializable{
                 .withNavigationElementInfoProvider(new DefaultSpringNavigationElementInfoProvider())
                 .withTitle(labels.get("application.name"))
                 .addToAppBar(new AppBarNotificationButton(notifications, true))
+                .addToAppBar(new AppBarButton(VaadinIcons.SIGN_OUT, (e) -> onSignOutClick.run()))
                 .withDesign(AppBarDesign.MATERIAL)
                 .add(new MenuHeader(labels.get("application.version"), new ThemeResource("logo.png")), HEADER)
                 .add(HotspotView.class)
@@ -62,5 +64,4 @@ public class MenuBuilder implements Serializable{
                         .build())
                 .build();
     }
-
 }
